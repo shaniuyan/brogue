@@ -1,0 +1,44 @@
+{
+  "enableDatabaseType": "mongodb",
+  "isInstall": false,
+  "debug": true,
+  "enable": true,
+  "mongodb": {
+    "user": "",
+    "password": "",
+    "server": "101.201.151.203",
+    "port": 27017,
+    "dbName": "authority",
+    "tables": {
+      "perms": "perms",
+      "roles": "roles",
+      "userPerm": "userPerm",
+      "rolePerm": "rolePerm",
+      "userRole": "userRole"
+    }
+  },
+  "msSqlDb": {
+    "user": "sa",
+    "password": "sa",
+    "server": "localhost",
+    "dbName": "authority",
+    "port": 1433,
+    "tables": {
+      "perms": "perms",
+      "roles": "roles",
+      "rolePerms": "rolePerms"
+    }
+  },
+  "mySqlDb": {
+    "user": "root",
+    "password": "root",
+    "server": "localhost",
+    "dbName": "authority",
+    "port": 3366,
+    "tables": {
+      "perms": "perms",
+      "roles": "roles",
+      "rolePerms": "rolePerms"
+    }
+  }
+}

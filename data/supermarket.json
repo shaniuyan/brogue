@@ -1,0 +1,185 @@
+[
+  {
+    "modulename": "进货",
+    "url": "com.brogue.view.main.PuchaseActivity",
+    "type": "activity",
+    "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+    "orderno": 1,
+    "mutil": false,
+    "childmodules": []
+  },
+  {
+    "modulename": "售货",
+    "url": "http://www.baidu.com",
+    "type": "local",
+    "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+    "orderno": 2,
+    "mutil": false,
+    "childmodules": []
+  },
+  {
+    "modulename": "批发",
+    "url": "http://www.baidu.com",
+    "type": "local",
+    "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+    "orderno": 3,
+    "mutil": false,
+    "childmodules": []
+  },
+  {
+    "modulename": "赊账",
+    "url": "http://www.baidu.com",
+    "type": "local",
+    "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+    "orderno": 4,
+    "mutil": false,
+    "childmodules": []
+  },
+  {
+    "modulename": "进货单",
+    "url": "http://www.baidu.com",
+    "type": "web",
+    "img": "http://img3.imgtn.bdimg.com/it/u=3619202141,1555769114&fm=21&gp=0.jpg",
+    "orderno": 5,
+    "mutil": false,
+    "childmodules": []
+  },
+  {
+    "modulename": "售货单",
+    "url": "http://www.baidu.com",
+    "type": "web",
+    "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+    "orderno": 6,
+    "mutil": false,
+    "orderno": "2"
+  },
+  {
+    "modulename": "批发单",
+    "url": "http://www.baidu.com",
+    "type": "web",
+    "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+    "orderno": 7,
+    "mutil": false,
+    "childmodules": []
+  },
+  {
+    "modulename": "赊账单",
+    "url": "http://www.baidu.com",
+    "type": "web",
+    "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+    "orderno": 8,
+    "mutil": false,
+    "childmodules": []
+  },
+  {
+    "modulename": "消息",
+    "url": "http://www.baidu.com",
+    "type": "web",
+    "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+    "orderno": 9,
+    "mutil": false,
+    "childmodules": []
+  },
+  {
+    "modulename": "通告",
+    "url": "http://www.baidu.com",
+    "type": "web",
+    "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+    "orderno": 10,
+    "mutil": false,
+    "childmodules": []
+  },
+  {
+    "modulename": "会员管理",
+    "url": "http://www.baidu.com",
+    "type": "web",
+    "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+    "orderno": 11,
+    "mutil": false,
+    "childmodules": [
+      {
+        "modulename": "会员列表",
+        "url": "http://www.baidu.com",
+        "type": "web",
+        "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+        "orderno": "8",
+        "mutil": false,
+        "childmodules": []
+      },
+      {
+        "modulename": "积分排名",
+        "url": "http://www.baidu.com",
+        "type": "web",
+        "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+        "orderno": "8",
+        "mutil": false,
+        "childmodules": []
+      }
+    ]
+  },
+  {
+    "modulename": "合作商",
+    "url": "http://www.baidu.com",
+    "type": "web",
+    "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+    "orderno": 12,
+    "mutil": false,
+    "childmodules": [
+      {
+        "modulename": "合作商列表",
+        "url": "http://www.baidu.com",
+        "type": "web",
+        "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+        "orderno": "8",
+        "mutil": false,
+        "childmodules": []
+      },
+      {
+        "modulename": "交易额排名",
+        "url": "http://www.baidu.com",
+        "type": "web",
+        "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+        "orderno": "8",
+        "mutil": false,
+        "childmodules": []
+      }
+    ]
+  },
+  {
+    "modulename": "销售统计",
+    "url": "http://www.baidu.com",
+    "type": "web",
+    "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+    "orderno": 99,
+    "mutil": true,
+    "childmodules": [
+      {
+        "modulename": "本日利润",
+        "url": "http://www.baidu.com",
+        "type": "web",
+        "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+        "orderno": "8",
+        "mutil": false,
+        "childmodules": []
+      },
+      {
+        "modulename": "本月利润",
+        "url": "http://www.baidu.com",
+        "type": "web",
+        "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+        "orderno": "8",
+        "mutil": false,
+        "childmodules": []
+      },
+      {
+        "modulename": "本年利润",
+        "url": "http://www.baidu.com",
+        "type": "web",
+        "img": "http://img3.imgtn.bdimg.com/it/u=3432323892,392603817&fm=21&gp=0.jpg",
+        "orderno": "8",
+        "mutil": false,
+        "childmodules": []
+      }
+    ]
+  }
+]

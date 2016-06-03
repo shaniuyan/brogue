@@ -1,0 +1,110 @@
+[
+  {
+    "permXh": 1,
+    "permName": "医生平台",
+    "permUrl": "",
+    "level": 0,
+    "parentPermXh": 0,
+    "isParent": true,
+    "orderNo": 1
+  },
+  {
+    "permXh": 2,
+    "permName": "医疗机构",
+    "permUrl": "",
+    "level": 0,
+    "parentPermXh": 0,
+    "isParent": true,
+    "orderNo": 2
+  },
+  {
+    "permXh": 3,
+    "permName": "系统平台",
+    "permUrl": "",
+    "level": 0,
+    "parentPermXh": 0,
+    "isParent": true,
+    "orderNo": 3
+  },
+  {
+    "permXh": 4,
+    "permName": "权限管理",
+    "permUrl": "",
+    "level": 0,
+    "parentPermXh": 3,
+    "isParent": true,
+    "orderNo": 4
+  },
+  {
+    "permXh": 31,
+    "permName": "权限管理",
+    "permUrl": "",
+    "level": 0,
+    "parentPermXh": 4,
+    "isParent": true,
+    "orderNo": 31
+  },
+  {
+    "permXh": 311,
+    "permName": "系统菜单",
+    "permUrl": "",
+    "level": 0,
+    "parentPermXh": 31,
+    "isParent": true,
+    "orderNo": 311
+  },
+  {
+    "permXh": 3111,
+    "permName": "添加",
+    "permUrl": "/api/auth/perm/addperm.json",
+    "level": 0,
+    "parentPermXh": 311,
+    "isParent": false,
+    "orderNo": 3111
+  },
+  {
+    "permXh": 3112,
+    "permName": "编辑",
+    "permUrl": "/api/auth/perm/updperm.json",
+    "level": 0,
+    "parentPermXh": 311,
+    "isParent": false,
+    "orderNo": 3112
+  },
+  {
+    "permXh": 3113,
+    "permName": "删除",
+    "permUrl": "/api/auth/perm/delperm.json",
+    "level": 0,
+    "parentPermXh": 311,
+    "isParent": false,
+    "orderNo": 3113
+  },
+  {
+    "permXh": 3114,
+    "permName": "用户权限分配",
+    "permUrl": "/api/auth/perm/userpermsassignment.json",
+    "level": 0,
+    "parentPermXh": 311,
+    "isParent": false,
+    "orderNo": 3114
+  },
+  {
+    "permXh": 3115,
+    "permName": "角色权限分配",
+    "permUrl": "/api/auth/perm/rolepermsassignment.json",
+    "level": 0,
+    "parentPermXh": 311,
+    "isParent": false,
+    "orderNo": 3115
+  },
+  {
+    "permXh": 3116,
+    "permName": "更改角色",
+    "permUrl": "/api/auth/perm/delperm.json",
+    "level": 0,
+    "parentPermXh": 311,
+    "isParent": false,
+    "orderNo": 3116
+  }
+]

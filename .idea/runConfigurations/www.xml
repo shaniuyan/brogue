@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="www" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="D:/nodeenv/node5.6/node" path-to-js-file="www" working-dir="$PROJECT_DIR$/bin">
+    <browser with-js-debugger="true" url="http://localhost:3000/" />
+    <RunnerSettings RunnerId="Basic" />
+    <RunnerSettings RunnerId="debuggableProgram" />
+    <ConfigurationWrapper RunnerId="Basic" />
+    <ConfigurationWrapper RunnerId="debuggableProgram" />
+    <method />
+  </configuration>
+</component>

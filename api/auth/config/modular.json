@@ -1,0 +1,10 @@
+[
+  {
+    "apiTypeName":"医生平台",
+    "apiType":"0",
+    "firstModularName":"患者管理",
+    "secModularName":"就诊管理",
+    "operateType":"",
+    "apiUrl":"/api/v1/user/ulogin.json"
+  }
+]

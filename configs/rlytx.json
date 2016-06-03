@@ -1,0 +1,147 @@
+{
+  "AccountInfo": {
+    "func": "AccountInfo",
+    "des": "账户信息查询",
+    "fields": {
+      "must": [
+      ],
+      "optional": [
+      ]
+    }
+  },
+  "SubAccounts ": {
+    "func": "AccountInfo",
+    "des": "账户信息查询",
+    "fields": {
+      "must": [
+        {
+          "name": "appId",
+          "type": "String",
+          "des": "应用Id"
+        },
+        {
+          "name": "friendlyName",
+          "type": "String",
+          "des": "子账户名称。可由英文字母和阿拉伯数字组成子账户唯一名称，推荐使用电子邮箱地址"
+        }
+      ],
+      "optional": {
+      }
+    }
+  },
+  "CloseSubAccount": {
+    "func": "CloseSubAccount",
+    "des": "关闭子账户",
+    "fields": {
+      "must": [
+        {
+          "name": "subAccountSid",
+          "type": "String",
+          "des": "子账户Id"
+        }
+      ],
+      "optional": {
+      }
+    }
+  },
+  "GetSubAccounts": {
+    "func": "GetSubAccounts",
+    "des": "获取子账户",
+    "fields": {
+      "must": [
+        {
+          "name": "appId",
+          "type": "String",
+          "des": "应用Id"
+        }
+      ],
+      "optional": [
+        {
+          "name": "startNo",
+          "type": "String",
+          "des": "开始的序号，默认从0开始"
+        },
+        {
+          "name": "offset",
+          "type": "String",
+          "des": "一次查询的最大条数，最小是1条，最大是100条 "
+        }
+      ]
+    }
+  },
+  "QuerySubAccountByName": {
+    "func": "QuerySubAccountByName",
+    "des": "获取子账户",
+    "fields": {
+      "must": [
+        {
+          "name": "appId",
+          "type": "String",
+          "des": "应用Id"
+        },
+        {
+          "name": "friendlyName",
+          "type": "String",
+          "des": "子账户名称"
+        }
+      ],
+      "optional": [
+      ]
+    }
+  },
+  "SMS/TemplateSMS": {
+    "func": "SMS/TemplateSMS",
+    "des": "发送模板短信",
+    "fields": {
+      "must": [
+        {
+          "name": "to",
+          "type": "短信接收端手机号码集合，用英文逗号分开，每批发送的手机号数量不得超过100个",
+          "des": "应用Id"
+        },
+        {
+          "name": "appId",
+          "type": "String",
+          "des": "应用Id"
+        },
+        {
+          "name": "templateId",
+          "type": "String",
+          "des": "模板Id"
+        },
+        {
+          "name": "datas",
+          "type": "String",
+          "des": "内容数据外层节点"
+        }
+      ],
+      "optional": [
+        {
+          "name": "data",
+          "type": "String",
+          "des": "内容数据，用于替换模板中{序号}"
+        }
+      ]
+    }
+  },
+  "QuerySMSTemplate": {
+    "func": "QuerySMSTemplate",
+    "des": "短信模板查询",
+    "fields": {
+      "must": [
+        {
+          "name": "appId",
+          "type": "String",
+          "des": "应用Id"
+        }
+      ],
+      "optional": [
+        {
+          "name": "templateId",
+          "type": "String",
+          "des": "模板Id，不带此参数查询全部可用模板"
+        }
+      ]
+    }
+  }
+}

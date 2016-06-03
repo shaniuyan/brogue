@@ -1,0 +1,18 @@
+{
+    "engine": "jsrender",
+    "recipe": "client-html",
+    "phantom": {
+        "orientation": "portrait",
+        "format": "A4"
+    },
+    "scripts": [],
+    "data": {
+        "shortid": "EJ0xyohox"
+    },
+    "shortid": "EkGyejnjl",
+    "modificationDate": {
+        "$$date": 1456714757832
+    },
+    "_id": "HFafDMq4nHqKAsyO",
+    "version": null
+}

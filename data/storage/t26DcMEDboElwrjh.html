@@ -1,0 +1,47 @@
+<!DOCTYPE xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head lang="en">
+    <!-- jquery is required for jsreport embedding -->
+    <script src="http://localhost:3000/lib/jquery.js"></script>
+    <style>
+        *{margin:0;padding:0}
+        html, body {height:100%;width:100%;overflow:hidden}
+        table {height:100%;width:100%;table-layout:static;border-collapse:collapse}
+        iframe {height:100%;width:100%}
+        #placeholder {height:100%}
+    </style>
+</head>
+<body>
+<table>
+    <tr><td id="placeholder">
+        <iframe frameborder="0"></iframe></td></tr>
+</table>
+<script>
+    jsreportInit = function () {
+        var template = JSON.parse(decodeURIComponent("%7B%22engine%22%3A%22handlebars%22%2C%22recipe%22%3A%22client-html%22%2C%22phantom%22%3A%7B%22orientation%22%3A%22portrait%22%2C%22format%22%3A%22A4%22%2C%22header%22%3A%22%22%2C%22footer%22%3A%22%22%7D%2C%22scripts%22%3A%5B%5D%2C%22data%22%3A%7B%22shortid%22%3A%22EJ0xyohox%22%7D%2C%22shortid%22%3A%22EkGyejnjl%22%2C%22modificationDate%22%3A%222016-02-29T02%3A59%3A17.832Z%22%2C%22_id%22%3A%22HFafDMq4nHqKAsyO%22%2C%22version%22%3A%22%22%2C%22name%22%3A%22first%22%2C%22content%22%3A%22%3Ch1%3E%20Invoice%20%3C%2Fh1%3E%5Cr%5Cn%3Cdiv%3E%5Cr%5Cn%20%20%20%20%3Cspan%3Efrom%3A%20%7B%7Bfrom%7D%7D%3C%2Fspan%3E%5Cr%5Cn%3C%2Fdiv%3E%5Cr%5Cn%3Cdiv%3E%5Cr%5Cn%20%20%20%20%3Cspan%3Eto%3A%20%7B%7Bto%7D%7D%3C%2Fspan%3E%5Cr%5Cn%3C%2Fdiv%3E%5Cr%5Cn%3Cdiv%3E%5Cr%5Cn%20%20%20%20%3Cspan%3Eprice%3A%20%7B%7Bprice%7D%7D%24%3C%2Fspan%3E%5Cr%5Cn%3C%2Fdiv%3E%5Cr%5Cn%22%2C%22helpers%22%3A%22%22%2C%22pathToEngine%22%3A%22d%3A%5C%5CDOC%5C%5Cbrogue%5C%5Cnode_modules%5C%5Cjsreport%5C%5Cnode_modules%5C%5Cjsreport-handlebars%5C%5Clib%5C%5ChandlebarsEngine.js%22%7D"));
+        template.data = {
+  "to": "Pavel Sladek",
+  "from": "Jan Blaha",
+  "price": 500
+};
+        jsreport.template = template;
+
+        jsreport.render($("#placeholder"), template);
+    };
+</script>
+
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "http://localhost:3000/extension/embedding/public/js/embed.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'jsreport-embedding'));
+</script>
+
+</body>
+</html>

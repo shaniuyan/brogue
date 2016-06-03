@@ -1,0 +1,630 @@
+2016-02-29T01:53:11.001Z - error: Error when processing render request Error during rendering report: Cannot read property 'name' of undefined TypeError: Cannot read property 'name' of undefined
+    at DocPropsApp.toxml (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:162:50)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:829:71)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:7:59)
+    at Promise.post (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1161:36)
+    at Promise.promise.promiseDispatch (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:788:41)
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1391:14
+    at runSingle (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:137:13)
+    at flush (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:125:13)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=1
+2016-02-29T01:53:11.002Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Cannot read property 'name' of undefined TypeError: Cannot read property 'name' of undefined
+    at DocPropsApp.toxml (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:162:50)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:829:71)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:7:59)
+    at Promise.post (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1161:36)
+    at Promise.promise.promiseDispatch (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:788:41)
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1391:14
+    at runSingle (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:137:13)
+    at flush (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:125:13)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T01:53:15.785Z - error: Error when processing render request Error during rendering report: Cannot read property 'name' of undefined TypeError: Cannot read property 'name' of undefined
+    at DocPropsApp.toxml (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:162:50)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:829:71)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:7:59)
+    at Promise.post (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1161:36)
+    at Promise.promise.promiseDispatch (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:788:41)
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1391:14
+    at runSingle (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:137:13)
+    at flush (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:125:13)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=2
+2016-02-29T01:53:15.786Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Cannot read property 'name' of undefined TypeError: Cannot read property 'name' of undefined
+    at DocPropsApp.toxml (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:162:50)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:829:71)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:7:59)
+    at Promise.post (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1161:36)
+    at Promise.promise.promiseDispatch (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:788:41)
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1391:14
+    at runSingle (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:137:13)
+    at flush (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:125:13)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T01:53:29.597Z - error: exec error: Error: spawn fop.bat ENOENT
+2016-02-29T01:53:31.793Z - error: exec error: Error: spawn fop.bat ENOENT
+2016-02-29T01:53:44.132Z - error: uncaughtException: Bad argument date=Mon Feb 29 2016 09:53:44 GMT+0800 (中国标准时间), pid=9044, uid=null, gid=null, cwd=d:\DOC\brogue, execPath=F:\学习结构\node\myenv\node.exe, version=v0.12.2, argv=[F:\学习结构\node\myenv\node.exe, d:\DOC\brogue\server.js], rss=124542976, heapTotal=110195200, heapUsed=87134344, loadavg=[0, 0, 0], uptime=226428.7085084, trace=[column=null, file=null, function=TypeError, line=null, method=null, native=true, column=26, file=child_process.js, function=ChildProcess.spawn, line=1136, method=spawn, native=false, column=9, file=child_process.js, function=exports.spawn, line=995, method=spawn, native=false, column=15, file=child_process.js, function=Object.exports.execFile, line=689, method=exports.execFile, native=false, column=34, file=d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-phantom-pdf\node_modules\phantom-html-to-pdf\lib\dedicatedProcessStrategy.js, function=null, line=41, method=null, native=false, column=10, file=d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\chokidar\node_modules\readdirp\node_modules\graceful-fs\graceful-fs.js, function=null, line=43, method=null, native=false, column=10, file=d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\fs-extra\node_modules\graceful-fs\graceful-fs.js, function=null, line=43, method=null, native=false, column=15, file=fs.js, function=FSReqWrap.oncomplete, line=95, method=oncomplete, native=false], stack=[TypeError: Bad argument,     at TypeError (native),     at ChildProcess.spawn (child_process.js:1136:26),     at exports.spawn (child_process.js:995:9),     at Object.exports.execFile (child_process.js:689:15),     at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-phantom-pdf\node_modules\phantom-html-to-pdf\lib\dedicatedProcessStrategy.js:41:34,     at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\chokidar\node_modules\readdirp\node_modules\graceful-fs\graceful-fs.js:43:10,     at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\fs-extra\node_modules\graceful-fs\graceful-fs.js:43:10,     at FSReqWrap.oncomplete (fs.js:95:15)]
+2016-02-29T02:00:29.737Z - error: uncaughtException: Bad argument date=Mon Feb 29 2016 10:00:29 GMT+0800 (中国标准时间), pid=4164, uid=null, gid=null, cwd=d:\DOC\brogue, execPath=F:\学习结构\node\myenv\node.exe, version=v0.12.2, argv=[F:\学习结构\node\myenv\node.exe, d:\DOC\brogue\server.js], rss=120524800, heapTotal=106079488, heapUsed=81635968, loadavg=[0, 0, 0], uptime=226834.3145293, trace=[column=null, file=null, function=TypeError, line=null, method=null, native=true, column=26, file=child_process.js, function=ChildProcess.spawn, line=1136, method=spawn, native=false, column=9, file=child_process.js, function=exports.spawn, line=995, method=spawn, native=false, column=15, file=child_process.js, function=Object.exports.execFile, line=689, method=exports.execFile, native=false, column=34, file=d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-phantom-pdf\node_modules\phantom-html-to-pdf\lib\dedicatedProcessStrategy.js, function=null, line=41, method=null, native=false, column=10, file=d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\chokidar\node_modules\readdirp\node_modules\graceful-fs\graceful-fs.js, function=null, line=43, method=null, native=false, column=10, file=d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\fs-extra\node_modules\graceful-fs\graceful-fs.js, function=null, line=43, method=null, native=false, column=15, file=fs.js, function=FSReqWrap.oncomplete, line=95, method=oncomplete, native=false], stack=[TypeError: Bad argument,     at TypeError (native),     at ChildProcess.spawn (child_process.js:1136:26),     at exports.spawn (child_process.js:995:9),     at Object.exports.execFile (child_process.js:689:15),     at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-phantom-pdf\node_modules\phantom-html-to-pdf\lib\dedicatedProcessStrategy.js:41:34,     at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\chokidar\node_modules\readdirp\node_modules\graceful-fs\graceful-fs.js:43:10,     at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\fs-extra\node_modules\graceful-fs\graceful-fs.js:43:10,     at FSReqWrap.oncomplete (fs.js:95:15)]
+2016-02-29T02:37:43.649Z - error: uncaughtException: Bad argument date=Mon Feb 29 2016 10:37:43 GMT+0800 (中国标准时间), pid=21616, uid=null, gid=null, cwd=d:\DOC\brogue, execPath=F:\学习结构\node\myenv\node.exe, version=v0.12.2, argv=[F:\学习结构\node\myenv\node.exe, d:\DOC\brogue\server.js], rss=147607552, heapTotal=114190592, heapUsed=76044360, loadavg=[0, 0, 0], uptime=229068.2266228, trace=[column=null, file=null, function=TypeError, line=null, method=null, native=true, column=26, file=child_process.js, function=ChildProcess.spawn, line=1136, method=spawn, native=false, column=9, file=child_process.js, function=exports.spawn, line=995, method=spawn, native=false, column=15, file=child_process.js, function=Object.exports.execFile, line=689, method=exports.execFile, native=false, column=34, file=d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-phantom-pdf\node_modules\phantom-html-to-pdf\lib\dedicatedProcessStrategy.js, function=null, line=41, method=null, native=false, column=10, file=d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\chokidar\node_modules\readdirp\node_modules\graceful-fs\graceful-fs.js, function=null, line=43, method=null, native=false, column=10, file=d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\fs-extra\node_modules\graceful-fs\graceful-fs.js, function=null, line=43, method=null, native=false, column=15, file=fs.js, function=FSReqWrap.oncomplete, line=95, method=oncomplete, native=false], stack=[TypeError: Bad argument,     at TypeError (native),     at ChildProcess.spawn (child_process.js:1136:26),     at exports.spawn (child_process.js:995:9),     at Object.exports.execFile (child_process.js:689:15),     at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-phantom-pdf\node_modules\phantom-html-to-pdf\lib\dedicatedProcessStrategy.js:41:34,     at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\chokidar\node_modules\readdirp\node_modules\graceful-fs\graceful-fs.js:43:10,     at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\fs-extra\node_modules\graceful-fs\graceful-fs.js:43:10,     at FSReqWrap.oncomplete (fs.js:95:15)]
+2016-02-29T02:42:43.865Z - error: uncaughtException: Bad argument date=Mon Feb 29 2016 10:42:43 GMT+0800 (中国标准时间), pid=12444, uid=null, gid=null, cwd=d:\DOC\brogue, execPath=F:\学习结构\node\myenv\node.exe, version=v0.12.2, argv=[F:\学习结构\node\myenv\node.exe, d:\DOC\brogue\server.js], rss=120545280, heapTotal=107111424, heapUsed=83954736, loadavg=[0, 0, 0], uptime=229368.4410841, trace=[column=null, file=null, function=TypeError, line=null, method=null, native=true, column=26, file=child_process.js, function=ChildProcess.spawn, line=1136, method=spawn, native=false, column=9, file=child_process.js, function=exports.spawn, line=995, method=spawn, native=false, column=15, file=child_process.js, function=Object.exports.execFile, line=689, method=exports.execFile, native=false, column=34, file=d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-phantom-pdf\node_modules\phantom-html-to-pdf\lib\dedicatedProcessStrategy.js, function=null, line=41, method=null, native=false, column=10, file=d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\chokidar\node_modules\readdirp\node_modules\graceful-fs\graceful-fs.js, function=null, line=43, method=null, native=false, column=10, file=d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\fs-extra\node_modules\graceful-fs\graceful-fs.js, function=null, line=43, method=null, native=false, column=15, file=fs.js, function=FSReqWrap.oncomplete, line=95, method=oncomplete, native=false], stack=[TypeError: Bad argument,     at TypeError (native),     at ChildProcess.spawn (child_process.js:1136:26),     at exports.spawn (child_process.js:995:9),     at Object.exports.execFile (child_process.js:689:15),     at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-phantom-pdf\node_modules\phantom-html-to-pdf\lib\dedicatedProcessStrategy.js:41:34,     at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\chokidar\node_modules\readdirp\node_modules\graceful-fs\graceful-fs.js:43:10,     at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-fs-store\node_modules\fs-extra\node_modules\graceful-fs\graceful-fs.js:43:10,     at FSReqWrap.oncomplete (fs.js:95:15)]
+2016-02-29T02:46:47.219Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=2
+2016-02-29T02:46:47.221Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T02:48:43.940Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=1
+2016-02-29T02:48:43.941Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T02:48:48.055Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=2
+2016-02-29T02:48:48.056Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T02:51:23.493Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=5
+2016-02-29T02:51:23.493Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T02:59:06.256Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=6
+2016-02-29T02:59:06.257Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T02:59:08.123Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=7
+2016-02-29T02:59:08.124Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T02:59:09.195Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=8
+2016-02-29T02:59:09.195Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T02:59:21.088Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=9
+2016-02-29T02:59:21.089Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T03:02:24.126Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=1
+2016-02-29T03:02:24.127Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T03:02:57.947Z - error: Error when processing render request Error during rendering report: Cannot read property 'name' of undefined TypeError: Cannot read property 'name' of undefined
+    at DocPropsApp.toxml (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:162:50)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:829:71)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:7:59)
+    at Promise.post (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1161:36)
+    at Promise.promise.promiseDispatch (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:788:41)
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1391:14
+    at runSingle (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:137:13)
+    at flush (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:125:13)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=4
+2016-02-29T03:02:57.948Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Cannot read property 'name' of undefined TypeError: Cannot read property 'name' of undefined
+    at DocPropsApp.toxml (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:162:50)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:829:71)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:7:59)
+    at Promise.post (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1161:36)
+    at Promise.promise.promiseDispatch (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:788:41)
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1391:14
+    at runSingle (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:137:13)
+    at flush (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:125:13)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54

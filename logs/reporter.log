@@ -1,0 +1,1290 @@
+2016-02-29T01:51:12.173Z - warn: Node environment not set - using development configuration. Use options --production or --development to ensure exact configuration.
+2016-02-29T01:51:12.180Z - info: Using configuration file dev.config.json
+2016-02-29T01:51:12.181Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2016-02-29T01:51:12.289Z - info: Searching for available extensions in d:\DOC\brogue\
+2016-02-29T01:51:47.779Z - info: Found 30 extensions
+2016-02-29T01:51:47.828Z - info: Using extension express
+2016-02-29T01:51:49.563Z - info: Using extension test
+2016-02-29T01:51:49.567Z - info: Using extension debug
+2016-02-29T01:51:49.608Z - info: Using extension embedded-store
+2016-02-29T01:51:49.612Z - info: Using extension xlsx
+2016-02-29T01:51:54.349Z - info: Using extension client-html
+2016-02-29T01:51:54.865Z - info: Using extension fop-pdf
+2016-02-29T01:51:55.534Z - info: Using extension handlebars
+2016-02-29T01:51:55.548Z - info: Using extension authentication
+2016-02-29T01:51:56.091Z - info: Using extension jsrender
+2016-02-29T01:51:56.095Z - info: Using extension templates
+2016-02-29T01:51:56.264Z - info: Using extension data
+2016-02-29T01:51:56.376Z - info: Using extension fs-store
+2016-02-29T01:52:02.881Z - info: Using extension authorization
+2016-02-29T01:52:02.975Z - info: Using extension html-to-xlsx
+2016-02-29T01:52:05.246Z - info: Using extension child-templates
+2016-02-29T01:52:05.444Z - info: Using extension client-app
+2016-02-29T01:52:05.571Z - info: Using extension licensing
+2016-02-29T01:52:06.201Z - info: Using extension phantom-pdf
+2016-02-29T01:52:08.402Z - info: Using extension text
+2016-02-29T01:52:08.446Z - info: Using extension reports
+2016-02-29T01:52:08.534Z - info: Using extension resources
+2016-02-29T01:52:08.676Z - info: Using extension analytics
+2016-02-29T01:52:11.492Z - info: Using extension images
+2016-02-29T01:52:12.219Z - info: Using extension scheduling
+2016-02-29T01:52:12.679Z - info: Using extension scripts
+2016-02-29T01:52:12.783Z - info: Using extension statistics
+2016-02-29T01:52:12.806Z - info: Using extension sample-template
+2016-02-29T01:52:12.812Z - info: Using extension public-templates
+2016-02-29T01:52:12.997Z - info: Using extension embedding
+2016-02-29T01:52:14.330Z - info: Extensions loaded.
+2016-02-29T01:52:14.338Z - info: Initializing fs storage at d:\DOC\brogue\data
+2016-02-29T01:52:14.711Z - info: Creating default express app.
+2016-02-29T01:52:16.062Z - info: jsreport server successfully started on http port: 3000
+2016-02-29T01:52:16.075Z - warn: License not found, using free
+2016-02-29T01:52:16.158Z - info: reporter initialized
+2016-02-29T01:52:29.160Z - debug: OData query on settings
+2016-02-29T01:52:29.201Z - debug: OData query on templates
+2016-02-29T01:52:29.350Z - debug: OData insert into settings
+2016-02-29T01:52:29.379Z - debug: OData query on templates
+2016-02-29T01:52:29.570Z - debug: OData query on data
+2016-02-29T01:52:29.574Z - debug: OData query on scripts
+2016-02-29T01:52:30.584Z - debug: OData insert into settings
+2016-02-29T01:53:09.383Z - info: Starting rendering request 1 (user: null) requestId=1
+2016-02-29T01:53:09.403Z - info: Rendering template {shortid:NJ-_mq2ie, recipe:xlsx,engine:handlebars}
+2016-02-29T01:53:09.403Z - debug: Searching for dataItem to apply
+2016-02-29T01:53:09.409Z - debug: Resources not defined for this template.
+2016-02-29T01:53:09.421Z - debug: Rendering engine handlebars requestId=1
+2016-02-29T01:53:10.953Z - debug: Replaced images []
+2016-02-29T01:53:10.954Z - debug: Executing recipe xlsx requestId=1
+2016-02-29T01:53:11.001Z - error: Error when processing render request Error during rendering report: Cannot read property 'name' of undefined TypeError: Cannot read property 'name' of undefined
+    at DocPropsApp.toxml (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:162:50)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:829:71)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:7:59)
+    at Promise.post (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1161:36)
+    at Promise.promise.promiseDispatch (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:788:41)
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1391:14
+    at runSingle (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:137:13)
+    at flush (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:125:13)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=1
+2016-02-29T01:53:11.002Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Cannot read property 'name' of undefined TypeError: Cannot read property 'name' of undefined
+    at DocPropsApp.toxml (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:162:50)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:829:71)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:7:59)
+    at Promise.post (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1161:36)
+    at Promise.promise.promiseDispatch (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:788:41)
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1391:14
+    at runSingle (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:137:13)
+    at flush (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:125:13)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T01:53:15.028Z - info: Starting rendering request 2 (user: null) requestId=2
+2016-02-29T01:53:15.047Z - info: Rendering template {shortid:NJ-_mq2ie, recipe:xlsx,engine:handlebars}
+2016-02-29T01:53:15.048Z - debug: Searching for dataItem to apply
+2016-02-29T01:53:15.052Z - debug: Resources not defined for this template.
+2016-02-29T01:53:15.063Z - debug: Rendering engine handlebars requestId=2
+2016-02-29T01:53:15.780Z - debug: Replaced images []
+2016-02-29T01:53:15.780Z - debug: Executing recipe xlsx requestId=2
+2016-02-29T01:53:15.785Z - error: Error when processing render request Error during rendering report: Cannot read property 'name' of undefined TypeError: Cannot read property 'name' of undefined
+    at DocPropsApp.toxml (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:162:50)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:829:71)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:7:59)
+    at Promise.post (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1161:36)
+    at Promise.promise.promiseDispatch (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:788:41)
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1391:14
+    at runSingle (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:137:13)
+    at flush (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:125:13)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=2
+2016-02-29T01:53:15.786Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Cannot read property 'name' of undefined TypeError: Cannot read property 'name' of undefined
+    at DocPropsApp.toxml (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:162:50)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:829:71)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:7:59)
+    at Promise.post (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1161:36)
+    at Promise.promise.promiseDispatch (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:788:41)
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1391:14
+    at runSingle (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:137:13)
+    at flush (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:125:13)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T01:53:28.839Z - info: Starting rendering request 3 (user: null) requestId=3
+2016-02-29T01:53:28.856Z - info: Rendering template {shortid:NJ-_mq2ie, recipe:fop-pdf,engine:handlebars}
+2016-02-29T01:53:28.856Z - debug: Searching for dataItem to apply
+2016-02-29T01:53:28.860Z - debug: Resources not defined for this template.
+2016-02-29T01:53:28.869Z - debug: Rendering engine handlebars requestId=3
+2016-02-29T01:53:29.582Z - debug: Replaced images []
+2016-02-29T01:53:29.583Z - debug: Executing recipe fop-pdf requestId=3
+2016-02-29T01:53:29.583Z - info: Rendering fop start.
+2016-02-29T01:53:29.591Z - info: Rastering pdf child process start.
+2016-02-29T01:53:29.596Z - info: Rastering pdf child process end.
+2016-02-29T01:53:29.597Z - error: exec error: Error: spawn fop.bat ENOENT
+2016-02-29T01:53:29.600Z - warn: Error when processing render request Error during rendering report: spawn fop.bat ENOENT Error: spawn fop.bat ENOENT
+    at exports._errnoException (util.js:746:11)
+    at Process.ChildProcess._handle.onexit (child_process.js:1053:32)
+    at child_process.js:1144:20
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=3
+2016-02-29T01:53:29.600Z - warn: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: spawn fop.bat ENOENT Error: spawn fop.bat ENOENT
+    at exports._errnoException (util.js:746:11)
+    at Process.ChildProcess._handle.onexit (child_process.js:1053:32)
+    at child_process.js:1144:20
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T01:53:31.075Z - info: Starting rendering request 4 (user: null) requestId=4
+2016-02-29T01:53:31.093Z - info: Rendering template {shortid:NJ-_mq2ie, recipe:fop-pdf,engine:handlebars}
+2016-02-29T01:53:31.094Z - debug: Searching for dataItem to apply
+2016-02-29T01:53:31.097Z - debug: Resources not defined for this template.
+2016-02-29T01:53:31.104Z - debug: Rendering engine handlebars requestId=4
+2016-02-29T01:53:31.786Z - debug: Replaced images []
+2016-02-29T01:53:31.786Z - debug: Executing recipe fop-pdf requestId=4
+2016-02-29T01:53:31.787Z - info: Rendering fop start.
+2016-02-29T01:53:31.790Z - info: Rastering pdf child process start.
+2016-02-29T01:53:31.793Z - info: Rastering pdf child process end.
+2016-02-29T01:53:31.793Z - error: exec error: Error: spawn fop.bat ENOENT
+2016-02-29T01:53:31.795Z - warn: Error when processing render request Error during rendering report: spawn fop.bat ENOENT Error: spawn fop.bat ENOENT
+    at exports._errnoException (util.js:746:11)
+    at Process.ChildProcess._handle.onexit (child_process.js:1053:32)
+    at child_process.js:1144:20
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=4
+2016-02-29T01:53:31.795Z - warn: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: spawn fop.bat ENOENT Error: spawn fop.bat ENOENT
+    at exports._errnoException (util.js:746:11)
+    at Process.ChildProcess._handle.onexit (child_process.js:1053:32)
+    at child_process.js:1144:20
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T01:53:42.520Z - info: Starting rendering request 5 (user: null) requestId=5
+2016-02-29T01:53:42.535Z - info: Rendering template {shortid:NJ-_mq2ie, recipe:phantom-pdf,engine:handlebars}
+2016-02-29T01:53:42.536Z - debug: Searching for dataItem to apply
+2016-02-29T01:53:42.539Z - debug: Resources not defined for this template.
+2016-02-29T01:53:42.545Z - debug: Rendering engine handlebars requestId=5
+2016-02-29T01:53:43.223Z - debug: Replaced images []
+2016-02-29T01:53:43.223Z - debug: Executing recipe phantom-pdf requestId=5
+2016-02-29T01:53:43.223Z - debug: phantom-pdf recipe start requestId=5
+2016-02-29T01:53:43.228Z - info: Starting rendering request 6 (user: null) requestId=6
+2016-02-29T01:53:43.240Z - info: Rendering template {shortid:NJ-_mq2ie, recipe:html,engine:handlebars}
+2016-02-29T01:53:43.240Z - debug: Inline data specified.
+2016-02-29T01:53:43.244Z - debug: Resources not defined for this template.
+2016-02-29T01:53:43.250Z - debug: Rendering engine handlebars requestId=6
+2016-02-29T01:53:43.958Z - debug: Replaced images []
+2016-02-29T01:53:43.958Z - debug: Executing recipe html requestId=6
+2016-02-29T01:53:43.962Z - debug: Skipping storing report.
+2016-02-29T01:53:43.971Z - info: Rendering request 6 finished in 742 ms requestId=6
+2016-02-29T01:53:45.784Z - info: Starting rendering request 7 (user: null) requestId=7
+2016-02-29T01:53:45.800Z - info: Rendering template {shortid:NJ-_mq2ie, recipe:phantom-pdf,engine:handlebars}
+2016-02-29T01:53:45.801Z - debug: Searching for dataItem to apply
+2016-02-29T01:53:45.804Z - debug: Resources not defined for this template.
+2016-02-29T01:53:45.811Z - debug: Rendering engine handlebars requestId=7
+2016-02-29T01:53:46.512Z - debug: Replaced images []
+2016-02-29T01:53:46.512Z - debug: Executing recipe phantom-pdf requestId=7
+2016-02-29T01:53:46.513Z - debug: phantom-pdf recipe start requestId=7
+2016-02-29T01:53:46.515Z - info: Starting rendering request 8 (user: null) requestId=8
+2016-02-29T01:53:46.542Z - info: Rendering template {shortid:NJ-_mq2ie, recipe:html,engine:handlebars}
+2016-02-29T01:53:46.543Z - debug: Inline data specified.
+2016-02-29T01:53:46.544Z - debug: Resources not defined for this template.
+2016-02-29T01:53:46.551Z - debug: Rendering engine handlebars requestId=8
+2016-02-29T01:54:35.977Z - warn: Node environment not set - using development configuration. Use options --production or --development to ensure exact configuration.
+2016-02-29T01:54:35.982Z - info: Using configuration file dev.config.json
+2016-02-29T01:54:35.983Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2016-02-29T01:54:35.994Z - info: Searching for available extensions in d:\DOC\brogue\
+2016-02-29T01:54:41.261Z - info: Found 30 extensions
+2016-02-29T01:54:41.343Z - info: Using extension express
+2016-02-29T01:54:41.919Z - info: Using extension test
+2016-02-29T01:54:41.923Z - info: Using extension debug
+2016-02-29T01:54:41.927Z - info: Using extension embedded-store
+2016-02-29T01:54:41.930Z - info: Using extension xlsx
+2016-02-29T01:54:42.616Z - info: Using extension client-html
+2016-02-29T01:54:42.730Z - info: Using extension fop-pdf
+2016-02-29T01:54:42.854Z - info: Using extension handlebars
+2016-02-29T01:54:42.859Z - info: Using extension authentication
+2016-02-29T01:54:43.003Z - info: Using extension jsrender
+2016-02-29T01:54:43.007Z - info: Using extension templates
+2016-02-29T01:54:43.044Z - info: Using extension data
+2016-02-29T01:54:43.071Z - info: Using extension fs-store
+2016-02-29T01:54:44.403Z - info: Using extension authorization
+2016-02-29T01:54:44.427Z - info: Using extension html-to-xlsx
+2016-02-29T01:54:44.713Z - info: Using extension child-templates
+2016-02-29T01:54:44.747Z - info: Using extension client-app
+2016-02-29T01:54:44.763Z - info: Using extension licensing
+2016-02-29T01:54:44.838Z - info: Using extension phantom-pdf
+2016-02-29T01:54:44.963Z - info: Using extension text
+2016-02-29T01:54:44.968Z - info: Using extension reports
+2016-02-29T01:54:44.995Z - info: Using extension resources
+2016-02-29T01:54:45.027Z - info: Using extension analytics
+2016-02-29T01:54:45.343Z - info: Using extension images
+2016-02-29T01:54:45.383Z - info: Using extension scheduling
+2016-02-29T01:54:45.538Z - info: Using extension scripts
+2016-02-29T01:54:45.575Z - info: Using extension statistics
+2016-02-29T01:54:45.580Z - info: Using extension sample-template
+2016-02-29T01:54:45.585Z - info: Using extension public-templates
+2016-02-29T01:54:45.623Z - info: Using extension embedding
+2016-02-29T01:54:45.712Z - info: Extensions loaded.
+2016-02-29T01:54:45.715Z - info: Initializing fs storage at d:\DOC\brogue\data
+2016-02-29T01:54:45.919Z - info: Creating default express app.
+2016-02-29T01:54:46.261Z - info: jsreport server successfully started on http port: 3000
+2016-02-29T01:54:46.276Z - warn: License not found, using free
+2016-02-29T01:54:46.297Z - info: reporter initialized
+2016-02-29T01:59:28.769Z - warn: Node environment not set - using development configuration. Use options --production or --development to ensure exact configuration.
+2016-02-29T01:59:28.775Z - info: Using configuration file dev.config.json
+2016-02-29T01:59:28.776Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2016-02-29T01:59:28.788Z - info: Searching for available extensions in d:\DOC\brogue\
+2016-02-29T01:59:33.027Z - info: Found 30 extensions
+2016-02-29T01:59:33.077Z - info: Using extension express
+2016-02-29T01:59:33.580Z - info: Using extension test
+2016-02-29T01:59:33.583Z - info: Using extension debug
+2016-02-29T01:59:33.586Z - info: Using extension embedded-store
+2016-02-29T01:59:33.589Z - info: Using extension xlsx
+2016-02-29T01:59:34.264Z - info: Using extension client-html
+2016-02-29T01:59:34.352Z - info: Using extension fop-pdf
+2016-02-29T01:59:34.442Z - info: Using extension handlebars
+2016-02-29T01:59:34.446Z - info: Using extension authentication
+2016-02-29T01:59:34.571Z - info: Using extension jsrender
+2016-02-29T01:59:34.574Z - info: Using extension templates
+2016-02-29T01:59:34.620Z - info: Using extension data
+2016-02-29T01:59:34.647Z - info: Using extension fs-store
+2016-02-29T01:59:35.939Z - info: Using extension authorization
+2016-02-29T01:59:35.956Z - info: Using extension html-to-xlsx
+2016-02-29T01:59:36.232Z - info: Using extension child-templates
+2016-02-29T01:59:36.259Z - info: Using extension client-app
+2016-02-29T01:59:36.274Z - info: Using extension licensing
+2016-02-29T01:59:36.347Z - info: Using extension phantom-pdf
+2016-02-29T01:59:36.469Z - info: Using extension text
+2016-02-29T01:59:36.473Z - info: Using extension reports
+2016-02-29T01:59:36.494Z - info: Using extension resources
+2016-02-29T01:59:36.519Z - info: Using extension analytics
+2016-02-29T01:59:36.810Z - info: Using extension images
+2016-02-29T01:59:36.858Z - info: Using extension scheduling
+2016-02-29T01:59:37.016Z - info: Using extension scripts
+2016-02-29T01:59:37.053Z - info: Using extension statistics
+2016-02-29T01:59:37.057Z - info: Using extension sample-template
+2016-02-29T01:59:37.062Z - info: Using extension public-templates
+2016-02-29T01:59:37.097Z - info: Using extension embedding
+2016-02-29T01:59:37.176Z - info: Extensions loaded.
+2016-02-29T01:59:37.179Z - info: Initializing fs storage at d:\DOC\brogue\data
+2016-02-29T01:59:37.355Z - info: Creating default express app.
+2016-02-29T01:59:37.707Z - info: jsreport server successfully started on http port: 3000
+2016-02-29T01:59:37.725Z - warn: License not found, using free
+2016-02-29T01:59:37.749Z - info: reporter initialized
+2016-02-29T02:00:02.054Z - debug: OData query on settings
+2016-02-29T02:00:02.114Z - debug: OData query on templates
+2016-02-29T02:00:02.125Z - debug: OData query on reports
+2016-02-29T02:00:02.142Z - debug: OData query on statistics
+2016-02-29T02:00:23.641Z - debug: OData query on templates
+2016-02-29T02:00:23.759Z - debug: OData query on data
+2016-02-29T02:00:23.763Z - debug: OData query on scripts
+2016-02-29T02:00:28.245Z - info: Starting rendering request 1 (user: null) requestId=1
+2016-02-29T02:00:28.264Z - info: Rendering template {shortid:NJ-_mq2ie, recipe:phantom-pdf,engine:handlebars}
+2016-02-29T02:00:28.265Z - debug: Searching for dataItem to apply
+2016-02-29T02:00:28.271Z - debug: Resources not defined for this template.
+2016-02-29T02:00:28.283Z - debug: Rendering engine handlebars requestId=1
+2016-02-29T02:00:29.001Z - debug: Replaced images []
+2016-02-29T02:00:29.002Z - debug: Executing recipe phantom-pdf requestId=1
+2016-02-29T02:00:29.002Z - debug: phantom-pdf recipe start requestId=1
+2016-02-29T02:00:29.007Z - info: Starting rendering request 2 (user: null) requestId=2
+2016-02-29T02:00:29.022Z - info: Rendering template {shortid:NJ-_mq2ie, recipe:html,engine:handlebars}
+2016-02-29T02:00:29.023Z - debug: Inline data specified.
+2016-02-29T02:00:29.027Z - debug: Resources not defined for this template.
+2016-02-29T02:00:29.036Z - debug: Rendering engine handlebars requestId=2
+2016-02-29T02:00:29.674Z - debug: Replaced images []
+2016-02-29T02:00:29.674Z - debug: Executing recipe html requestId=2
+2016-02-29T02:00:29.678Z - debug: Skipping storing report.
+2016-02-29T02:00:29.688Z - info: Rendering request 2 finished in 682 ms requestId=2
+2016-02-29T02:34:30.449Z - warn: Node environment not set - using development configuration. Use options --production or --development to ensure exact configuration.
+2016-02-29T02:34:30.453Z - info: Using configuration file dev.config.json
+2016-02-29T02:34:30.454Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2016-02-29T02:34:30.514Z - info: Searching for available extensions in d:\DOC\brogue\
+2016-02-29T02:34:35.161Z - info: Found 30 extensions
+2016-02-29T02:34:36.763Z - info: Using extension express
+2016-02-29T02:34:44.308Z - info: Using extension test
+2016-02-29T02:34:44.381Z - info: Using extension debug
+2016-02-29T02:34:44.454Z - info: Using extension embedded-store
+2016-02-29T02:34:44.532Z - info: Using extension xlsx
+2016-02-29T02:35:07.632Z - info: Using extension client-html
+2016-02-29T02:35:10.314Z - info: Using extension fop-pdf
+2016-02-29T02:35:14.016Z - info: Using extension handlebars
+2016-02-29T02:35:14.117Z - info: Using extension authentication
+2016-02-29T02:35:18.478Z - info: Using extension jsrender
+2016-02-29T02:35:18.586Z - info: Using extension templates
+2016-02-29T02:35:20.066Z - info: Using extension data
+2016-02-29T02:35:21.245Z - info: Using extension fs-store
+2016-02-29T02:35:54.462Z - info: Using extension authorization
+2016-02-29T02:35:54.740Z - info: Using extension html-to-xlsx
+2016-02-29T02:36:15.992Z - info: Using extension child-templates
+2016-02-29T02:36:16.706Z - info: Using extension client-app
+2016-02-29T02:36:16.998Z - info: Using extension licensing
+2016-02-29T02:36:21.063Z - info: Using extension phantom-pdf
+2016-02-29T02:36:27.871Z - info: Using extension text
+2016-02-29T02:36:28.049Z - info: Using extension reports
+2016-02-29T02:36:28.432Z - info: Using extension resources
+2016-02-29T02:36:28.904Z - info: Using extension analytics
+2016-02-29T02:36:43.369Z - info: Using extension images
+2016-02-29T02:36:45.606Z - info: Using extension scheduling
+2016-02-29T02:36:48.432Z - info: Using extension scripts
+2016-02-29T02:36:50.338Z - info: Using extension statistics
+2016-02-29T02:36:50.512Z - info: Using extension sample-template
+2016-02-29T02:36:50.687Z - info: Using extension public-templates
+2016-02-29T02:36:51.586Z - info: Using extension embedding
+2016-02-29T02:36:56.549Z - info: Extensions loaded.
+2016-02-29T02:36:56.552Z - info: Initializing fs storage at d:\DOC\brogue\data
+2016-02-29T02:36:58.658Z - info: Creating default express app.
+2016-02-29T02:37:18.428Z - info: jsreport server successfully started on http port: 3000
+2016-02-29T02:37:18.440Z - warn: License not found, using free
+2016-02-29T02:37:18.464Z - info: reporter initialized
+2016-02-29T02:37:33.918Z - debug: OData query on settings
+2016-02-29T02:37:33.970Z - debug: OData query on templates
+2016-02-29T02:37:33.981Z - debug: OData query on reports
+2016-02-29T02:37:33.987Z - debug: OData query on statistics
+2016-02-29T02:37:36.380Z - debug: OData query on templates
+2016-02-29T02:37:36.519Z - debug: OData query on data
+2016-02-29T02:37:36.528Z - debug: OData query on scripts
+2016-02-29T02:37:41.569Z - info: Starting rendering request 1 (user: null) requestId=1
+2016-02-29T02:37:41.588Z - info: Rendering template {shortid:NJ-_mq2ie, recipe:phantom-pdf,engine:handlebars}
+2016-02-29T02:37:41.589Z - debug: Searching for dataItem to apply
+2016-02-29T02:37:41.593Z - debug: Resources not defined for this template.
+2016-02-29T02:37:41.602Z - debug: Rendering engine handlebars requestId=1
+2016-02-29T02:37:42.326Z - debug: Replaced images []
+2016-02-29T02:37:42.326Z - debug: Executing recipe phantom-pdf requestId=1
+2016-02-29T02:37:42.327Z - debug: phantom-pdf recipe start requestId=1
+2016-02-29T02:37:42.331Z - info: Starting rendering request 2 (user: null) requestId=2
+2016-02-29T02:37:42.345Z - info: Rendering template {shortid:NJ-_mq2ie, recipe:html,engine:handlebars}
+2016-02-29T02:37:42.345Z - debug: Inline data specified.
+2016-02-29T02:37:42.348Z - debug: Resources not defined for this template.
+2016-02-29T02:37:42.356Z - debug: Rendering engine handlebars requestId=2
+2016-02-29T02:37:43.059Z - debug: Replaced images []
+2016-02-29T02:37:43.060Z - debug: Executing recipe html requestId=2
+2016-02-29T02:37:43.063Z - debug: Skipping storing report.
+2016-02-29T02:37:43.071Z - info: Rendering request 2 finished in 740 ms requestId=2
+2016-02-29T02:37:57.009Z - warn: Node environment not set - using development configuration. Use options --production or --development to ensure exact configuration.
+2016-02-29T02:37:57.013Z - info: Using configuration file dev.config.json
+2016-02-29T02:37:57.014Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2016-02-29T02:37:57.026Z - info: Searching for available extensions in d:\DOC\brogue\
+2016-02-29T02:38:01.231Z - info: Found 30 extensions
+2016-02-29T02:38:01.289Z - info: Using extension express
+2016-02-29T02:38:01.799Z - info: Using extension test
+2016-02-29T02:38:01.802Z - info: Using extension debug
+2016-02-29T02:38:01.806Z - info: Using extension embedded-store
+2016-02-29T02:38:01.809Z - info: Using extension xlsx
+2016-02-29T02:38:02.460Z - info: Using extension client-html
+2016-02-29T02:38:02.564Z - info: Using extension fop-pdf
+2016-02-29T02:38:02.690Z - info: Using extension handlebars
+2016-02-29T02:38:02.697Z - info: Using extension authentication
+2016-02-29T02:38:02.853Z - info: Using extension jsrender
+2016-02-29T02:38:02.857Z - info: Using extension templates
+2016-02-29T02:38:02.901Z - info: Using extension data
+2016-02-29T02:38:02.933Z - info: Using extension fs-store
+2016-02-29T02:38:04.180Z - info: Using extension authorization
+2016-02-29T02:38:04.197Z - info: Using extension html-to-xlsx
+2016-02-29T02:38:04.463Z - info: Using extension child-templates
+2016-02-29T02:38:04.488Z - info: Using extension client-app
+2016-02-29T02:38:04.503Z - info: Using extension licensing
+2016-02-29T02:38:04.572Z - info: Using extension phantom-pdf
+2016-02-29T02:38:04.686Z - info: Using extension text
+2016-02-29T02:38:04.690Z - info: Using extension reports
+2016-02-29T02:38:04.713Z - info: Using extension resources
+2016-02-29T02:38:04.739Z - info: Using extension analytics
+2016-02-29T02:38:05.029Z - info: Using extension images
+2016-02-29T02:38:05.069Z - info: Using extension scheduling
+2016-02-29T02:38:05.215Z - info: Using extension scripts
+2016-02-29T02:38:05.244Z - info: Using extension statistics
+2016-02-29T02:38:05.248Z - info: Using extension sample-template
+2016-02-29T02:38:05.253Z - info: Using extension public-templates
+2016-02-29T02:38:05.291Z - info: Using extension embedding
+2016-02-29T02:38:05.373Z - info: Extensions loaded.
+2016-02-29T02:38:05.376Z - info: Initializing fs storage at d:\DOC\brogue\data
+2016-02-29T02:38:05.542Z - info: Creating default express app.
+2016-02-29T02:38:05.834Z - info: jsreport server successfully started on http port: 3000
+2016-02-29T02:38:05.847Z - warn: License not found, using free
+2016-02-29T02:38:05.863Z - info: reporter initialized
+2016-02-29T02:38:16.179Z - debug: OData query on templates
+2016-02-29T02:38:16.277Z - debug: OData query on data
+2016-02-29T02:38:16.285Z - debug: OData query on scripts
+2016-02-29T02:39:55.508Z - debug: OData query on templates
+2016-02-29T02:40:02.709Z - debug: OData query on templates
+2016-02-29T02:40:02.812Z - debug: OData query on data
+2016-02-29T02:40:02.816Z - debug: OData query on scripts
+2016-02-29T02:40:05.317Z - debug: OData query on templates
+2016-02-29T02:40:06.874Z - debug: OData query on data
+2016-02-29T02:40:06.879Z - debug: OData query on scripts
+2016-02-29T02:40:31.732Z - debug: OData query on data
+2016-02-29T02:41:34.019Z - debug: OData insert into data
+2016-02-29T02:41:34.185Z - debug: OData query on data
+2016-02-29T02:42:09.477Z - debug: OData query on templates
+2016-02-29T02:42:12.883Z - debug: OData query on data
+2016-02-29T02:42:12.888Z - debug: OData query on scripts
+2016-02-29T02:42:43.099Z - info: Starting rendering request 1 (user: null) requestId=1
+2016-02-29T02:42:43.119Z - info: Rendering template {shortid:undefined, recipe:phantom-pdf,engine:handlebars}
+2016-02-29T02:42:43.119Z - debug: Searching for dataItem to apply
+2016-02-29T02:42:43.125Z - debug: Resources not defined for this template.
+2016-02-29T02:42:43.137Z - debug: Rendering engine handlebars requestId=1
+2016-02-29T02:42:43.816Z - debug: Replaced images []
+2016-02-29T02:42:43.817Z - debug: Executing recipe phantom-pdf requestId=1
+2016-02-29T02:42:43.817Z - debug: phantom-pdf recipe start requestId=1
+2016-02-29T02:42:53.839Z - warn: Node environment not set - using development configuration. Use options --production or --development to ensure exact configuration.
+2016-02-29T02:42:53.844Z - info: Using configuration file dev.config.json
+2016-02-29T02:42:53.845Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2016-02-29T02:42:53.857Z - info: Searching for available extensions in d:\DOC\brogue\
+2016-02-29T02:42:58.123Z - info: Found 30 extensions
+2016-02-29T02:42:58.170Z - info: Using extension express
+2016-02-29T02:42:58.650Z - info: Using extension test
+2016-02-29T02:42:58.654Z - info: Using extension debug
+2016-02-29T02:42:58.658Z - info: Using extension embedded-store
+2016-02-29T02:42:58.660Z - info: Using extension xlsx
+2016-02-29T02:42:59.379Z - info: Using extension client-html
+2016-02-29T02:42:59.454Z - info: Using extension fop-pdf
+2016-02-29T02:42:59.552Z - info: Using extension handlebars
+2016-02-29T02:42:59.556Z - info: Using extension authentication
+2016-02-29T02:42:59.673Z - info: Using extension jsrender
+2016-02-29T02:42:59.676Z - info: Using extension templates
+2016-02-29T02:42:59.722Z - info: Using extension data
+2016-02-29T02:42:59.749Z - info: Using extension fs-store
+2016-02-29T02:43:01.007Z - info: Using extension authorization
+2016-02-29T02:43:01.027Z - info: Using extension html-to-xlsx
+2016-02-29T02:43:01.303Z - info: Using extension child-templates
+2016-02-29T02:43:01.330Z - info: Using extension client-app
+2016-02-29T02:43:01.350Z - info: Using extension licensing
+2016-02-29T02:43:01.427Z - info: Using extension phantom-pdf
+2016-02-29T02:43:01.548Z - info: Using extension text
+2016-02-29T02:43:01.552Z - info: Using extension reports
+2016-02-29T02:43:01.576Z - info: Using extension resources
+2016-02-29T02:43:01.605Z - info: Using extension analytics
+2016-02-29T02:43:01.896Z - info: Using extension images
+2016-02-29T02:43:01.944Z - info: Using extension scheduling
+2016-02-29T02:43:02.081Z - info: Using extension scripts
+2016-02-29T02:43:02.119Z - info: Using extension statistics
+2016-02-29T02:43:02.123Z - info: Using extension sample-template
+2016-02-29T02:43:02.127Z - info: Using extension public-templates
+2016-02-29T02:43:02.163Z - info: Using extension embedding
+2016-02-29T02:43:02.235Z - info: Extensions loaded.
+2016-02-29T02:43:02.240Z - info: Initializing fs storage at d:\DOC\brogue\data
+2016-02-29T02:43:02.411Z - info: Creating default express app.
+2016-02-29T02:43:02.717Z - info: jsreport server successfully started on http port: 3000
+2016-02-29T02:43:02.729Z - warn: License not found, using free
+2016-02-29T02:43:02.749Z - info: reporter initialized
+2016-02-29T02:44:49.957Z - debug: OData query on templates
+2016-02-29T02:44:52.683Z - debug: OData query on data
+2016-02-29T02:44:55.358Z - debug: OData query on templates
+2016-02-29T02:44:59.257Z - debug: OData query on scripts
+2016-02-29T02:44:59.270Z - debug: OData query on data
+2016-02-29T02:45:21.991Z - debug: OData insert into templates
+2016-02-29T02:45:27.507Z - debug: OData query on templates
+2016-02-29T02:45:40.253Z - debug: OData query on templates
+2016-02-29T02:45:40.346Z - debug: OData query on data
+2016-02-29T02:45:40.353Z - debug: OData query on scripts
+2016-02-29T02:46:12.297Z - debug: OData update on templates
+2016-02-29T02:46:22.819Z - debug: OData query on templates
+2016-02-29T02:46:25.885Z - debug: OData query on templates
+2016-02-29T02:46:25.958Z - debug: OData query on data
+2016-02-29T02:46:25.962Z - debug: OData query on scripts
+2016-02-29T02:46:30.915Z - info: Starting rendering request 1 (user: null) requestId=1
+2016-02-29T02:46:30.952Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:handlebars}
+2016-02-29T02:46:30.953Z - debug: Searching for dataItem to apply
+2016-02-29T02:46:30.961Z - debug: Resources not defined for this template.
+2016-02-29T02:46:30.976Z - debug: Rendering engine handlebars requestId=1
+2016-02-29T02:46:31.669Z - debug: Replaced images []
+2016-02-29T02:46:31.670Z - debug: Executing recipe client-html requestId=1
+2016-02-29T02:46:31.698Z - debug: Skipping storing report.
+2016-02-29T02:46:31.707Z - info: Rendering request 1 finished in 793 ms requestId=1
+2016-02-29T02:46:44.646Z - debug: OData update on templates
+2016-02-29T02:46:46.446Z - info: Starting rendering request 2 (user: null) requestId=2
+2016-02-29T02:46:46.464Z - info: Rendering template {shortid:EkGyejnjl, recipe:fop-pdf,engine:jsrender}
+2016-02-29T02:46:46.464Z - debug: Searching for dataItem to apply
+2016-02-29T02:46:46.467Z - debug: Resources not defined for this template.
+2016-02-29T02:46:46.475Z - debug: Rendering engine jsrender requestId=2
+2016-02-29T02:46:47.219Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=2
+2016-02-29T02:46:47.221Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T02:46:55.459Z - warn: Node environment not set - using development configuration. Use options --production or --development to ensure exact configuration.
+2016-02-29T02:46:55.464Z - info: Using configuration file dev.config.json
+2016-02-29T02:46:55.464Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2016-02-29T02:46:55.475Z - info: Searching for available extensions in d:\DOC\brogue\
+2016-02-29T02:46:59.737Z - info: Found 30 extensions
+2016-02-29T02:46:59.786Z - info: Using extension express
+2016-02-29T02:47:00.293Z - info: Using extension test
+2016-02-29T02:47:00.297Z - info: Using extension debug
+2016-02-29T02:47:00.300Z - info: Using extension embedded-store
+2016-02-29T02:47:00.303Z - info: Using extension xlsx
+2016-02-29T02:47:01.033Z - info: Using extension client-html
+2016-02-29T02:47:01.106Z - info: Using extension fop-pdf
+2016-02-29T02:47:01.200Z - info: Using extension handlebars
+2016-02-29T02:47:01.204Z - info: Using extension authentication
+2016-02-29T02:47:01.326Z - info: Using extension jsrender
+2016-02-29T02:47:01.329Z - info: Using extension templates
+2016-02-29T02:47:01.378Z - info: Using extension data
+2016-02-29T02:47:01.405Z - info: Using extension fs-store
+2016-02-29T02:47:02.670Z - info: Using extension authorization
+2016-02-29T02:47:02.688Z - info: Using extension html-to-xlsx
+2016-02-29T02:47:02.961Z - info: Using extension child-templates
+2016-02-29T02:47:02.993Z - info: Using extension client-app
+2016-02-29T02:47:03.006Z - info: Using extension licensing
+2016-02-29T02:47:03.071Z - info: Using extension phantom-pdf
+2016-02-29T02:47:03.185Z - info: Using extension text
+2016-02-29T02:47:03.188Z - info: Using extension reports
+2016-02-29T02:47:03.214Z - info: Using extension resources
+2016-02-29T02:47:03.245Z - info: Using extension analytics
+2016-02-29T02:47:03.529Z - info: Using extension images
+2016-02-29T02:47:03.573Z - info: Using extension scheduling
+2016-02-29T02:47:03.707Z - info: Using extension scripts
+2016-02-29T02:47:03.744Z - info: Using extension statistics
+2016-02-29T02:47:03.747Z - info: Using extension sample-template
+2016-02-29T02:47:03.752Z - info: Using extension public-templates
+2016-02-29T02:47:03.786Z - info: Using extension embedding
+2016-02-29T02:47:03.861Z - info: Extensions loaded.
+2016-02-29T02:47:03.864Z - info: Initializing fs storage at d:\DOC\brogue\data
+2016-02-29T02:47:04.057Z - info: Creating default express app.
+2016-02-29T02:47:04.363Z - info: jsreport server successfully started on http port: 3000
+2016-02-29T02:47:04.376Z - warn: License not found, using free
+2016-02-29T02:47:04.400Z - info: reporter initialized
+2016-02-29T02:48:41.343Z - debug: OData update on templates
+2016-02-29T02:48:43.232Z - info: Starting rendering request 1 (user: null) requestId=1
+2016-02-29T02:48:43.251Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:jsrender}
+2016-02-29T02:48:43.252Z - debug: Searching for dataItem to apply
+2016-02-29T02:48:43.258Z - debug: Resources not defined for this template.
+2016-02-29T02:48:43.272Z - debug: Rendering engine jsrender requestId=1
+2016-02-29T02:48:43.939Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=1
+2016-02-29T02:48:43.941Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T02:48:47.346Z - info: Starting rendering request 2 (user: null) requestId=2
+2016-02-29T02:48:47.365Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:jsrender}
+2016-02-29T02:48:47.366Z - debug: Searching for dataItem to apply
+2016-02-29T02:48:47.370Z - debug: Resources not defined for this template.
+2016-02-29T02:48:47.378Z - debug: Rendering engine jsrender requestId=2
+2016-02-29T02:48:48.055Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=2
+2016-02-29T02:48:48.056Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T02:48:54.007Z - info: Starting rendering request 3 (user: null) requestId=3
+2016-02-29T02:48:54.025Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:handlebars}
+2016-02-29T02:48:54.025Z - debug: Searching for dataItem to apply
+2016-02-29T02:48:54.028Z - debug: Resources not defined for this template.
+2016-02-29T02:48:54.050Z - debug: Rendering engine handlebars requestId=3
+2016-02-29T02:48:54.757Z - debug: Replaced images []
+2016-02-29T02:48:54.758Z - debug: Executing recipe client-html requestId=3
+2016-02-29T02:48:54.770Z - debug: Skipping storing report.
+2016-02-29T02:48:54.801Z - info: Rendering request 3 finished in 793 ms requestId=3
+2016-02-29T02:49:19.592Z - info: Starting rendering request 4 (user: null) requestId=4
+2016-02-29T02:49:19.608Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:handlebars}
+2016-02-29T02:49:19.609Z - debug: Searching for dataItem to apply
+2016-02-29T02:49:19.611Z - debug: Resources not defined for this template.
+2016-02-29T02:49:19.620Z - debug: Rendering engine handlebars requestId=4
+2016-02-29T02:49:20.325Z - debug: Replaced images []
+2016-02-29T02:49:20.326Z - debug: Executing recipe client-html requestId=4
+2016-02-29T02:49:20.333Z - debug: Skipping storing report.
+2016-02-29T02:49:20.340Z - info: Rendering request 4 finished in 748 ms requestId=4
+2016-02-29T02:49:34.335Z - debug: OData query on templates
+2016-02-29T02:49:36.384Z - debug: OData query on data
+2016-02-29T02:49:36.394Z - debug: OData query on scripts
+2016-02-29T02:49:51.666Z - debug: OData query on settings
+2016-02-29T02:49:51.809Z - debug: OData query on data
+2016-02-29T02:49:51.815Z - debug: OData query on scripts
+2016-02-29T02:51:14.301Z - debug: OData query on templates
+2016-02-29T02:51:19.086Z - debug: OData query on templates
+2016-02-29T02:51:19.170Z - debug: OData query on data
+2016-02-29T02:51:19.177Z - debug: OData query on scripts
+2016-02-29T02:51:22.780Z - info: Starting rendering request 5 (user: null) requestId=5
+2016-02-29T02:51:22.796Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:jsrender}
+2016-02-29T02:51:22.796Z - debug: Searching for dataItem to apply
+2016-02-29T02:51:22.799Z - debug: Resources not defined for this template.
+2016-02-29T02:51:22.808Z - debug: Rendering engine jsrender requestId=5
+2016-02-29T02:51:23.493Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=5
+2016-02-29T02:51:23.493Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T02:59:05.536Z - info: Starting rendering request 6 (user: null) requestId=6
+2016-02-29T02:59:05.552Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:jsrender}
+2016-02-29T02:59:05.553Z - debug: Searching for dataItem to apply
+2016-02-29T02:59:05.555Z - debug: Resources not defined for this template.
+2016-02-29T02:59:05.564Z - debug: Rendering engine jsrender requestId=6
+2016-02-29T02:59:06.256Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=6
+2016-02-29T02:59:06.256Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T02:59:07.440Z - info: Starting rendering request 7 (user: null) requestId=7
+2016-02-29T02:59:07.456Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:jsrender}
+2016-02-29T02:59:07.456Z - debug: Searching for dataItem to apply
+2016-02-29T02:59:07.458Z - debug: Resources not defined for this template.
+2016-02-29T02:59:07.465Z - debug: Rendering engine jsrender requestId=7
+2016-02-29T02:59:08.123Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=7
+2016-02-29T02:59:08.124Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T02:59:08.482Z - info: Starting rendering request 8 (user: null) requestId=8
+2016-02-29T02:59:08.497Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:jsrender}
+2016-02-29T02:59:08.497Z - debug: Searching for dataItem to apply
+2016-02-29T02:59:08.500Z - debug: Resources not defined for this template.
+2016-02-29T02:59:08.508Z - debug: Rendering engine jsrender requestId=8
+2016-02-29T02:59:09.195Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=8
+2016-02-29T02:59:09.195Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T02:59:17.831Z - debug: OData update on templates
+2016-02-29T02:59:20.385Z - info: Starting rendering request 9 (user: null) requestId=9
+2016-02-29T02:59:20.401Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:jsrender}
+2016-02-29T02:59:20.401Z - debug: Searching for dataItem to apply
+2016-02-29T02:59:20.404Z - debug: Resources not defined for this template.
+2016-02-29T02:59:20.411Z - debug: Rendering engine jsrender requestId=9
+2016-02-29T02:59:21.088Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=9
+2016-02-29T02:59:21.089Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T02:59:34.085Z - warn: Node environment not set - using development configuration. Use options --production or --development to ensure exact configuration.
+2016-02-29T02:59:34.089Z - info: Using configuration file dev.config.json
+2016-02-29T02:59:34.090Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2016-02-29T02:59:34.102Z - info: Searching for available extensions in d:\DOC\brogue\
+2016-02-29T02:59:38.342Z - info: Found 30 extensions
+2016-02-29T02:59:38.391Z - info: Using extension express
+2016-02-29T02:59:38.895Z - info: Using extension test
+2016-02-29T02:59:38.900Z - info: Using extension debug
+2016-02-29T02:59:38.904Z - info: Using extension embedded-store
+2016-02-29T02:59:38.906Z - info: Using extension xlsx
+2016-02-29T02:59:39.625Z - info: Using extension client-html
+2016-02-29T02:59:39.717Z - info: Using extension fop-pdf
+2016-02-29T02:59:39.807Z - info: Using extension handlebars
+2016-02-29T02:59:39.811Z - info: Using extension authentication
+2016-02-29T02:59:39.936Z - info: Using extension jsrender
+2016-02-29T02:59:39.939Z - info: Using extension templates
+2016-02-29T02:59:39.991Z - info: Using extension data
+2016-02-29T02:59:40.021Z - info: Using extension fs-store
+2016-02-29T02:59:41.305Z - info: Using extension authorization
+2016-02-29T02:59:41.322Z - info: Using extension html-to-xlsx
+2016-02-29T02:59:41.609Z - info: Using extension child-templates
+2016-02-29T02:59:41.636Z - info: Using extension client-app
+2016-02-29T02:59:41.649Z - info: Using extension licensing
+2016-02-29T02:59:41.721Z - info: Using extension phantom-pdf
+2016-02-29T02:59:41.834Z - info: Using extension text
+2016-02-29T02:59:41.838Z - info: Using extension reports
+2016-02-29T02:59:41.859Z - info: Using extension resources
+2016-02-29T02:59:41.888Z - info: Using extension analytics
+2016-02-29T02:59:42.172Z - info: Using extension images
+2016-02-29T02:59:42.218Z - info: Using extension scheduling
+2016-02-29T02:59:42.356Z - info: Using extension scripts
+2016-02-29T02:59:42.395Z - info: Using extension statistics
+2016-02-29T02:59:42.399Z - info: Using extension sample-template
+2016-02-29T02:59:42.404Z - info: Using extension public-templates
+2016-02-29T02:59:42.440Z - info: Using extension embedding
+2016-02-29T02:59:42.515Z - info: Extensions loaded.
+2016-02-29T02:59:42.518Z - info: Initializing fs storage at d:\DOC\brogue\data
+2016-02-29T02:59:42.695Z - info: Creating default express app.
+2016-02-29T02:59:43.013Z - info: jsreport server successfully started on http port: 3000
+2016-02-29T02:59:43.025Z - warn: License not found, using free
+2016-02-29T02:59:43.053Z - info: reporter initialized
+2016-02-29T03:00:19.370Z - debug: OData query on scripts
+2016-02-29T03:00:19.391Z - debug: OData query on data
+2016-02-29T03:00:25.094Z - debug: OData query on templates
+2016-02-29T03:02:14.871Z - debug: OData query on templates
+2016-02-29T03:02:17.704Z - debug: OData query on templates
+2016-02-29T03:02:17.842Z - debug: OData query on data
+2016-02-29T03:02:17.849Z - debug: OData query on scripts
+2016-02-29T03:02:23.417Z - info: Starting rendering request 1 (user: null) requestId=1
+2016-02-29T03:02:23.435Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:jsrender}
+2016-02-29T03:02:23.436Z - debug: Searching for dataItem to apply
+2016-02-29T03:02:23.442Z - debug: Resources not defined for this template.
+2016-02-29T03:02:23.457Z - debug: Rendering engine jsrender requestId=1
+2016-02-29T03:02:24.126Z - error: Error when processing render request Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=1
+2016-02-29T03:02:24.127Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+ Error: Syntax error
+Unmatched or missing tag: "{{/from}}" in template:
+<h1> Invoice </h1>
+<div>
+    <span>from: {{from}}</span>
+</div>
+<div>
+    <span>to: {{to}}</span>
+</div>
+<div>
+    <span>price: {{price}}$</span>
+</div>
+    at module.exports (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\engineScript.js:191:12)
+    at process.<anonymous> (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\node_modules\script-manager\lib\worker-processes.js:30:38)
+    at process.emit (events.js:110:17)
+    at handleMessage (child_process.js:324:10)
+    at Pipe.channel.onread (child_process.js:352:11)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T03:02:41.226Z - info: Starting rendering request 2 (user: null) requestId=2
+2016-02-29T03:02:41.247Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:handlebars}
+2016-02-29T03:02:41.249Z - debug: Searching for dataItem to apply
+2016-02-29T03:02:41.252Z - debug: Resources not defined for this template.
+2016-02-29T03:02:41.261Z - debug: Rendering engine handlebars requestId=2
+2016-02-29T03:02:41.938Z - debug: Replaced images []
+2016-02-29T03:02:41.938Z - debug: Executing recipe client-html requestId=2
+2016-02-29T03:02:41.950Z - debug: Skipping storing report.
+2016-02-29T03:02:41.961Z - info: Rendering request 2 finished in 736 ms requestId=2
+2016-02-29T03:02:43.108Z - info: Starting rendering request 3 (user: null) requestId=3
+2016-02-29T03:02:43.124Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:handlebars}
+2016-02-29T03:02:43.124Z - debug: Searching for dataItem to apply
+2016-02-29T03:02:43.127Z - debug: Resources not defined for this template.
+2016-02-29T03:02:43.136Z - debug: Rendering engine handlebars requestId=3
+2016-02-29T03:02:43.803Z - debug: Replaced images []
+2016-02-29T03:02:43.803Z - debug: Executing recipe client-html requestId=3
+2016-02-29T03:02:43.810Z - debug: Skipping storing report.
+2016-02-29T03:02:43.816Z - info: Rendering request 3 finished in 708 ms requestId=3
+2016-02-29T03:02:57.245Z - info: Starting rendering request 4 (user: null) requestId=4
+2016-02-29T03:02:57.264Z - info: Rendering template {shortid:EkGyejnjl, recipe:xlsx,engine:handlebars}
+2016-02-29T03:02:57.264Z - debug: Searching for dataItem to apply
+2016-02-29T03:02:57.267Z - debug: Resources not defined for this template.
+2016-02-29T03:02:57.275Z - debug: Rendering engine handlebars requestId=4
+2016-02-29T03:02:57.927Z - debug: Replaced images []
+2016-02-29T03:02:57.928Z - debug: Executing recipe xlsx requestId=4
+2016-02-29T03:02:57.947Z - error: Error when processing render request Error during rendering report: Cannot read property 'name' of undefined TypeError: Cannot read property 'name' of undefined
+    at DocPropsApp.toxml (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:162:50)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:829:71)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:7:59)
+    at Promise.post (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1161:36)
+    at Promise.promise.promiseDispatch (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:788:41)
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1391:14
+    at runSingle (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:137:13)
+    at flush (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:125:13)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54 requestId=4
+2016-02-29T03:02:57.948Z - error: Error during processing request: http://localhost:3000/api/report?studio=normal details: Error during rendering report: Cannot read property 'name' of undefined TypeError: Cannot read property 'name' of undefined
+    at DocPropsApp.toxml (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:162:50)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:829:71)
+    at Workbook.save (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\msexcel-builder-extended\lib\msexcel-builder.js:7:59)
+    at Promise.post (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1161:36)
+    at Promise.promise.promiseDispatch (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:788:41)
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:1391:14
+    at runSingle (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:137:13)
+    at flush (d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-xlsx\node_modules\q\q.js:125:13)
+From previous event:
+    at d:\DOC\brogue\node_modules\jsreport\node_modules\jsreport-core\lib\render\render.js:141:54
+2016-02-29T03:03:50.997Z - info: Starting rendering request 5 (user: null) requestId=5
+2016-02-29T03:03:51.015Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:handlebars}
+2016-02-29T03:03:51.015Z - debug: Searching for dataItem to apply
+2016-02-29T03:03:51.018Z - debug: Resources not defined for this template.
+2016-02-29T03:03:51.026Z - debug: Rendering engine handlebars requestId=5
+2016-02-29T03:03:51.687Z - debug: Replaced images []
+2016-02-29T03:03:51.687Z - debug: Executing recipe client-html requestId=5
+2016-02-29T03:03:51.692Z - debug: Skipping storing report.
+2016-02-29T03:03:51.699Z - info: Rendering request 5 finished in 702 ms requestId=5
+2016-02-29T04:29:23.235Z - info: Starting rendering request 6 (user: null) requestId=6
+2016-02-29T04:29:23.277Z - info: Starting to render async report t26DcMEDboElwrjh
+2016-02-29T04:29:23.278Z - info: Starting rendering request 7 (user: undefined) requestId=7
+2016-02-29T04:29:23.292Z - info: Rendering anonymous template { recipe:html,engine:none}
+2016-02-29T04:29:23.293Z - debug: Data item not defined for this template.
+2016-02-29T04:29:23.298Z - debug: Resources not defined for this template.
+2016-02-29T04:29:23.306Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:handlebars}
+2016-02-29T04:29:23.307Z - debug: Searching for dataItem to apply
+2016-02-29T04:29:23.315Z - debug: Resources not defined for this template.
+2016-02-29T04:29:23.368Z - debug: Rendering engine none requestId=6
+2016-02-29T04:29:23.653Z - debug: Rendering engine handlebars requestId=7
+2016-02-29T04:29:25.300Z - debug: Replaced images []
+2016-02-29T04:29:25.301Z - debug: Executing recipe html requestId=6
+2016-02-29T04:29:25.305Z - debug: Skipping storing report.
+2016-02-29T04:29:25.314Z - info: Rendering request 7 finished in 2080 ms requestId=6
+2016-02-29T04:29:25.351Z - debug: Replaced images []
+2016-02-29T04:29:25.352Z - debug: Executing recipe client-html requestId=7
+2016-02-29T04:29:25.403Z - debug: Inserting report into storage.
+2016-02-29T04:29:25.487Z - info: Rendering request 7 finished in 2210 ms requestId=7
+2016-02-29T04:29:30.797Z - info: Starting rendering request 8 (user: null) requestId=8
+2016-02-29T04:29:30.821Z - info: Rendering template {shortid:EkGyejnjl, recipe:client-html,engine:handlebars}
+2016-02-29T04:29:30.822Z - debug: Searching for dataItem to apply
+2016-02-29T04:29:30.826Z - debug: Resources not defined for this template.
+2016-02-29T04:29:30.838Z - debug: Rendering engine handlebars requestId=8
+2016-02-29T04:29:31.776Z - debug: Replaced images []
+2016-02-29T04:29:31.777Z - debug: Executing recipe client-html requestId=8
+2016-02-29T04:29:31.781Z - debug: Skipping storing report.
+2016-02-29T04:29:31.788Z - info: Rendering request 8 finished in 991 ms requestId=8

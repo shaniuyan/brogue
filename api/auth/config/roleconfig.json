@@ -1,0 +1,11 @@
+[
+  {
+    "roleXh": 1,
+    "roleName": "管理员",
+    "roleDes": "管理员",
+    "level": 0,
+    "parentRoleXh": "",
+    "isParent": true,
+    "orderNo": 1
+  }
+]
