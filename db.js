@@ -1,5 +1,5 @@
 /**
- * Created by chengdi on 2015/5/7.
+ * Created by wangkai on 2015/5/7.
  */
 var bbPromise = require("bluebird");
 var MongoDB = bbPromise.promisifyAll(require("mongodb"));
