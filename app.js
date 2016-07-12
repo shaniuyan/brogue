@@ -6,6 +6,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //var dbs = require("./db");
+var configs = require("./configs");
 var apiv1 = require('./routes/api.router.v1');
 //var apiAuthRouter = require('./api/auth/auth.router.v1');
 var app = express();
@@ -25,11 +26,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function (req, res, next) {
     //req.dbs = dbs;
+    req.configs = configs;
     next();
 });
 //配置权限路由
 //var apiAuth = require("./api/auth");
 //app.all("/api/*.json", apiAuth.auth.main);
+
+var validatorApp = require("./api/validator")
+app.all("/api/*.json", validatorApp.validator.validatorIntercept);
 
 app.use('/api/v1', apiv1);
 //app.use('/api/auth', apiAuthRouter);
