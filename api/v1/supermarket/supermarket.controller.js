@@ -45,4 +45,8 @@ exports.businessModules = function(req,res,next){
     body.response_params.data = moduls.data;
     body.response_params.total = moduls.total;
     return res.status(200).json(body);
-}
+};
+
+exports.addBusinessModules = function(req,res,next){
+
+};

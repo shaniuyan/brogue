@@ -13,4 +13,4 @@ exports.businessModulesAsync = function(opts){
     results.data = supermarket;
     results.total = supermarket.length;
     return results;
-}
+};
