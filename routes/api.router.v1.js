@@ -13,5 +13,6 @@ router.get("/customer/userlistcs.json",apiV1.customer.userTestList);
 router.get("/supermarket/businessmodules.json",apiV1.supermarket.businessModules);
 
 
-router.get("/supermarket/addgood.json",apiV1.goods.addGood);
+router.post("/supermarket/addgood.json",apiV1.goods.addGood);
+router.get("/supermarket/goodlist.json",apiV1.goods.goodList);
 module.exports = router;

@@ -1,0 +1,112 @@
+[
+  {
+    "permId":"1001",
+    "permName":"物流管理",
+    "icon":"sr-only",
+    "desc":"",
+    "childModuls":[
+      {
+        "permId":"1001001",
+        "permName":"采购管理",
+        "icon":"glyphicon glyphicon-save",
+        "desc":""
+      },
+      {
+        "permId":"1001002",
+        "permName":"入库管理",
+        "icon":"glyphicon glyphicon-plus-sign",
+        "desc":""
+      },
+      {
+        "permId":"1001003",
+        "permName":"批发管理",
+        "icon":"glyphicon glyphicon-new-window",
+        "desc":""
+      },
+      {
+        "permId":"1001004",
+        "permName":"售货管理",
+        "icon":"glyphicon glyphicon-log-in",
+        "desc":""
+      },
+      {
+        "permId":"1001005",
+        "permName":"赊账管理",
+        "icon":"glyphicon glyphicon-yen",
+        "desc":""
+      },
+      {
+        "permId":"1001006",
+        "permName":"退货管理",
+        "icon":"glyphicon glyphicon-minus-sign",
+        "desc":""
+      }
+    ]
+  },
+  {
+    "permId":"1002",
+    "permName":"商品管理",
+    "icon":"",
+    "desc":"",
+    "childModuls":[
+      {
+        "permId":"1002001",
+        "permName":"商品分类管理",
+        "icon":"glyphicon glyphicon-credit-card",
+        "desc":""
+      },
+      {
+        "permId":"1002002",
+        "permName":"商品列表",
+        "icon":"glyphicon glyphicon-tasks",
+        "desc":""
+      }
+    ]
+  },
+  {
+    "permId":"1003",
+    "permName":"客户管理",
+    "icon":"sr-only",
+    "desc":"",
+    "childModuls":[
+      {
+        "permId":"1003001",
+        "permName":"货源服务商",
+        "icon":"fa fa-truck",
+        "desc":""
+      },
+      {
+        "permId":"1003002",
+        "permName":"销路服务商",
+        "icon":"fa fa-unlink",
+        "desc":""
+      }
+    ]
+  },
+  {
+    "permId":"1099",
+    "permName":"系统管理",
+    "icon":"sr-only",
+    "desc":"",
+    "childModuls":[
+      {
+        "permId":"1099001",
+        "permName":"权限管理",
+        "icon":"glyphicon glyphicon-lock",
+        "desc":""
+      },
+      {
+        "permId":"1099002",
+        "permName":"角色管理",
+        "icon":"glyphicon glyphicon-ok-sign",
+        "desc":""
+      },
+      {
+        "permId":"1099003",
+        "permName":"职员管理",
+        "icon":"glyphicon glyphicon-user",
+        "desc":""
+      }
+    ]
+  }
+]

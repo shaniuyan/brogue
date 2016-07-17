@@ -1,3 +1,4 @@
 {
-  "/api/v1/supermarket/addgood.json":"good.addGood"
+  "/api/v1/supermarket/addgood.json":"good.addGood",
+  "/api/v1/supermarket/goodlist.json":"good.goodList"
 }

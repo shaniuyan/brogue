@@ -4,6 +4,7 @@
 var _ = require("lodash");
 exports.validatorIntercept = function (req, res, next) {
     var apiUrl = req.url.substr(0, req.url.indexOf(".json") + 5);
+    console.log("开始进行表单验证");
     var businessmapping = req.configs.businessmapping;
     var validator = req.configs.validator;
     if (businessmapping[apiUrl]) {
@@ -14,34 +15,36 @@ exports.validatorIntercept = function (req, res, next) {
         });
         validators = validator;
         _.each(validators, function (validator) {
-            if(validator.noEmpty){
-                req.check(validator.field, validator.desc).notEmpty();
-            }else{
-                switch (validator) {
+            var valid = req.check(validator.field, validator.desc);
+            if (validator.noEmpty) {
+                valid.notEmpty();
+            }
+            if (!valid.lastError) {
+                valid = req.check(validator.field, validator.typedesc);
+                switch (validator.type) {
                     case "int":
+                        valid.isInt();
                         break;
-                        req.check(validator.field, validator.desc).isInt();
                     case "date":
+                        valid.isDate();
                         break;
-                        req.check(validator.field, validator.desc).isDate();
                     case "string":
-                        req.check(validator.field, validator.desc).optional();
+                        valid.optional();
                         break;
                     case "number":
-                        req.check(validator.field, validator.desc).optional().isNumeric();
+                        valid.isNumeric();
                         break;
                     case "email":
-                        req.check(validator.field, validator.desc).optional().isEmail();
+                        valid.isEmail();
                         break;
                     case "phone":
-                        req.check(validator.field, validator.desc).optional().isMobilePhone();
+                        valid.isMobilePhone();
                         break;
                     default:
-                        req.check(validator.field, validator.desc).optional();
+                        valid;
                         break;
                 }
             }
-
         });
         var errors = req.validationErrors();
         if (errors) {
@@ -52,5 +55,6 @@ exports.validatorIntercept = function (req, res, next) {
             return;
         }
     }
+    console.log("表单验证通过");
     next();
 };
