@@ -40,11 +40,34 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
             });
         }*/
 
-        it("获取商品", function (done) {
+        it.skip("获取商品", function (done) {
             request.get(testrooturl + '/api/v1/supermarket/goodlist.json')
                 .send({
                     pageIndex:100,
                     pageSize:100
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
+
+        });
+
+        it("添加服务商", function (done) {
+
+            request.post(testrooturl + '/api/v1/supermarket/addmarketquotient.json')
+                .send({
+                    companyCode:"1002",
+                    companyName: "布谷科技有限公司",
+                    linkMan: "王凯",
+                    tel: "0355-8285809",
+                    phone: "13546710244",
+                    currentaccount: "电脑、平板",
+                    buildtime: new Date().getTime(),
+                    isimportant: 1
                 })
                 .end(function (err, res) {
                     should.not.exists(err);

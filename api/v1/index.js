@@ -6,3 +6,5 @@ exports.customer = require('./customer/customer.controller');
 exports.supermarket = require('./supermarket/supermarket.controller');
 
 exports.goods = require('./supermarket/goods.controller');
+
+exports.marketquotient = require('./supermarket/marketquotient.controller');

@@ -15,4 +15,7 @@ router.get("/supermarket/businessmodules.json",apiV1.supermarket.businessModules
 
 router.post("/supermarket/addgood.json",apiV1.goods.addGood);
 router.get("/supermarket/goodlist.json",apiV1.goods.goodList);
+
+router.post("/supermarket/addmarketquotient.json",apiV1.marketquotient.addMarketQuotient);
+
 module.exports = router;
