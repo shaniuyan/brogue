@@ -11,15 +11,16 @@ var goodModel = require("./goods.model");
  * @param next
  * @returns {*}
  */
-exports.goodList = function(req,res,next){
+exports.goodList = function (req, res, next) {
     var param = _.extend(req.query, req.body);
     var body = {};
     body.response_params = {};
-    var opts = {good:{},page:{}};
+    var opts = {good: {}, page: {}, configs: {}};
+    opts.configs = req.configs;
     opts.mysqldbs = req.mysqldbs;
     opts.page.pageIndex = param.pageIndex;
     opts.page.pageSize = param.pageSize;
-    return goodModel.goodListAsync(opts).then(function(result){
+    return goodModel.goodListAsync(opts).then(function (result) {
         body.error_code = result.error_code;
         body.error_msg = result.error_msg;
         body.response_params = result.data;
@@ -28,11 +29,12 @@ exports.goodList = function(req,res,next){
 };
 
 
-exports.addGood = function(req,res,next){
+exports.addGood = function (req, res, next) {
     var param = _.extend(req.query, req.body);
     var body = {};
     body.response_params = {};
-    var opts = {good:{}};
+    var opts = {good: {}, configs: {}};
+    opts.configs = req.configs;
     opts.mysqldbs = req.mysqldbs;
     opts.good.goodCode = param.goodCode;
     opts.good.goodName = param.goodName;
@@ -44,7 +46,7 @@ exports.addGood = function(req,res,next){
     opts.good.quantity = param.quantity;
     opts.good.wholeUnit = param.wholeUnit;
     opts.good.unit = param.unit;
-    return goodModel.addGoodAsync(opts).then(function(result){
+    return goodModel.addGoodAsync(opts).then(function (result) {
         body.error_code = result.error_code;
         body.error_msg = result.error_msg;
         res.status(200).json(body);

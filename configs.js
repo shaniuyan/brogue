@@ -4,11 +4,12 @@
 
 var validator = require("./configs/validator");
 var businessmapping = require("./configs/businessmapping");
-
+var sysconfig = require("./configs/sysconfig");
 
 var configs = {
     validator:validator,
-    businessmapping:businessmapping
+    businessmapping:businessmapping,
+    sysconfig:sysconfig
 };
 
 module.exports = configs;

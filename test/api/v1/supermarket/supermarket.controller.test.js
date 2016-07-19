@@ -56,7 +56,7 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
 
         });
 
-        it("添加服务商", function (done) {
+        it.skip("添加服务商", function (done) {
 
             request.post(testrooturl + '/api/v1/supermarket/addmarketquotient.json')
                 .send({
