@@ -10,7 +10,7 @@ exports.goodListAsync = function (opts) {
     var results = {error_code: -1, error_msg: "error"};
     var bbPromise = opts.mysqldbs.bbpromise;
     var mysqlPool = opts.mysqldbs.mysqlPool;
-    var pageIndex = 0, beginRowIndex = 0, endRowIndex = 0, pageSize = opts.configs.customer.pageSize;
+    var pageIndex = 0, beginRowIndex = 0, endRowIndex = 0, pageSize = opts.configs.sysconfig.customer.pageSize;
     if (!isNaN(opts.page.pageIndex)) {
         pageIndex = opts.page.pageIndex;
     }

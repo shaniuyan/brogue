@@ -7,18 +7,28 @@ define(["app","apps/back_shop/mainpage/marketquotient/layout/layout.view" ,
     NavController.Controller = {
       showMarketQuotientList: function (Region, xobject) {
         var that = this;
-        that.xobject = xobject;
+        that.xobject = new Marionette.Object();
 
-        var layoutView = new LayoutView.Layout();
+        var layoutView = new LayoutView.Layout({xevent:that.xobject});
         Region.show(layoutView);
 
         require(["apps/back_shop/entity/marketquotient.entities"], function () {
-          var modularList = BrogueApplication.request("marketquotient:entities");
-          var view = new View.Table({
-            collection: modularList,
-            xevent: xobject
+          var fetchMarketQuotient = BrogueApplication.request("marketquotient:entities");
+
+          $.when(fetchMarketQuotient).done(function (marketQuotients) {
+            var view = new View.Table({
+              collection: marketQuotients,
+              xevent: xobject
+            });
+            layoutView.marketQuotientListRegion.show(view);
           });
-          layoutView.marketQuotientListRegion.show(view);
+
+          that.xobject.on("market:addMarketQuotient",function(){
+            require(["apps/back_shop/mainpage/marketquotient/form/form.view"],function(FormView){
+              var form = new FormView.Form();
+              BrogueApplication.dialogRegion.show(form,{dialogopts:{title:"添加服务商",width:700}});
+            });
+          });
         });
       }
     };
