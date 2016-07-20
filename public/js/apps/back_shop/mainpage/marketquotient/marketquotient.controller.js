@@ -26,7 +26,7 @@ define(["app","apps/back_shop/mainpage/marketquotient/layout/layout.view" ,
           that.xobject.on("market:addMarketQuotient",function(){
             require(["apps/back_shop/mainpage/marketquotient/form/form.view"],function(FormView){
               var form = new FormView.Form();
-              BrogueApplication.dialogRegion.show(form,{dialogopts:{title:"添加服务商",width:700}});
+              BrogueApplication.dialogRegion.show(form,{dialogopts:{title:"添加服务商",width:600}});
             });
           });
         });
