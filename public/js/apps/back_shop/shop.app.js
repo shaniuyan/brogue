@@ -19,6 +19,7 @@ define(["app"], function (BrogueApplication) {
         "goodlist":"showgoodlist",
         "supplysupplierlist":"supplysupplierlist",
         "marketquotientlist":"marketquotientlist",
+        "wholesalepage":"wholesalepage",
         "salesmanagementlist":"salesmanagementlist"
       }
     });
@@ -58,6 +59,13 @@ define(["app"], function (BrogueApplication) {
           marketQuotientController.showMarketQuotientList(region);
         });
       },
+      wholesalepage:function(){
+        BrogueApplication.navigate("wholesalepage");
+        require(["apps/back_shop/mainpage/wholesale/wholesale.controller"],function(wholesaleController){
+          var region =BrogueApplication.rightRegion || BrogueApplication.bodyRegion;
+          wholesaleController.showWholesalePage(region);
+        });
+      },
       salesmanagementlist:function(){
         BrogueApplication.navigate("salesmanagementlist");
         require(["apps/back_shop/mainpage/salesmanagement/salesmanagement.controller"],function(salesManagementController){
@@ -72,6 +80,10 @@ define(["app"], function (BrogueApplication) {
 
     BrogueApplication.on("shopback:home",function(){
       API.shophome();
+    });
+
+    BrogueApplication.on("shopback:wholesale",function(){
+      API.wholesalepage();
     });
 
     BrogueApplication.on("shopback:salesmanagement",function(){
