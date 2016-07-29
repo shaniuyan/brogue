@@ -83,3 +83,10 @@
 .navbar-inverse .navbar-nav > li > a{
   color: #FFFFFF;
 }
+
+
+.show_grid{
+  padding: 0px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+}

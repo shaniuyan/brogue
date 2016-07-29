@@ -68,5 +68,285 @@
     "currentaccount": "",
     "buildtime": "2016-06-27 12:30:32",
     "isimport": 1
+  },
+  {
+    "ssid": 1,
+    "ssmc": "烟草公司",
+    "linkman": "王凯",
+    "tel": "7022301",
+    "phone": "13546710241",
+    "currentaccount": "云烟 黄鹤楼",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 2,
+    "ssmc": "食品公司",
+    "linkman": "杜康",
+    "tel": "7022302",
+    "phone": "13546710242",
+    "currentaccount": "云烟 黄鹤楼",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 3,
+    "ssmc": "蔬菜公司",
+    "linkman": "王凯",
+    "tel": "7022303",
+    "phone": "13546710243",
+    "currentaccount": "白菜 胡萝卜",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 4,
+    "ssmc": "汾酒公司",
+    "linkman": "汾阳",
+    "tel": "7022304",
+    "phone": "13546710244",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 5,
+    "ssmc": "海鲜公司",
+    "linkman": "海深",
+    "tel": "7022305",
+    "phone": "13546710245",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 6,
+    "ssmc": "零件公司",
+    "linkman": "令见",
+    "tel": "7022306",
+    "phone": "13546710246",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 7,
+    "ssmc": "巧克力公司",
+    "linkman": "乔客丽",
+    "tel": "7022307",
+    "phone": "13546710247",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 1,
+    "ssmc": "烟草公司",
+    "linkman": "王凯",
+    "tel": "7022301",
+    "phone": "13546710241",
+    "currentaccount": "云烟 黄鹤楼",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 2,
+    "ssmc": "食品公司",
+    "linkman": "杜康",
+    "tel": "7022302",
+    "phone": "13546710242",
+    "currentaccount": "云烟 黄鹤楼",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 3,
+    "ssmc": "蔬菜公司",
+    "linkman": "王凯",
+    "tel": "7022303",
+    "phone": "13546710243",
+    "currentaccount": "白菜 胡萝卜",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 4,
+    "ssmc": "汾酒公司",
+    "linkman": "汾阳",
+    "tel": "7022304",
+    "phone": "13546710244",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 5,
+    "ssmc": "海鲜公司",
+    "linkman": "海深",
+    "tel": "7022305",
+    "phone": "13546710245",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 6,
+    "ssmc": "零件公司",
+    "linkman": "令见",
+    "tel": "7022306",
+    "phone": "13546710246",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 7,
+    "ssmc": "巧克力公司",
+    "linkman": "乔客丽",
+    "tel": "7022307",
+    "phone": "13546710247",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 1,
+    "ssmc": "烟草公司",
+    "linkman": "王凯",
+    "tel": "7022301",
+    "phone": "13546710241",
+    "currentaccount": "云烟 黄鹤楼",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 2,
+    "ssmc": "食品公司",
+    "linkman": "杜康",
+    "tel": "7022302",
+    "phone": "13546710242",
+    "currentaccount": "云烟 黄鹤楼",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 3,
+    "ssmc": "蔬菜公司",
+    "linkman": "王凯",
+    "tel": "7022303",
+    "phone": "13546710243",
+    "currentaccount": "白菜 胡萝卜",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 4,
+    "ssmc": "汾酒公司",
+    "linkman": "汾阳",
+    "tel": "7022304",
+    "phone": "13546710244",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 5,
+    "ssmc": "海鲜公司",
+    "linkman": "海深",
+    "tel": "7022305",
+    "phone": "13546710245",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 6,
+    "ssmc": "零件公司",
+    "linkman": "令见",
+    "tel": "7022306",
+    "phone": "13546710246",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 7,
+    "ssmc": "巧克力公司",
+    "linkman": "乔客丽",
+    "tel": "7022307",
+    "phone": "13546710247",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 1,
+    "ssmc": "烟草公司",
+    "linkman": "王凯",
+    "tel": "7022301",
+    "phone": "13546710241",
+    "currentaccount": "云烟 黄鹤楼",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 2,
+    "ssmc": "食品公司",
+    "linkman": "杜康",
+    "tel": "7022302",
+    "phone": "13546710242",
+    "currentaccount": "云烟 黄鹤楼",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 3,
+    "ssmc": "蔬菜公司",
+    "linkman": "王凯",
+    "tel": "7022303",
+    "phone": "13546710243",
+    "currentaccount": "白菜 胡萝卜",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 4,
+    "ssmc": "汾酒公司",
+    "linkman": "汾阳",
+    "tel": "7022304",
+    "phone": "13546710244",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 5,
+    "ssmc": "海鲜公司",
+    "linkman": "海深",
+    "tel": "7022305",
+    "phone": "13546710245",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 6,
+    "ssmc": "零件公司",
+    "linkman": "令见",
+    "tel": "7022306",
+    "phone": "13546710246",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
+  },
+  {
+    "ssid": 7,
+    "ssmc": "巧克力公司",
+    "linkman": "乔客丽",
+    "tel": "7022307",
+    "phone": "13546710247",
+    "currentaccount": "",
+    "buildtime": "2016-06-27 12:30:32",
+    "isimport": 1
   }
 ]

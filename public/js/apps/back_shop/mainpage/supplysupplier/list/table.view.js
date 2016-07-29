@@ -10,25 +10,25 @@ define(["app",
       //子节点试图
       View.Tr = Marionette.ItemView.extend({
         template: trTpl,
-        tagName: "tr",
-        className: "unread checked",
+        tagName: "div",
+        className: "col-xs-12 col-sm-6 col-md-4 col-lg-3 show_grid mb-20",
         initialize: function () {
         }
       });
 
       var NoneView = Marionette.ItemView.extend({
         template: noneTpl,
-        tagName: "tr",
-        className: "unread checked"
+        tagName: "div",
+        className: "col-xs-12 col-sm-6 col-md-4 col-lg-3 show_grid mb-20"
       });
 
       View.Table = Marionette.CompositeView.extend({
-        tagName: "table",
-        className:"table table-responsive",
+        tagName: "div",
+        className:"container",
         template: tableTpl,
         childView: View.Tr,
         emptyView: NoneView,
-        childViewContainer: "tbody"
+        childViewContainer: "div"
       });
     });
     return BrogueApplication.BrogueApp.BackShop.MainPage.SupplySupplierView;

@@ -28,7 +28,7 @@ exports.addMarketQuotientAsync = function (opts) {
     return mysqlPool.queryAsync("insert into marketQuotient(??,??,??,??,??,??,??,??) values (?,?,?,?,?,?,?,?)", insertObj)
         .then(function (result) {
             results.error_code = 0;
-            results.error_msg = "添加服务商成功";
+            results.error_msg = "添加销路服务商成功";
             return results;
         }).catch(function (e) {
             results.error_msg = e.message;
