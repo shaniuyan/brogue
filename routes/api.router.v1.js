@@ -4,18 +4,20 @@
 var express = require('express');
 var router = express.Router();
 var apiV1 = require("../api/v1");
-router.post("/customer/login.json",apiV1.customer.login);
-router.get("/customer/login.json",apiV1.customer.login);
-router.get("/customer/userlist.json",apiV1.customer.getUserList);
+router.post("/customer/login.json", apiV1.customer.login);
+router.get("/customer/login.json", apiV1.customer.login);
+router.get("/customer/userlist.json", apiV1.customer.getUserList);
 
-router.get("/customer/userlistcs.json",apiV1.customer.userTestList);
+router.get("/customer/userlistcs.json", apiV1.customer.userTestList);
 
-router.get("/supermarket/businessmodules.json",apiV1.supermarket.businessModules);
+router.get("/supermarket/businessmodules.json", apiV1.supermarket.businessModules);
 
 
-router.post("/supermarket/addgood.json",apiV1.goods.addGood);
-router.get("/supermarket/goodlist.json",apiV1.goods.goodList);
+router.post("/supermarket/addgood.json", apiV1.goods.addGood);
+router.get("/supermarket/goodlist.json", apiV1.goods.goodList);
 
-router.post("/supermarket/addmarketquotient.json",apiV1.marketquotient.addMarketQuotient);
-router.get("/supermarket/marketquotient.json",apiV1.marketquotient.marketQuotient);
+router.post("/supermarket/addmarketquotient.json", apiV1.marketquotient.addMarketQuotient);
+router.get("/supermarket/marketquotient.json", apiV1.marketquotient.marketQuotient);
+
+router.post("/supermarket/addwholesale.json", apiV1.wholesale.addWholesale);
 module.exports = router;
