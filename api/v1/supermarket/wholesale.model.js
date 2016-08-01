@@ -18,6 +18,7 @@ exports.addWholesaleAsync = function (opts) {
         "customerType",
         "totalamount",
         "paymenttotalamount",
+        "paymentedtotalamount",
         "paymentstatus",
         "wholesaledate",
         "createtime",
@@ -27,6 +28,7 @@ exports.addWholesaleAsync = function (opts) {
         opts.wholesale.customerType,
         opts.wholesale.totalamount,
         opts.wholesale.paymenttotalamount,
+        opts.wholesale.paymentedtotalamount,
         opts.wholesale.paymentstatus,
         opts.wholesale.wholesaledate,
         opts.wholesale.createtime
@@ -54,7 +56,7 @@ exports.addWholesaleAsync = function (opts) {
         }
         return getNexWholesaleNumAsync(opts).then(function (result) {
             insertObj[9] = result.data;
-            return mysqlPool.queryAsync("insert into wholesales(??,??,??,??,??,??,??,??,??) values (?,?,?,?,?,?,?,?,?)", insertObj).then(function (result) {
+            return mysqlPool.queryAsync("insert into wholesales(??,??,??,??,??,??,??,??,??,??) values (?,?,?,?,?,?,?,?,?,?)", insertObj).then(function (result) {
                 if (result.affectedRows == 1) {
                     opts.wholesale.wholesalesId = result.insertId;
                 }
@@ -75,7 +77,7 @@ exports.addWholesaleAsync = function (opts) {
 
 
 /**
- *
+ * 批发单添加商品时批发单总金额变动时调用
  * @param opts
  */
 exports.addPaymentAsync = function (opts) {
@@ -98,15 +100,49 @@ exports.addPaymentAsync = function (opts) {
             return results;
         } else {
             var setObjs = [
-                "paymenttotalamount",
-                "paymenttotalamount",
-                opts.wholesale.paymentamount,
-                "wholesalid",
+                "totalamount",
+                "totalamount",
+                opts.wholesale.amount,
+                "wholesalesId",
                 opts.wholesale.wholesalid
             ];
             return mysqlPool.queryAsync("update wholesales set ?? = ??+? where ?? = ?", setObjs).then(function (result) {
                 results.error_code = 0;
                 results.error_msg = "批发单累计添加商品金额汇总成功！";
+                return results;
+            });
+        }
+    });
+};
+
+/**
+ * 店铺管理员根据实际情况，可能会对批发单的整体价格进行相应的调整
+ * 改变应该付款金额
+ * @param opts
+ */
+exports.updPaymentTotalAmountAsync =  function(opts){
+    var results = {error_code: -1, error_msg: "error"};
+    var bbPromise = opts.mysqldbs.bbpromise;
+    var mysqlPool = opts.mysqldbs.mysqlPool;
+    var findWhere = [
+        "wholesalesId",
+        opts.wholesale.wholesalid
+    ];
+    return mysqlPool.queryAsync("select * from wholesales where ?? = ?", findWhere).then(function (result) {
+        if (!result.length || result[0].paymentstatus == 3) {
+            results.error_code = 1001;
+            results.error_msg = "该批发单失效，无法继续添加派发商品";
+            return results;
+        } else {
+            var setObjs = [
+                "paymenttotalamount",
+                opts.wholesale.paymenttotalamount,
+                "wholesalesId",
+                opts.wholesale.wholesalid
+            ];
+            return mysqlPool.queryAsync("update wholesales set ?? = ? where ?? = ?", setObjs).then(function (result) {
+                results.error_code = 0;
+                results.error_msg = "修改批发单应付款金额成功！";
                 return results;
             });
         }

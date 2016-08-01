@@ -20,6 +20,7 @@ router.post("/supermarket/addmarketquotient.json", apiV1.marketquotient.addMarke
 router.get("/supermarket/marketquotient.json", apiV1.marketquotient.marketQuotient);
 
 router.post("/supermarket/addwholesale.json", apiV1.wholesale.addWholesale);
+router.post("/supermarket/updpaymenttotalamount.json", apiV1.wholesale.updPaymentTotalAmount);
 
 router.get("/supermarket/lastwholesalenum.json", apiV1.wholesale.getLastWholesaleNum);
 module.exports = router;
