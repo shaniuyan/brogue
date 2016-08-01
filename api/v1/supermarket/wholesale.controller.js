@@ -47,3 +47,19 @@ exports.addPayment = function(req,res,next){
 
     });
 };
+
+
+exports.getLastWholesaleNum = function(req,res,next){
+    var param = _.extend(req.query, req.body);
+    var body = {};
+    body.response_params = {};
+    var opts = {wholesale: {},configs: {}};
+    opts.configs = req.configs;
+    opts.mysqldbs = req.mysqldbs;
+    return wholesaleModel.getLastWholesaleNumAsync(opts).then(function(result){
+        body.error_code = result.error_code;
+        body.error_msg = result.error_msg;
+        body.response_params = result.data;
+        return res.status(200).json(body);
+    });
+};

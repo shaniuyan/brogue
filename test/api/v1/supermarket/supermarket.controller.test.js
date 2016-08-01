@@ -80,7 +80,7 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
         });
 
 
-        it("添加批发单", function (done) {
+        it.skip("添加批发单", function (done) {
 
             request.post(testrooturl + '/api/v1/supermarket/addwholesale.json')
                 .send({
@@ -88,6 +88,22 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                     customerName: "布谷科技有限公司",
                     wholesaledate: "2016-07-30",
                     customerType:1
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
+
+        });
+
+
+        it("获取最新批发单号", function (done) {
+
+            request.get(testrooturl + '/api/v1/supermarket/lastwholesalenum.json')
+                .send({
                 })
                 .end(function (err, res) {
                     should.not.exists(err);

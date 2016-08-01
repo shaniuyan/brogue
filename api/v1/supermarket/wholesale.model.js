@@ -1,6 +1,9 @@
 /**
  * Created by wk on 2016/7/29.
  */
+
+var moment = require("moment");
+
 /**
  * 添加批发单信息
  */
@@ -66,6 +69,8 @@ exports.addWholesaleAsync = function(opts){
 
 };
 
+
+
 /**
  *
  * @param opts
@@ -83,4 +88,22 @@ exports.addPaymentAsync = function(opts){
         opts.wholesale.wholesalid
     ];
     return mysqlPool.queryAsync("select ")
+};
+
+
+exports.getLastWholesaleNumAsync = function(opts){
+    //select max(wholesalenum) lastwholesalenum from brogue_db.wholesales;
+    var results = {error_code: -1, error_msg: "error"};
+    var bbPromise = opts.mysqldbs.bbpromise;
+    var mysqlPool = opts.mysqldbs.mysqlPool;
+    return mysqlPool.queryAsync("select max(wholesalenum) lastwholesalenum from brogue_db.wholesales").then(function(result){
+        results.error_code = 0;
+        results.error_msg = "获取服务器最新批发编号成功!";
+        results.data = result[0].lastwholesalenum;
+        return results;
+    }).catch(function(e){
+        results.error_code = 1001;
+        results.error_msg = "获取最新批发编号失败，请联系平台管理员!";
+        return results;
+    });
 };
