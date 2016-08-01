@@ -3,7 +3,7 @@
  */
 
 var moment = require("moment");
-
+var paramparse = require("../../common/paramparse")
 /**
  * 添加批发单信息
  */
@@ -52,19 +52,23 @@ exports.addWholesaleAsync = function(opts){
             results.error_msg = "所选择客户不存在，请先录入该客户信息！";
             return results;
         }
-        return mysqlPool.queryAsync("insert into wholesales(??,??,??,??,??,??,??,??,??) values (?,?,?,?,?,?,?,?,?)", insertObj).then(function (result) {
-            if(result.affectedRows == 1){
-                opts.wholesale.wholesalesId = result.insertId;
-            }
-            results.error_code = 0;
-            results.error_msg = "添加批发单成功";
-            results.data = opts.wholesale;
-            return results;
-        }).catch(function(e){
-            results.error_code = 1001;
-            results.error_msg = "添加批发单失败，请联系技术人员";
-            return results;
+        return getNexWholesaleNumAsync(opts).then(function(result){
+            insertObj[9] = result.data;
+            return mysqlPool.queryAsync("insert into wholesales(??,??,??,??,??,??,??,??,??) values (?,?,?,?,?,?,?,?,?)", insertObj).then(function (result) {
+                if(result.affectedRows == 1){
+                    opts.wholesale.wholesalesId = result.insertId;
+                }
+                results.error_code = 0;
+                results.error_msg = "添加批发单成功";
+                results.data = opts.wholesale;
+                return results;
+            }).catch(function(e){
+                results.error_code = 1001;
+                results.error_msg = "添加批发单失败，请联系技术人员";
+                return results;
+            });
         });
+
     });
 
 };
@@ -91,7 +95,7 @@ exports.addPaymentAsync = function(opts){
 };
 
 
-exports.getLastWholesaleNumAsync = function(opts){
+var getNexWholesaleNumAsync = exports.getNexWholesaleNumAsync = function(opts){
     //select max(wholesalenum) lastwholesalenum from brogue_db.wholesales;
     var results = {error_code: -1, error_msg: "error"};
     var bbPromise = opts.mysqldbs.bbpromise;
@@ -99,6 +103,11 @@ exports.getLastWholesaleNumAsync = function(opts){
     return mysqlPool.queryAsync("select max(wholesalenum) lastwholesalenum from brogue_db.wholesales").then(function(result){
         results.error_code = 0;
         results.error_msg = "获取服务器最新批发编号成功!";
+        if(!result[0].lastwholesalenum) {
+            result[0].lastwholesalenum = 'WS' + new moment().format("YYYYMMDD") + "00001"
+        }else{
+            result[0].lastwholesalenum = paramparse.nextBatchNumber(result[0].lastwholesalenum);
+        }
         results.data = result[0].lastwholesalenum;
         return results;
     }).catch(function(e){

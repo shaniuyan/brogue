@@ -80,12 +80,12 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
         });
 
 
-        it.skip("添加批发单", function (done) {
+        it("添加批发单", function (done) {
 
             request.post(testrooturl + '/api/v1/supermarket/addwholesale.json')
                 .send({
-                    customerId:"1002",
-                    customerName: "布谷科技有限公司",
+                    customerId:1,
+                    customerName: "乡音科技有限公司",
                     wholesaledate: "2016-07-30",
                     customerType:1
                 })
@@ -100,7 +100,7 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
         });
 
 
-        it("获取最新批发单号", function (done) {
+        it.skip("获取最新批发单号", function (done) {
 
             request.get(testrooturl + '/api/v1/supermarket/lastwholesalenum.json')
                 .send({
