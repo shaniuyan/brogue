@@ -1,6 +1,9 @@
 /**
  * Created by wk on 2016/7/12.
  */
+
+var paramparse = require("../../common/paramparse");
+
 /**
  * 获取商品列表
  * @param opts
@@ -36,29 +39,26 @@ exports.addGoodAsync = function (opts) {
     var results = {error_code: -1, error_msg: "error"};
     var bbPromise = opts.mysqldbs.bbpromise;
     var mysqlPool = opts.mysqldbs.mysqlPool;
-    var insertObj = [
-        "goodCode",
-        "goodName",
-        "brand",
-        "model",
-        "goodBar",
-        "price",
-        "purchasePrice",
-        "quantity",
-        "wholeUnit",
-        "unit",
-        opts.good.goodCode,
-        opts.good.goodName,
-        opts.good.brand,
-        opts.good.model,
-        opts.good.goodBar,
-        opts.good.price,
-        opts.good.purchasePrice,
-        opts.good.quantity,
-        opts.good.wholeUnit,
-        opts.good.unit
-    ];
-    return mysqlPool.queryAsync("insert into goods(??,??,??,??,??,??,??,??,??,??) values (?,?,?,?,?,?,?,?,?,?)", insertObj).then(function (result) {
+
+    var insertObj = {
+        goodCode:opts.good.goodCode,
+        goodName:opts.good.goodName,
+        brand:opts.good.brand,
+        model:opts.good.model,
+        purchasePrice:opts.good.purchasePrice,
+        price:opts.good.price,
+        tradePrice:opts.good.tradePrice,
+        wholenum:opts.good.wholenum,
+        scatterednum:opts.good.scatterednum,
+        wholeUnit:opts.good.wholeUnit,
+        unit:opts.good.unit,
+        goodBar:opts.good.goodBar,
+        lastStorageTime:new Date().getTime()
+    };
+
+    var tableName = "goods";
+    var sqlObj = paramparse.parseInsertSqlObj(insertObj,tableName);
+    return mysqlPool.queryAsync(sqlObj.sqlStr, sqlObj.insertInfos).then(function (result) {
         results.error_code = 0;
         results.error_msg = "添加成功";
         return results;

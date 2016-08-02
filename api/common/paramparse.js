@@ -33,3 +33,25 @@ exports.nextBatchNumber = function(lastWholesaleNum){
     var curNum = pad(nextNum,5);
     return strformat + curNum;
 };
+
+
+exports.parseInsertSqlObj = function(obj,tableName){
+    var sqlStr = "insert into "+tableName+"({insertcol}) values ({insertval})";
+    var keys = _.keys(obj);
+    var values = _.values(obj);
+
+    var cols = [],vals= [],insertInfos = [];;
+    _.each(keys,function(key){
+        cols.push("??");
+        insertInfos.push(key);
+    });
+    _.each(values,function(value){
+        vals.push("?");
+        insertInfos.push(value);
+    });
+    sqlStr = sqlStr.replace("{insertcol}",cols.join(",")).replace("{insertval}",vals.join(","));
+    return {
+        sqlStr:sqlStr,
+        insertInfos:insertInfos
+    };
+};

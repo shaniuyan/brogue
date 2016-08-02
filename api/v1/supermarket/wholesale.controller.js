@@ -35,6 +35,27 @@ exports.addWholesale = function(req,res,next){
     });
 };
 
+
+exports.addWholesaleDetails = function (req, res, next) {
+    var param = _.extend(req.query, req.body);
+    var body = {};
+    body.response_params = {};
+    var opts = {wholesaledetail: {},good:{}, configs: {}};
+    opts.configs = req.configs;
+    opts.mysqldbs = req.mysqldbs;
+    opts.wholesaledetail.wholesalid = param.wholesalid;
+    opts.good.goodId = param.goodId;
+
+    opts.wholesaledetail.wholenum = param.wholenum;                     //整件数量
+    opts.wholesaledetail.scatterednum = param.scatterednum;            //零卖数量
+
+    return wholesaleModel.addWholesaleDetailsAsync(opts).then(function (result) {
+        body.error_code = result.error_code;
+        body.error_msg = result.error_msg;
+        res.status(200).json(body);
+    });
+};
+
 /**
  * 批发单添加商品时批发单总金额变动时调用
  * @param opts

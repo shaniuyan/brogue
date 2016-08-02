@@ -41,9 +41,13 @@ exports.addGood = function (req, res, next) {
     opts.good.brand = param.brand;
     opts.good.model = param.model;
     opts.good.goodBar = param.goodBar;
-    opts.good.price = param.price;
-    opts.good.purchasePrice = param.purchasePrice;
-    opts.good.quantity = param.quantity;
+    opts.good.purchasePrice = param.purchasePrice;   //进价
+    opts.good.price = param.price;                     //售价
+    opts.good.tradePrice = param.tradePrice;          //批发价   --
+    opts.good.wholenum = param.wholenum;                     //整件数量  --
+    opts.good.scatterednum = param.scatterednum;            //零卖数量  --
+
+
     opts.good.wholeUnit = param.wholeUnit;
     opts.good.unit = param.unit;
     return goodModel.addGoodAsync(opts).then(function (result) {
@@ -51,5 +55,4 @@ exports.addGood = function (req, res, next) {
         body.error_msg = result.error_msg;
         res.status(200).json(body);
     });
-
 };

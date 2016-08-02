@@ -12,7 +12,7 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
 
     });
     describe('test all goods controller api ', function () {
-        /*for (var i = 0; i <= 10000; i++) {
+       for (var i = 0; i <= 1; i++) {
             it.skip("添加商品", function (done) {
 
                 request.post(testrooturl + '/api/v1/supermarket/addgood.json')
@@ -22,12 +22,13 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                         brand: "小康",
                         model: "",
                         goodBar: "9787550265332",
-                        price: 78.00,
                         purchasePrice: 75.00,
-                        quantity: 20,
+                        price: 78.00,
+                        tradePrice:76,
+                        wholenum: 20,
+                        scatterednum: 18,
                         wholeUnit: "箱",
-                        unit: "袋",
-                        lastStorageTime: new Date().getTime()
+                        unit: "袋"
                     })
                     .end(function (err, res) {
                         should.not.exists(err);
@@ -38,7 +39,7 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                     });
 
             });
-        }*/
+        }
 
         it.skip("获取商品", function (done) {
             request.get(testrooturl + '/api/v1/supermarket/goodlist.json')
@@ -99,7 +100,25 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
 
         });
 
-        it("修改批发单应支付金额", function (done) {
+        it.skip("添加批发单商品信息", function (done) {
+            request.post(testrooturl + '/api/v1/supermarket/addwholesaledetails.json')
+                .send({
+                    wholesalid:1,
+                    goodId: 1,
+                    wholenum:10,
+                    scatterednum:0
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
+
+        });
+
+        it.skip("修改批发单应支付金额", function (done) {
 
             request.post(testrooturl + '/api/v1/supermarket/updpaymenttotalamount.json')
                 .send({
