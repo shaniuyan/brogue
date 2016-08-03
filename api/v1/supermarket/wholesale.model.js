@@ -184,7 +184,59 @@ exports.addWholesaleDetailsAsync = function (opts) {
  * @param opts
  */
 exports.deleteWholesaleDetailsAsync = function (opts) {
+    var results = {error_code: -1, error_msg: "error"};
+    var bbPromise = opts.mysqldbs.bbpromise;
+    var join = bbPromise.join;
+    var mysqlPool = opts.mysqldbs.mysqlPool;
+    var findWhere = [
+        "wholesalesId",
+        opts.wholesaledetail.wholesalid
+    ];
+    return  mysqlPool.queryAsync("select * from wholesales where ?? = ?", findWhere).then(function(result){
+        if (!result.length || result[0].paymentstatus == 3) {
+            results.error_code = 1001;
+            results.error_msg = "该批发单失效，无法继续添加批发商品";
+            return results;
+        }
 
+        var findDetailWhere = [
+            "wholesalesdetailId",
+            opts.wholesaledetail.wholesalesdetailId
+        ];
+        //删除明细信息，对应的商铺数量需要发生变化
+        return mysqlPool.queryAsync("select * from wholesalesdetail where ?? = ?", findDetailWhere).then(function(result){
+            if (!result.length) {
+                results.error_code = 1001;
+                results.error_msg = "该信息不存在，或已经被删除！";
+                return results;
+            }
+            var wholesalesdetail = result[0];
+
+            var setGood = [
+                "wholenum",
+                "wholenum",
+                wholesalesdetail.wholenum,
+                "scatterednum",
+                "scatterednum",
+                wholesalesdetail.scatterednum,
+                "goodId",
+                wholesalesdetail.goodId
+            ];
+            var rebackGoodNumAsync = mysqlPool.queryAsync("update goods set ??=??+?,??=??+? where ??=?",setGood);
+            var deleteWholesalesDetailAsync = mysqlPool.queryAsync("delete from wholesalesdetail where ?? = ?", findDetailWhere);
+
+            return join(rebackGoodNumAsync,deleteWholesalesDetailAsync,function(rebackGoodNum,deleteWholesalesDetail){
+                return {
+                    rebackGoodNum:rebackGoodNum,
+                    deleteWholesalesDetail:deleteWholesalesDetail
+                }
+            }).then(function(result){
+                results.error_code = 0;
+                results.error_msg = "删除批发商品成功！";
+                return results;
+            });
+        });
+    });
 };
 
 /**

@@ -21,7 +21,7 @@ router.get("/supermarket/marketquotient.json", apiV1.marketquotient.marketQuotie
 
 router.post("/supermarket/addwholesale.json", apiV1.wholesale.addWholesale);
 router.post("/supermarket/addwholesaledetails.json", apiV1.wholesale.addWholesaleDetails);
-
+router.post("/supermarket/deletewholesaledetails.json", apiV1.wholesale.deleteWholesaleDetails);
 router.post("/supermarket/updpaymenttotalamount.json", apiV1.wholesale.updPaymentTotalAmount);
 
 router.get("/supermarket/lastwholesalenum.json", apiV1.wholesale.getLastWholesaleNum);

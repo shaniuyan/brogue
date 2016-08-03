@@ -118,6 +118,22 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
 
         });
 
+        it("删除批发单商品信息", function (done) {
+            request.post(testrooturl + '/api/v1/supermarket/deletewholesaledetails.json')
+                .send({
+                    wholesalid:1,
+                    wholesalesdetailId: 2
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
+
+        });
+
         it.skip("修改批发单应支付金额", function (done) {
 
             request.post(testrooturl + '/api/v1/supermarket/updpaymenttotalamount.json')
