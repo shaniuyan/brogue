@@ -1,5 +1,6 @@
 {
   "/api/v1/supermarket/addgood.json":"good.addGood",
   "/api/v1/supermarket/goodlist.json":"good.goodList",
-  "/api/v1/supermarket/addwholesale.json":"wholesale.addWholesale"
+  "/api/v1/supermarket/addwholesale.json":"wholesale.addWholesale",
+  "/api/v1/supermarket/addmarketquotient.json":"marketquotient.addMarketQuotient"
 }

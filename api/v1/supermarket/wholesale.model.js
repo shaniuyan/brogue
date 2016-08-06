@@ -222,6 +222,7 @@ exports.deleteWholesaleDetailsAsync = function (opts) {
                 "goodId",
                 wholesalesdetail.goodId
             ];
+            //更新库存数量
             var rebackGoodNumAsync = mysqlPool.queryAsync("update goods set ??=??+?,??=??+? where ??=?",setGood);
             var deleteWholesalesDetailAsync = mysqlPool.queryAsync("delete from wholesalesdetail where ?? = ?", findDetailWhere);
 

@@ -50,8 +50,11 @@ exports.validatorIntercept = function (req, res, next) {
         if (errors) {
             var body = {};
             body.error_code = 20000;
-            body.error_msg = errors;
+            body.error_msg = '录入错误';
+            body.response_params = errors;
+            console.log(JSON.stringify(body));
             res.status(200).json(body);
+
             return;
         }
     }
