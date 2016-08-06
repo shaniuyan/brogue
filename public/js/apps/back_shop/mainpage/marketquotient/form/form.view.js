@@ -1,7 +1,7 @@
 ﻿/**
  * Created by wk on 2016/6/21.
  */
-define(["app", "marionette", "tpl!apps/back_shop/mainpage/marketquotient/form/form.html","backbone.syphon"],
+define(["app", "marionette", "tpl!apps/back_shop/mainpage/marketquotient/form/form.html","bootstrap","bootstrapvalidator","backbone.syphon"],
     function (BrogueApplication, Marionette, formTpl) {
         BrogueApplication.module("BrogueApp.BackShop.MainPage.MarketQuotientForm", function (GoodList, BrogueApplication, Backbone, Marionette, $, _) {
             GoodList.Form = Marionette.ItemView.extend({
@@ -26,7 +26,24 @@ define(["app", "marionette", "tpl!apps/back_shop/mainpage/marketquotient/form/fo
                     }
                 },
                 onShow: function () {
-
+                    $('#thresholdForm')
+                        .bootstrapValidator({
+                            message: 'This value is not valid',
+                            feedbackIcons: {
+                                valid: 'glyphicon glyphicon-ok',
+                                invalid: 'glyphicon glyphicon-remove',
+                                validating: 'glyphicon glyphicon-refresh'
+                            },
+                            fields: {
+                                'companyName': {
+                                    validators: {
+                                        notEmpty: {
+                                            message: '请输入公司名称'
+                                        }
+                                    }
+                                }
+                            }
+                        });
                 }
             });
         });
