@@ -56,3 +56,20 @@ exports.addGood = function (req, res, next) {
         res.status(200).json(body);
     });
 };
+
+exports.unboxing = function(req,res,next){
+    var param = _.extend(req.query, req.body);
+    var body = {};
+    body.response_params = {};
+    var opts = {good: {}, configs: {}};
+    opts.configs = req.configs;
+    opts.mysqldbs = req.mysqldbs;
+    opts.good.goodId = param.goodId;
+    opts.good.wholenum = param.wholenum;
+    opts.good.wholescatterednum = param.wholescatterednum;//整件默认数量
+    return goodModel.unboxingAsync(opts).then(function(result){
+        body.error_code = result.error_code;
+        body.error_msg = result.error_msg;
+        res.status(200).json(body);
+    });
+};

@@ -55,3 +55,53 @@ exports.parseInsertSqlObj = function(obj,tableName){
         insertInfos:insertInfos
     };
 };
+
+exports.parseFindSqlObj = function(obj,tableName){
+    var findSql = "select * from "+tableName+" where {where}";
+    var keys = _.keys(obj.where);
+    var wheres = [];
+    _.each(keys,function(key){
+        wheres.push(key+"="+obj[key]);
+    });
+    obj.relationship = obj.relationship || "and";
+    findSql = findSql.replace("{where}",wheres.join(" "+obj.relationship+" "));
+    return findSql;
+};
+
+exports.parseUpdateSqlObj = function(obj,tableName){
+    var updateSql = "update "+tableName+" set {set} where {where}";
+
+    var setkeys = _.keys(obj.set);
+    var sets = [];
+    _.each(setkeys,function(key){
+        obj.set[key].relationship=obj.set[key].relationship||'=';
+        switch (obj.set[key].relationship){
+            case "=":
+                sets.push(key+"="+obj.set[key].value);
+                break;
+            case "+":
+                sets.push(key+"="+key+"+"+obj.set[key].value);
+                break;
+            case "-":
+                sets.push(key+"="+key+"-"+obj.set[key].value);
+                break;
+            case "*":
+                sets.push(key+"="+key+"*"+obj.set[key].value);
+                break;
+            case "/":
+                sets.push(key+"="+key+"/"+obj.set[key].value);
+                break;
+        }
+
+    });
+
+    var keys = _.keys(obj.where);
+    var wheres = [];
+    _.each(keys,function(key){
+        wheres.push(key+"="+obj.where[key]);
+    });
+    obj.relationship = obj.relationship || "and";
+    updateSql = updateSql.replace("{set}",wheres.join(",")).replace("{where}",wheres.join(" "+obj.relationship+" "));
+    return updateSql;
+
+};

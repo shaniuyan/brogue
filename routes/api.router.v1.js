@@ -12,8 +12,10 @@ router.get("/customer/userlistcs.json", apiV1.customer.userTestList);
 
 router.get("/supermarket/businessmodules.json", apiV1.supermarket.businessModules);
 
-
+//添加商品操作
 router.post("/supermarket/addgood.json", apiV1.goods.addGood);
+//商铺拆箱操作
+router.post("/supermarket/unboxing.json", apiV1.goods.unboxing);
 router.get("/supermarket/goodlist.json", apiV1.goods.goodList);
 
 router.post("/supermarket/addmarketquotient.json", apiV1.marketquotient.addMarketQuotient);

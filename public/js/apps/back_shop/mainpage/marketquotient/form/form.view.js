@@ -35,10 +35,24 @@ define(["app", "marionette", "tpl!apps/back_shop/mainpage/marketquotient/form/fo
                                 validating: 'glyphicon glyphicon-refresh'
                             },
                             fields: {
-                                'companyName': {
+                                companyName: {
                                     validators: {
                                         notEmpty: {
-                                            message: '请输入公司名称'
+                                            message: '销路商名称不能为空'
+                                        }
+                                    }
+                                },
+                                linkMan: {
+                                    validators: {
+                                        notEmpty: {
+                                            message: '联系人不能为空'
+                                        }
+                                    }
+                                },
+                                phone: {
+                                    validators: {
+                                        notEmpty: {
+                                            message: '手机号码不能为空'
                                         }
                                     }
                                 }

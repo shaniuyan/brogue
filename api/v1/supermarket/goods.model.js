@@ -41,23 +41,23 @@ exports.addGoodAsync = function (opts) {
     var mysqlPool = opts.mysqldbs.mysqlPool;
 
     var insertObj = {
-        goodCode:opts.good.goodCode,
-        goodName:opts.good.goodName,
-        brand:opts.good.brand,
-        model:opts.good.model,
-        purchasePrice:opts.good.purchasePrice,
-        price:opts.good.price,
-        tradePrice:opts.good.tradePrice,
-        wholenum:opts.good.wholenum,
-        scatterednum:opts.good.scatterednum,
-        wholeUnit:opts.good.wholeUnit,
-        unit:opts.good.unit,
-        goodBar:opts.good.goodBar,
-        lastStorageTime:new Date().getTime()
+        goodCode: opts.good.goodCode,
+        goodName: opts.good.goodName,
+        brand: opts.good.brand,
+        model: opts.good.model,
+        purchasePrice: opts.good.purchasePrice,
+        price: opts.good.price,
+        tradePrice: opts.good.tradePrice,
+        wholenum: opts.good.wholenum,
+        scatterednum: opts.good.scatterednum,
+        wholeUnit: opts.good.wholeUnit,
+        unit: opts.good.unit,
+        goodBar: opts.good.goodBar,
+        lastStorageTime: new Date().getTime()
     };
 
     var tableName = "goods";
-    var sqlObj = paramparse.parseInsertSqlObj(insertObj,tableName);
+    var sqlObj = paramparse.parseInsertSqlObj(insertObj, tableName);
     return mysqlPool.queryAsync(sqlObj.sqlStr, sqlObj.insertInfos).then(function (result) {
         results.error_code = 0;
         results.error_msg = "添加成功";
@@ -65,3 +65,52 @@ exports.addGoodAsync = function (opts) {
     });
 };
 
+/**
+ * 拆箱：针对商品零售
+ * @param opts
+ */
+exports.unboxingAsync = function (opts) {
+    var results = {error_code: -1, error_msg: "error"};
+    var bbPromise = opts.mysqldbs.bbpromise;
+    var mysqlPool = opts.mysqldbs.mysqlPool;
+
+    var findGood = {
+        where: {goodId: opts.good.goodId}
+    };
+    var findSqlStr = paramparse.parseFindSqlObj(findGood, "goods");
+    return mysqlPool.queryAsync(findSqlStr).then(function (result) {
+        if (!result.length) {
+            results.error_code = 1001;
+            results.error_msg = "您要零卖的商品不存在!";
+            return results;
+        }
+        if (result[0].wholenum < opts.good.wholenum) {
+            results.error_code = 1001;
+            results.error_msg = "您要零卖的商品库存不足，现在剩余" + result[0].wholenum + result[0].wholeUnit + "!";
+            return results;
+        }
+        //计算整拆后库存整 零数量
+        var addScatterednum = opts.good.wholenum * opts.good.wholescatterednum;
+        var updObj = {
+            set: {
+                wholenum: {
+                    relationship: "-",
+                    value: opts.good.wholenum
+                },
+                scatterednum: {
+                    relationship: "+",
+                    value: addScatterednum
+                }
+            },
+            where: {
+                goodId: opts.good.goodId
+            }
+        };
+        var updateSql = paramparse.parseUpdateSqlObj(updObj, "goods");
+        return mysqlPool.queryAsync(updateSql).then(function (result) {
+            results.error_code = 0;
+            results.error_msg = "拆箱成功！";
+            return results;
+        });
+    });
+};
