@@ -118,7 +118,7 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
 
         });
 
-        it("删除批发单商品信息", function (done) {
+        it.skip("删除批发单商品信息", function (done) {
             request.post(testrooturl + '/api/v1/supermarket/deletewholesaledetails.json')
                 .send({
                     wholesalid:1,
@@ -156,6 +156,40 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
 
             request.get(testrooturl + '/api/v1/supermarket/lastwholesalenum.json')
                 .send({
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
+
+        });
+
+        it.skip("拆箱", function (done) {
+
+            request.post(testrooturl + '/api/v1/supermarket/unboxing.json')
+                .send({
+                    goodId:1,
+                    wholenum:1,
+                    wholescatterednum:300
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
+
+        });
+        it("装箱", function (done) {
+
+            request.post(testrooturl + '/api/v1/supermarket/packing.json')
+                .send({
+                    goodId:2,
+                    wholenum:4
                 })
                 .end(function (err, res) {
                     should.not.exists(err);

@@ -50,13 +50,20 @@ exports.addGood = function (req, res, next) {
 
     opts.good.wholeUnit = param.wholeUnit;
     opts.good.unit = param.unit;
+    opts.good.conversionunit = param.conversionunit;
     return goodModel.addGoodAsync(opts).then(function (result) {
         body.error_code = result.error_code;
         body.error_msg = result.error_msg;
         res.status(200).json(body);
     });
 };
-
+/**
+ * 拆箱
+ * @param req
+ * @param res
+ * @param next
+ * @returns {*}
+ */
 exports.unboxing = function(req,res,next){
     var param = _.extend(req.query, req.body);
     var body = {};
@@ -68,6 +75,27 @@ exports.unboxing = function(req,res,next){
     opts.good.wholenum = param.wholenum;
     opts.good.wholescatterednum = param.wholescatterednum;//整件默认数量
     return goodModel.unboxingAsync(opts).then(function(result){
+        body.error_code = result.error_code;
+        body.error_msg = result.error_msg;
+        res.status(200).json(body);
+    });
+};
+/**
+ * 装箱
+ * @param req
+ * @param res
+ * @param next
+ */
+exports.packing = function(req,res,next){
+    var param = _.extend(req.query, req.body);
+    var body = {};
+    body.response_params = {};
+    var opts = {good: {}, configs: {}};
+    opts.configs = req.configs;
+    opts.mysqldbs = req.mysqldbs;
+    opts.good.goodId = param.goodId;
+    opts.good.wholenum = param.wholenum;
+    return goodModel.packingAsync(opts).then(function(result){
         body.error_code = result.error_code;
         body.error_msg = result.error_msg;
         res.status(200).json(body);

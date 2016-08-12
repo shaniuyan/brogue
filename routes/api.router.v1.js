@@ -16,6 +16,9 @@ router.get("/supermarket/businessmodules.json", apiV1.supermarket.businessModule
 router.post("/supermarket/addgood.json", apiV1.goods.addGood);
 //商铺拆箱操作
 router.post("/supermarket/unboxing.json", apiV1.goods.unboxing);
+
+router.post("/supermarket/packing.json", apiV1.goods.packing);
+
 router.get("/supermarket/goodlist.json", apiV1.goods.goodList);
 
 router.post("/supermarket/addmarketquotient.json", apiV1.marketquotient.addMarketQuotient);

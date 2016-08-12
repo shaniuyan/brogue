@@ -61,7 +61,7 @@ exports.parseFindSqlObj = function(obj,tableName){
     var keys = _.keys(obj.where);
     var wheres = [];
     _.each(keys,function(key){
-        wheres.push(key+"="+obj[key]);
+        wheres.push(key+"="+obj.where[key]);
     });
     obj.relationship = obj.relationship || "and";
     findSql = findSql.replace("{where}",wheres.join(" "+obj.relationship+" "));
@@ -101,7 +101,7 @@ exports.parseUpdateSqlObj = function(obj,tableName){
         wheres.push(key+"="+obj.where[key]);
     });
     obj.relationship = obj.relationship || "and";
-    updateSql = updateSql.replace("{set}",wheres.join(",")).replace("{where}",wheres.join(" "+obj.relationship+" "));
+    updateSql = updateSql.replace("{set}",sets.join(",")).replace("{where}",wheres.join(" "+obj.relationship+" "));
     return updateSql;
 
 };
