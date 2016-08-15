@@ -184,7 +184,7 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
-        it("装箱", function (done) {
+        it.skip("装箱", function (done) {
 
             request.post(testrooturl + '/api/v1/supermarket/packing.json')
                 .send({
