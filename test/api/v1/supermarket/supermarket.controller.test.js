@@ -188,8 +188,8 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
 
             request.post(testrooturl + '/api/v1/supermarket/packing.json')
                 .send({
-                    goodId:2,
-                    wholenum:4
+                    goodId:1,
+                    wholenum:1
                 })
                 .end(function (err, res) {
                     should.not.exists(err);
