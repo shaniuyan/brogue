@@ -3,7 +3,7 @@
  */
 
 var paramparse = require("../../common/paramparse");
-
+var moment = require("moment");
 /**
  * 获取商品列表
  * @param opts
@@ -52,7 +52,7 @@ exports.addGoodAsync = function (opts) {
         scatterednum: opts.good.scatterednum,
         wholeUnit: opts.good.wholeUnit,
         unit: opts.good.unit,
-        conversionunit:opts.good.conversionunit,
+        conversionunit: opts.good.conversionunit,
         goodBar: opts.good.goodBar,
         lastStorageTime: new Date().getTime()
     };
@@ -91,7 +91,7 @@ exports.unboxingAsync = function (opts) {
             return results;
         }
 
-        if(opts.good.wholescatterednum != result[0].conversionunit){
+        if (opts.good.wholescatterednum != result[0].conversionunit) {
             results.error_code = 1001;
             results.error_msg = "不能随意更改换算单位!";
             return results;
@@ -124,7 +124,7 @@ exports.unboxingAsync = function (opts) {
 };
 
 
-exports.packingAsync = function(opts){
+exports.packingAsync = function (opts) {
     var results = {error_code: -1, error_msg: "error"};
     var bbPromise = opts.mysqldbs.bbpromise;
     var mysqlPool = opts.mysqldbs.mysqlPool;
@@ -134,16 +134,16 @@ exports.packingAsync = function(opts){
     };
     var findSqlStr = paramparse.parseFindSqlObj(findGood, "goods");
 
-    return mysqlPool.queryAsync(findSqlStr).then(function(result){
+    return mysqlPool.queryAsync(findSqlStr).then(function (result) {
         if (!result.length) {
             results.error_code = 1001;
             results.error_msg = "您要零卖的商品不存在!";
             return results;
         }
-        var maxPackiingNum = Math.floor(result[0].scatterednum/result[0].conversionunit);
-        if(opts.good.wholenum>maxPackiingNum){
+        var maxPackiingNum = Math.floor(result[0].scatterednum / result[0].conversionunit);
+        if (opts.good.wholenum > maxPackiingNum) {
             results.error_code = 1001;
-            results.error_msg = "当前系统中存在"+result[0].scatterednum+result[0].unit+",最多可以打包"+maxPackiingNum+result[0].wholeUnit+"!";
+            results.error_msg = "当前系统中存在" + result[0].scatterednum + result[0].unit + ",最多可以打包" + maxPackiingNum + result[0].wholeUnit + "!";
             return results;
         }
         //计算整拆后库存整 零数量
@@ -167,6 +167,87 @@ exports.packingAsync = function(opts){
         return mysqlPool.queryAsync(updateSql).then(function (result) {
             results.error_code = 0;
             results.error_msg = "打包成功！";
+            return results;
+        });
+    });
+};
+
+/**
+ * 更改商品数量
+ * @param opts
+ */
+exports.updGoodNumAsync = function (opts) {
+    var results = {error_code: -1, error_msg: "error"};
+    var bbPromise = opts.mysqldbs.bbpromise;
+    var join = bbPromise.join;
+    var mysqlPool = opts.mysqldbs.mysqlPool;
+    var findGood = {
+        where: {goodId: opts.good.goodId}
+    };
+    var findSqlStr = paramparse.parseFindSqlObj(findGood, "goods");
+    return mysqlPool.queryAsync(findSqlStr).then(function (result) {
+        if (!result.length) {
+            results.error_code = 1001;
+            results.error_msg = "您要修改的商品信息不存在，或已经被删除!";
+            return results;
+        }
+        var good = result[0];
+        //记录商品变动记录
+        var recordObj = {
+            goodId: good.goodId,
+            goodCode: good.goodCode,
+            goodName: good.goodName,
+            brand: good.brand,
+            model: good.model,
+            purchasePrice: opts.good.purchasePrice-good.purchasePrice,
+            price: opts.good.price-good.price,
+            tradePrice: opts.good.tradePrice-good.tradePrice,
+            wholenum: opts.good.wholenum-good.wholenum,
+            wholeUnit: good.wholeUnit,
+            conversionunit: good.conversionunit,
+            scatterednum: opts.good.scatterednum-good.scatterednum,
+            unit: good.unit,
+            goodBar: good.goodBar,
+            operateTime: new Date().getTime(),
+        };
+        var tableName = "goods_record";
+        var sqlObj = paramparse.parseInsertSqlObj(recordObj, tableName);
+        //商品信息变动
+        var updObj = {
+            set: {
+                wholenum: {
+                    relationship: "=",
+                    value: opts.good.wholenum
+                },
+                scatterednum: {
+                    relationship: "=",
+                    value: opts.good.scatterednum
+                },
+                purchasePrice: {
+                    relationship: "=",
+                    value: opts.good.purchasePrice
+                },
+                tradePrice: {
+                    relationship: "=",
+                    value: opts.good.tradePrice
+                },
+                price: {
+                    relationship: "=",
+                    value: opts.good.price
+                }
+            },
+            where: {
+                goodId: opts.good.goodId
+            }
+        };
+        var updateSql = paramparse.parseUpdateSqlObj(updObj, "goods");
+        var insertRecordAsync = mysqlPool.queryAsync(sqlObj.sqlStr, sqlObj.insertInfos);
+        var updateGoodAsync = mysqlPool.queryAsync(updateSql);
+        return join(insertRecordAsync,updateGoodAsync,function(insertRecord,updateGood){
+            return {insertRecord:insertRecord,updateGood:updateGood};
+        }).then(function(result){
+            results.error_code = 0;
+            results.error_msg = "更新商品信息成功！";
             return results;
         });
     });

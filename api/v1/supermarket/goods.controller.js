@@ -101,3 +101,24 @@ exports.packing = function(req,res,next){
         res.status(200).json(body);
     });
 };
+
+
+exports.updGoodNum = function (req, res, next) {
+    var param = _.extend(req.query, req.body);
+    var body = {};
+    body.response_params = {};
+    var opts = {good: {}, configs: {}};
+    opts.configs = req.configs;
+    opts.mysqldbs = req.mysqldbs;
+    opts.good.goodId = param.goodId;
+    opts.good.wholenum = param.wholenum;                     //整件数量  --
+    opts.good.scatterednum = param.scatterednum;            //零卖数量  --
+    opts.good.purchasePrice = param.purchasePrice;   //进价
+    opts.good.price = param.price;                     //售价
+    opts.good.tradePrice = param.tradePrice;          //批发价   --
+    return goodModel.updGoodNumAsync(opts).then(function (result) {
+        body.error_code = result.error_code;
+        body.error_msg = result.error_msg;
+        res.status(200).json(body);
+    });
+};

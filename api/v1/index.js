@@ -10,3 +10,5 @@ exports.goods = require('./supermarket/goods.controller');
 exports.marketquotient = require('./supermarket/marketquotient.controller');
 
 exports.wholesale = require('./supermarket/wholesale.controller');
+
+exports.purchasingmanagement = require('./supermarket/purchasingmanagement.controller');

@@ -200,5 +200,61 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
+
+        it.skip("更新商品整件数量、零件数量、进价、售价、批发价信息", function (done) {
+            request.post(testrooturl + '/api/v1/supermarket/updgoodnum.json')
+                .send({
+                    goodId:1,
+                    purchasePrice: 52,
+                    price: 54.00,
+                    tradePrice:53,
+                    wholenum: 1,
+                    scatterednum: 1
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
+
+        });
+
+        for(var i=0;i<=120;i++){
+            it.skip("添加收货单", function (done) {
+                request.post(testrooturl + '/api/v1/supermarket/addpurchasingmanagement.json')
+                    .send({
+                        totalprice:0,
+                        alreadypaidmoney:0,
+                        purchaseperson: '王凯',
+                        purchasephone:'13546710245'
+                    })
+                    .end(function (err, res) {
+                        should.not.exists(err);
+                        console.log(res.status);
+                        console.log(res.body);
+                        res.body.should.have.property('error_code', 0);
+                        done();
+                    });
+
+            });
+        }
+
+        it("获取售货单列表", function (done) {
+            request.get(testrooturl + '/api/v1/supermarket/purchasingmanagementlist.json')
+                .send({
+                    pageIndex:2,
+                    pageSize:20
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
+
+        });
     });
 });
