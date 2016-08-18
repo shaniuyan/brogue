@@ -105,3 +105,29 @@ exports.parseUpdateSqlObj = function(obj,tableName){
     return updateSql;
 
 };
+
+exports.parseFindSqlObjLimit = function(obj,tableName,beginRowIndex,pageSize){
+    obj=obj||{where:{1:1}};
+    var findSql = "select * from "+tableName+" where {where} limit {limit}";
+    var keys = _.keys(obj.where);
+    var wheres = [];
+    _.each(keys,function(key){
+        wheres.push(key+"="+obj.where[key]);
+    });
+    obj.relationship = obj.relationship || "and";
+    findSql = findSql.replace("{where}",wheres.join(" "+obj.relationship+" ")).replace("{limit}",beginRowIndex+","+pageSize);
+    return findSql;
+};
+
+exports.parseFindSqlObjTotal = function(obj,tableName){
+    obj=obj||{where:{1:1}};
+    var findSql = "select count(*) total from "+tableName+" where {where}";
+    var keys = _.keys(obj.where);
+    var wheres = [];
+    _.each(keys,function(key){
+        wheres.push(key+"="+obj.where[key]);
+    });
+    obj.relationship = obj.relationship || "and";
+    findSql = findSql.replace("{where}",wheres.join(" "+obj.relationship+" "));
+    return findSql;
+};

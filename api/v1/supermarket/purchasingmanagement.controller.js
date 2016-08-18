@@ -13,10 +13,12 @@ exports.purchasingManagementList = function (req, res, next) {
     opts.mysqldbs = req.mysqldbs;
     opts.page.pageIndex = param.pageIndex;
     opts.page.pageSize = param.pageSize;
+    opts.page.searchCount = param.searchCount;
     return purchasingManagementModel.purchasingManagementListAsync(opts).then(function (result) {
         body.error_code = result.error_code;
         body.error_msg = result.error_msg;
-        body.response_params = result.data;
+        body.response_params.data = result.data;
+        body.response_params.total = result.total;
         res.status(200).json(body);
     });
 };
