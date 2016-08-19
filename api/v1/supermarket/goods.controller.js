@@ -23,7 +23,8 @@ exports.goodList = function (req, res, next) {
     return goodModel.goodListAsync(opts).then(function (result) {
         body.error_code = result.error_code;
         body.error_msg = result.error_msg;
-        body.response_params = result.data;
+        body.response_params.data = result.data;
+        body.response_params.total = result.total;
         res.status(200).json(body);
     });
 };

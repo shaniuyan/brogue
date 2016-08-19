@@ -12,6 +12,7 @@ var moment = require("moment");
 exports.goodListAsync = function (opts) {
     var results = {error_code: -1, error_msg: "error"};
     var bbPromise = opts.mysqldbs.bbpromise;
+    var join = bbPromise.join;
     var mysqlPool = opts.mysqldbs.mysqlPool;
     var pageIndex = 0, beginRowIndex = 0, endRowIndex = 0, pageSize = opts.configs.sysconfig.customer.pageSize;
     if (!isNaN(opts.page.pageIndex)) {
@@ -21,10 +22,22 @@ exports.goodListAsync = function (opts) {
         pageSize = parseInt(opts.page.pageSize);
     }
     beginRowIndex = (pageIndex - 1) * pageSize;
-    return mysqlPool.queryAsync("select * from goods limit ?,?", [beginRowIndex, pageSize]).then(function (result) {
+
+    var findCountAsync = bbPromise.resolve();
+    if(!opts.page.searchCount){
+        var findSqlStr = paramparse.parseFindSqlObjTotal(null,"goods");
+        findCountAsync = mysqlPool.queryAsync(findSqlStr);
+    }
+    var findDataStr = paramparse.parseFindSqlObjLimit(null,"goods",beginRowIndex,pageSize);
+    var findDataAsync = mysqlPool.queryAsync(findDataStr);
+
+    return join(findCountAsync,findDataAsync,function(total,data){
+        return {total:total[0].total,data:data}
+    }).then(function(result){
         results.error_code = 0;
         results.error_msg = "获取商品列表成功！";
-        results.data = result;
+        results.data = result.data;
+        results.total = result.total;
         return results;
     });
 };
