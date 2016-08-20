@@ -35,7 +35,7 @@ router.post("/supermarket/updpaymenttotalamount.json", apiV1.wholesale.updPaymen
 
 router.get("/supermarket/purchasingmanagementlist.json", apiV1.purchasingmanagement.purchasingManagementList);
 router.post("/supermarket/addpurchasingmanagement.json", apiV1.purchasingmanagement.addPurchasingManagement);
-
+router.post("/supermarket/settlepurchasingmanagement.json", apiV1.purchasingmanagement.settlePurchasingManagement);
 
 
 module.exports = router;

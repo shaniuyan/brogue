@@ -71,6 +71,50 @@ exports.addPurchasingManagementAsync = function (opts) {
     });
 };
 
+exports.settlePurchasingManagementAsync = function (opts) {
+    var results = {error_code: -1, error_msg: "error"};
+    var bbPromise = opts.mysqldbs.bbpromise;
+    var join = bbPromise.join;
+    var mysqlPool = opts.mysqldbs.mysqlPool;
+    var findPm = {
+        where: {pmId: opts.purchasingManagement.pmId}
+    };
+    var tableName = "purchasing_management";
+    var findSqlStr = paramparse.parseFindSqlObj(findPm, tableName);
+    return mysqlPool.queryAsync(findSqlStr).then(function (result) {
+        if (!result.length) {
+            results.error_code = 1001;
+            results.error_msg = "该售货单不存在!";
+            return results;
+        }
+        var good = result[0];
+        if (good.paystatus == 3) {
+            results.error_code = 1001;
+            results.error_msg = "该售货单已经结清!";
+            return results;
+        }
+
+        //商品信息变动
+        var updObj = {
+            set: {
+                paystatus: {
+                    relationship: "=",
+                    value: opts.purchasingManagement.paystatus
+                }
+            },
+            where: {
+                pmId:opts.purchasingManagement.pmId
+            }
+        };
+        var updateSql = paramparse.parseUpdateSqlObj(updObj, tableName);
+        // var insertRecordAsync = mysqlPool.queryAsync(sqlObj.sqlStr, sqlObj.insertInfos);
+        return mysqlPool.queryAsync(updateSql).then(function(result){
+            results.error_code = 0;
+            results.error_msg = "账单结清操作成功！";
+            return results;
+        });
+    });
+};
 
 var getNextPurchasingManagementAsync = exports.getNextPurchasingManagementAsync = function (opts) {
     //select max(wholesalenum) phcode from brogue_db.wholesales;

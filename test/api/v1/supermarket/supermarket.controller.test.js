@@ -256,5 +256,20 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
+        it("结清账单", function (done) {
+            request.post(testrooturl + '/api/v1/supermarket/settlepurchasingmanagement.json')
+                .send({
+                    pmId:1
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
+
+        });
+
     });
 });
