@@ -13,7 +13,7 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
     });
     describe('test all goods controller api ', function () {
         for (var i = 0; i <= 100; i++) {
-            it("添加商品", function (done) {
+            it.skip("添加商品", function (done) {
 
                 request.post(testrooturl + '/api/v1/supermarket/addgood.json')
                     .send({
