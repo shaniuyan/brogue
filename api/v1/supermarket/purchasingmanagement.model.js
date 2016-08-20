@@ -71,6 +71,133 @@ exports.addPurchasingManagementAsync = function (opts) {
     });
 };
 
+exports.addPurchasingGoodsAsync = function(opts){
+    var results = {error_code: -1, error_msg: "error"};
+    var bbPromise = opts.mysqldbs.bbpromise;
+    var join = bbPromise.join;
+    var mysqlPool = opts.mysqldbs.mysqlPool;
+    var findPm = {
+        where: {pmId: opts.purchasingManagement.pmId}
+    };
+    var findGood = {
+        where: {goodId: opts.purchasingManagement.goodId}
+    };
+    var tableName = "purchasing_management";
+    var findSqlStr = paramparse.parseFindSqlObj(findPm, tableName);
+    var findGoodStr = paramparse.parseFindSqlObj(findGood,"goods");
+
+    var findGoodAsync = mysqlPool.queryAsync(findGoodStr);
+    var findPurchasingManagementAsync = mysqlPool.queryAsync(findSqlStr);
+
+    return join(findGoodAsync,findPurchasingManagementAsync,function(good,purchasing){
+        return {good:good,purchasing:purchasing};
+    }).then(function(result){
+        if (!result.purchasing.length) {
+            results.error_code = 1001;
+            results.error_msg = "该售货单不存在!";
+            return results;
+        }
+        var purchasingmanagement = result.purchasing[0];
+        if (purchasingmanagement.paystatus == 3) {
+            results.error_code = 1001;
+            results.error_msg = "该售货单已经结清!";
+            return results;
+        }
+        if (!result.good.length) {
+            results.error_code = 1001;
+            results.error_msg = "该商品不存在!";
+            return results;
+        }
+        if(opts.purchasingManagement.wholenum == 0 && opts.purchasingManagement.scatterednum == 0){
+            results.error_code = 1001;
+            results.error_msg = "请输入要卖出商品的正确数量";
+            return results;
+        }
+        var good = result.good[0];
+        if(opts.purchasingManagement.wholenum>good.wholenum){
+            results.error_code = 1001;
+            results.error_msg = "库存整件数量小于库存整件数量，请调整整件数量后批发！";
+            return results;
+        }
+
+        if(opts.purchasingManagement.scatterednum>good.scatterednum){
+            results.error_code = 1001;
+            results.error_msg = "库存零件数量小于库存零件数量，请调整零件数量后批发！";
+            return results;
+        }
+        var insertObj = {
+            pmId: opts.purchasingManagement.pmId,
+            goodId:good.goodId,
+            goodCode: good.goodCode,
+            goodName: good.goodName,
+            brand: good.brand,
+            model: good.model,
+            goodBar: good.goodBar,
+            purchasePrice:good.purchasePrice,
+            price: good.price,
+            tradePrice:good.tradePrice,
+            wholenum: opts.purchasingManagement.wholenum,
+            wholeUnit: good.wholeUnit,
+            scatterednum: opts.purchasingManagement.scatterednum,
+            unit: good.unit,
+            tradeTime:new Date().getTime()
+        };
+
+        var tableName = "purchasing_management_detail";
+        var sqlObj = paramparse.parseInsertSqlObj(insertObj,tableName);
+
+        //添加售货商品信息
+        var addPmDetailAsync = mysqlPool.queryAsync(sqlObj.sqlStr, sqlObj.insertInfos);
+        //更改商品数量
+        var updGoodNumObj = {
+            set: {
+                wholenum: {
+                    relationship: "-",
+                    value: opts.purchasingManagement.wholenum
+                },
+                scatterednum: {
+                    relationship: "-",
+                    value: opts.purchasingManagement.scatterednum
+                }
+            },
+            where: {
+                goodId:opts.purchasingManagement.goodId
+            }
+        };
+        var updateSql = paramparse.parseUpdateSqlObj(updGoodNumObj, "goods");
+        var updGoodNumAsync = mysqlPool.queryAsync(updateSql);
+
+
+        var goodPurchasePrice = (opts.purchasingManagement.wholenum*good.conversionunit+opts.purchasingManagement.scatterednum)*good.purchasePrice;
+        var updObj = {
+            set: {
+                totalprice:{
+                    relationship: "+",
+                    value: goodPurchasePrice
+                },
+                paystatus: {
+                    relationship: "=",
+                    value: 1
+                }
+            },
+            where: {
+                pmId:opts.purchasingManagement.pmId
+            }
+        };
+        var updateSql = paramparse.parseUpdateSqlObj(updObj, "purchasing_management");
+        //更新当前售货单为在售状态
+        var updPurchasingManagementAsync = mysqlPool.queryAsync(updateSql);
+
+        return join(addPmDetailAsync,updGoodNumAsync,updPurchasingManagementAsync,function(adddetail,goodNum,purchasingManagement){
+            return {adddetail:adddetail,goodNum:goodNum,purchasingManagement:purchasingManagement};
+        }).then(function(result){
+            results.error_code = 0;
+            results.error_msg = "添加售货商品成功！";
+            return results;
+        });
+    });
+};
+
 exports.settlePurchasingManagementAsync = function (opts) {
     var results = {error_code: -1, error_msg: "error"};
     var bbPromise = opts.mysqldbs.bbpromise;
@@ -87,8 +214,8 @@ exports.settlePurchasingManagementAsync = function (opts) {
             results.error_msg = "该售货单不存在!";
             return results;
         }
-        var good = result[0];
-        if (good.paystatus == 3) {
+        var purchasingmanagement = result[0];
+        if (purchasingmanagement.paystatus == 3) {
             results.error_code = 1001;
             results.error_msg = "该售货单已经结清!";
             return results;
@@ -100,6 +227,10 @@ exports.settlePurchasingManagementAsync = function (opts) {
                 paystatus: {
                     relationship: "=",
                     value: opts.purchasingManagement.paystatus
+                },
+                clearTime: {
+                    relationship: "=",
+                    value: new Date().getTime()
                 }
             },
             where: {

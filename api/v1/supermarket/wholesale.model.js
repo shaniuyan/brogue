@@ -121,13 +121,13 @@ exports.addWholesaleDetailsAsync = function (opts) {
             return results;
         }
         var good = result.good[0];
-        if(opts.wholesaledetail.wholenum>=good.wholenum){
+        if(opts.wholesaledetail.wholenum>good.wholenum){
             results.error_code = 1001;
             results.error_msg = "库存整件数量小于库存整件数量，请调整整件数量后批发！";
             return results;
         }
 
-        if(opts.wholesaledetail.scatterednum>=good.scatterednum){
+        if(opts.wholesaledetail.scatterednum>good.scatterednum){
             results.error_code = 1001;
             results.error_msg = "库存零件数量小于库存零件数量，请调整零件数量后批发！";
             return results;
