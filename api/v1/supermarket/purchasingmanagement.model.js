@@ -37,6 +37,29 @@ exports.purchasingManagementListAsync = function (opts) {
     });
 };
 
+exports.purchasingManagementDetailListAsync = function (opts) {
+    var results = {error_code: -1, error_msg: "error"};
+    var bbPromise = opts.mysqldbs.bbpromise;
+    var mysqlPool = opts.mysqldbs.mysqlPool;
+    var join = bbPromise.join;
+    var pageIndex = 0, beginRowIndex = 0, endRowIndex = 0, pageSize = opts.configs.sysconfig.customer.pageSize;
+    if (!isNaN(opts.page.pageIndex)) {
+        pageIndex = opts.page.pageIndex;
+    }
+    if (!isNaN(opts.page.pageSize)) {
+        pageSize = parseInt(opts.page.pageSize);
+    }
+    beginRowIndex = (pageIndex - 1) * pageSize;
+    var findObj = {where:{pmId:opts.purchasingManagement.pmId}};
+    var findDataStr = paramparse.parseFindSqlObjLimit(findObj,"purchasing_management_detail",beginRowIndex,pageSize);
+    return  mysqlPool.queryAsync(findDataStr).then(function(result){
+        results.error_code = 0;
+        results.error_msg = "获取售详情列表成功！";
+        results.data = result.data;
+        return results;
+    });
+};
+
 exports.addPurchasingManagementAsync = function (opts) {
     var results = {error_code: -1, error_msg: "error"};
     var bbPromise = opts.mysqldbs.bbpromise;
@@ -198,6 +221,48 @@ exports.addPurchasingGoodsAsync = function(opts){
     });
 };
 
+/**
+ * 更改售货单信息
+ * 已经付款金额
+ * 购买人姓名
+ * 购买人联系方式
+ * @param opts
+ */
+exports.updPurchasingManagementAsync = function(opts){
+
+};
+/**
+ * 更改价格
+ * @param opts
+ */
+exports.updPurchasingGoodPriceAsync = function(opts){
+
+};
+
+
+/**
+ * 退单
+ */
+exports.reBackPurchasingManagementAsync = function(opts){
+
+};
+
+
+/**
+ * 删除售货单信息
+ */
+exports.delPurchasingManagementAsync = function(opts){
+
+};
+
+/**
+ * 删除商品
+ * @param opts
+ */
+exports.delPurchasingGoodAsync = function(opts){
+
+};
+
 exports.settlePurchasingManagementAsync = function (opts) {
     var results = {error_code: -1, error_msg: "error"};
     var bbPromise = opts.mysqldbs.bbpromise;
@@ -242,6 +307,38 @@ exports.settlePurchasingManagementAsync = function (opts) {
         return mysqlPool.queryAsync(updateSql).then(function(result){
             results.error_code = 0;
             results.error_msg = "账单结清操作成功！";
+            return results;
+        });
+    });
+};
+
+var calcPurchasingManagementPriceAsync = exports.calcPurchasingManagementPriceAsync = function(opts){
+    var results = {error_code: -1, error_msg: "error"};
+    var bbPromise = opts.mysqldbs.bbpromise;
+    var mysqlPool = opts.mysqldbs.mysqlPool;
+    var join = bbPromise.join;
+    var findPurchasingManagementDetailObj = {
+        where:{pmId:opts.purchasingManagement.pmId},
+        fields:{
+            sumprice:"sum(price)"
+        }
+    };
+
+    var findSql = paramparse.parseFindFieldSqlObj(findPurchasingManagementDetailObj,"purchasing_management_detail");
+    return mysqlPool.queryAsync(findSql).then(function(result){
+        if (!result.length) {
+            results.error_code = 1001;
+            results.error_msg = "该售货单不存在售货信息!";
+            return results;
+        }
+        delete findPurchasingManagementDetailObj.fields;
+        findPurchasingManagementDetailObj.set = {
+            tradePrice:result[0].sumprice
+        };
+        var updSql = paramparse.parseUpdateSqlObj(findPurchasingManagementDetailObj,"purchasing_management");
+        return mysqlPool.queryAsync(updSql).then(function(result){
+            results.error_code = 0;
+            results.error_msg = "该收货单已经重新结算!";
             return results;
         });
     });

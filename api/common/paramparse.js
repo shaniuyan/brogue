@@ -57,6 +57,7 @@ exports.parseInsertSqlObj = function(obj,tableName){
 };
 
 exports.parseFindSqlObj = function(obj,tableName){
+    obj=obj||{where:{1:1}};
     var findSql = "select * from "+tableName+" where {where}";
     var keys = _.keys(obj.where);
     var wheres = [];
@@ -65,6 +66,25 @@ exports.parseFindSqlObj = function(obj,tableName){
     });
     obj.relationship = obj.relationship || "and";
     findSql = findSql.replace("{where}",wheres.join(" "+obj.relationship+" "));
+    return findSql;
+};
+
+exports.parseFindFieldSqlObj = function(obj,tableName){
+    obj=obj||{where:{1:1}};
+    var findSql = "select {field} from "+tableName+" where {where}";
+    var keys = _.keys(obj.where);
+    var wheres = [];
+    _.each(keys,function(key){
+        wheres.push(key+"="+obj.where[key]);
+    });
+    //{sum}
+    var fieldss = [];
+    var fields = _.keys(obj.fields);
+    _.each(fields,function(field){
+        fieldss.push(obj.fields[field]+" "+field);
+    });
+    obj.relationship = obj.relationship || "and";
+    findSql = findSql.replace("{where}",wheres.join(" "+obj.relationship+" ")).replace("{field}",fieldss.join(","));
     return findSql;
 };
 
