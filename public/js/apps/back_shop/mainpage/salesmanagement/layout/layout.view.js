@@ -7,15 +7,32 @@ define(["app", "marionette", "tpl!apps/back_shop/mainpage/salesmanagement/layout
       View.SalesManagementLayout = Marionette.LayoutView.extend({
         template: layoutTpl,
         events:{
-          "click .btn_addGood":"addGood"
+          "click .btn_addGood":"addGood",
+          "click .purchaserole":"purchaserole"
+        },
+        initialize: function () {
+          if (this.getOption("xevent")) {
+            this.xevent = this.getOption("xevent");
+          }
         },
         addGood:function(e){
-          /*e.preventDefault();
-          $('#myModal').modal('show');*/
-
-          require(["apps/back_shop/mainpage/salesmanagement/searchgoodlist/goodlist.controller"],function(goodListController){
+          e.preventDefault();
+          /*$('#myModal').modal('show');*/
+          if(this.xevent){
+            this.xevent.triggerMethod("salesmanagement:addpurchasing_management")
+          }
+          /*require(["apps/back_shop/mainpage/salesmanagement/searchgoodlist/goodlist.controller"],function(goodListController){
             goodListController.showSearchGoodList();
-          });
+          });*/
+        },
+        purchaserole:function(e){
+          e.preventDefault();
+          var purchaserole = e.target.innerHTML;
+          this.xevent.purchase.purchaserole = purchaserole;
+          this.xevent.purchase.purchaseperson = purchaserole;
+          $(e.target).addClass("btn-default");
+          $(".purchaserole").removeClass("btn-success");
+          $(e.target).addClass("btn-success");
         },
         regions: {
           //supplySupplierListRegion: ".supplySupplierListRegion"

@@ -62,7 +62,7 @@ exports.parseFindSqlObj = function(obj,tableName){
     var keys = _.keys(obj.where);
     var wheres = [];
     _.each(keys,function(key){
-        wheres.push(key+"="+obj.where[key]);
+        wheres.push(key+"='"+obj.where[key]+"'");
     });
     obj.relationship = obj.relationship || "and";
     findSql = findSql.replace("{where}",wheres.join(" "+obj.relationship+" "));

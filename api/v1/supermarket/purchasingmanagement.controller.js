@@ -56,6 +56,7 @@ exports.addPurchasingManagement = function(req,res,next){
     opts.purchasingManagement.phcode = '';
     opts.purchasingManagement.totalprice = param.totalprice;
     opts.purchasingManagement.alreadypaidmoney = param.alreadypaidmoney;
+    opts.purchasingManagement.purchaserole = param.purchaserole;
     opts.purchasingManagement.purchaseperson = param.purchaseperson;
     opts.purchasingManagement.purchasephone = param.purchasephone;
     opts.purchasingManagement.paystatus = 0;
@@ -64,6 +65,7 @@ exports.addPurchasingManagement = function(req,res,next){
     return purchasingManagementModel.addPurchasingManagementAsync(opts).then(function(result){
         body.error_code = result.error_code;
         body.error_msg = result.error_msg;
+        body.response_params = result.data;
         res.status(200).json(body);
     });
 };

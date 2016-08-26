@@ -68,30 +68,46 @@ exports.addPurchasingManagementAsync = function (opts) {
         phcode: opts.purchasingManagement.phcode,
         totalprice: opts.purchasingManagement.totalprice,
         alreadypaidmoney: opts.purchasingManagement.alreadypaidmoney,
+        purchaserole: opts.purchasingManagement.purchaserole,
         purchaseperson: opts.purchasingManagement.purchaseperson,
         purchasephone: opts.purchasingManagement.purchasephone,
         paystatus: opts.purchasingManagement.paystatus,
         createTime: opts.purchasingManagement.createTime//,
         //clearTime: opts.purchasingManagement.clearTime
     };
-    return getNextPurchasingManagementAsync(opts).then(function (result) {
-        var tableName = "purchasing_management";
-        insertObj.phcode = result.data;
-        var sqlObj = paramparse.parseInsertSqlObj(insertObj, tableName);
-        return mysqlPool.queryAsync(sqlObj.sqlStr, sqlObj.insertInfos).then(function (result) {
-            if (result.affectedRows == 1) {
-                opts.purchasingManagement.pmId = result.insertId;
-            }
-            results.error_code = 0;
-            results.error_msg = "添加售货单成功";
-            results.data = opts.wholesale;
+
+    var findPm = {
+        where:{purchaserole: opts.purchasingManagement.purchaserole}
+    };
+    var findSqlStr = paramparse.parseFindSqlObj(findPm, "purchasing_management");
+    return mysqlPool.queryAsync(findSqlStr).then(function(result){
+        if (!result.length) {
+            return getNextPurchasingManagementAsync(opts).then(function (result) {
+                var tableName = "purchasing_management";
+                insertObj.phcode = result.data;
+                var sqlObj = paramparse.parseInsertSqlObj(insertObj, tableName);
+                return mysqlPool.queryAsync(sqlObj.sqlStr, sqlObj.insertInfos).then(function (result) {
+                    if (result.affectedRows == 1) {
+                        insertObj.pmId = result.insertId;
+                    }
+                    results.error_code = 0;
+                    results.error_msg = "添加售货单成功";
+                    results.data = insertObj;
+                    return results;
+                }).catch(function (e) {
+                    results.error_code = 1001;
+                    results.error_msg = "添加售货单失败，请联系技术人员";
+                    return results;
+                });
+            });
+        }else{
+            results.error_code = 1;
+            results.error_msg = "获取售货单成功";
+            results.data = result[0];
             return results;
-        }).catch(function (e) {
-            results.error_code = 1001;
-            results.error_msg = "添加售货单失败，请联系技术人员";
-            return results;
-        });
+        }
     });
+
 };
 
 exports.addPurchasingGoodsAsync = function(opts){

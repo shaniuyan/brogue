@@ -22,7 +22,7 @@ define(["app"], function (BrogueApplication) {
             initialize: function () {
             },
             parse: function (response) {
-                return response.response_params;
+                return response.response_params.data;
             }
         });
         var API = {
