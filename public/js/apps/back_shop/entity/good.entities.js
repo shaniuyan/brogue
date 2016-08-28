@@ -8,10 +8,14 @@ define(["app"], function (BrogueApplication) {
                 model: "",
                 goodBar: "",
                 price: 0.00,
+                tradePrice:0.00,
                 purchasePrice: 0.00,
                 quantity: 0,
                 wholeUnit: "",
-                unit: ""
+                unit: "",
+                wholenum:1,
+                conversionunit:0,
+                scatterednum:1
             },
             initialize: function () {
 

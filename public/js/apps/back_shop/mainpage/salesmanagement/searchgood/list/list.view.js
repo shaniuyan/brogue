@@ -12,9 +12,21 @@ define(["app",
                 template: tdTpl,
                 tagName: "tr",
                 className: "unread checked",
+                events:{
+                    "click .btn-sales":"sales"
+                },
                 initialize: function () {
+                    if (this.getOption("xevent")) {
+                        this.xevent = this.getOption("xevent");
+                    }
                 },
                 onRender: function () {
+                },
+                sales:function(e){
+                    e.preventDefault();
+                    if(this.xevent){
+                        this.xevent.triggerMethod("sales:addgood",this.model);
+                    }
                 }
             });
             var NoneView = Marionette.ItemView.extend({

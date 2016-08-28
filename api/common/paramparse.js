@@ -100,13 +100,13 @@ exports.parseUpdateSqlObj = function(obj,tableName){
                 sets.push(key+"="+obj.set[key].value);
                 break;
             case "+":
-                sets.push(key+"="+key+"+"+obj.set[key].value);
+                sets.push(key+"=ifnull("+key+",0)+"+obj.set[key].value);
                 break;
             case "-":
-                sets.push(key+"="+key+"-"+obj.set[key].value);
+                sets.push(key+"=ifnull("+key+",0)-"+obj.set[key].value);
                 break;
             case "*":
-                sets.push(key+"="+key+"*"+obj.set[key].value);
+                sets.push(key+"=ifnull("+key+",0)*"+obj.set[key].value);
                 break;
             case "/":
                 sets.push(key+"="+key+"/"+obj.set[key].value);

@@ -7,12 +7,12 @@ define(["app",
     "apps/back_shop/entity/good.entities"], function (BrogueApplication,LayoutView, ListView) {
     BrogueApplication.module("BrogueApp.BackShop.SalesManagement.GoodList", function (GoodListController, BrogueApplication, Backbone, Marionette, $, _) {
         GoodListController.Controller = {
-            showGoodList: function () {
+            showGoodList: function (xobject) {
                 var layoutView = new LayoutView.Layout();
                 BrogueApplication.dialogRegion.show(layoutView,{title:"添加出售商品",height:400,width:820});
                 var fetchGoods = BrogueApplication.request("good:entities");
                 $.when(fetchGoods).done(function (goods) {
-                    var goodListView = new ListView.Table({collection:goods});
+                    var goodListView = new ListView.Table({collection:goods,xevent:xobject,childViewOptions: {xevent: xobject}});
                     layoutView.goodListRegion.show(goodListView);
                     //layoutView.goodListRegion.show(goodTables);
                 });

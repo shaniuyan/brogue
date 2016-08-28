@@ -18,6 +18,9 @@ define(["marionette", "common/dialog"], function (Marionette) {
     bodyRegion: "#content",
     dialogRegion: Marionette.Region.Dialog.extend({
       el: "#dialogregion"
+    }),
+    dialogFormRegion: Marionette.Region.Dialog.extend({
+      el: "#dialogformregion"
     })
   });
 

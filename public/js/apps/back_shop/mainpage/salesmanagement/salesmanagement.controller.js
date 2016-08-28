@@ -2,7 +2,9 @@
  * Created by wk 2015年6月10日 09:20:38
  */
 define(["app","bootstrapmodel","apps/back_shop/mainpage/salesmanagement/layout/layout.view",
-"apps/back_shop/entity/purchasingmanagement.entities"], function (BrogueApplication,bootstrapModel ,LayoutView) {
+    "apps/back_shop/mainpage/salesmanagement/salesform/mainform.view",
+    "apps/back_shop/mainpage/salesmanagement/searchgood/good.controller",
+"apps/back_shop/entity/purchasingmanagement.entities"], function (BrogueApplication,bootstrapModel ,LayoutView,MainFormView,goodController) {
   BrogueApplication.module("BrogueApp.BackShop.MainPage.SalesManagement", function (SalesManagementController, BrogueApplication, Backbone, Marionette, $, _) {
     SalesManagementController.Controller = {
       showSalesManagement: function (Region, xobject) {
@@ -26,11 +28,7 @@ define(["app","bootstrapmodel","apps/back_shop/mainpage/salesmanagement/layout/l
             success: function (model, resp, options) {
               if(resp.error_code!=1001){
                 purchasingManagementModel.set(resp.response_params);
-                //window.alert(purchasingManagementModel.get("pmId"));
-
-                require(["apps/back_shop/mainpage/salesmanagement/searchgood/good.controller"],function(goodController){
-                  goodController.showGoodList();
-                });
+                goodController.showGoodList(xobject);
               }
             },
             error: function () {
@@ -38,6 +36,29 @@ define(["app","bootstrapmodel","apps/back_shop/mainpage/salesmanagement/layout/l
             }
           }
           var save = purchasingManagementModel.save(xobject.purchase, opts);
+          if (!save) {
+            //formView.triggerMethod("form:data:invalid", newDoctorClass.validationError);
+          }
+        });
+
+        xobject.on("sales:addgood",function(model){
+          model.set("scatterednum",1);
+          model.set("wholenum",1);
+          var mainFormView = new MainFormView.Form({model:model,xevent:xobject});
+          BrogueApplication.dialogFormRegion.show(mainFormView,{title:"出售信息",height:430,width:400});
+        });
+
+        xobject.on("salesmanagement:add",function(opt){
+          purchasingManagementModel.url = "/api/v1/supermarket/addpurchasinggoods.json";
+          var opts = {
+            success: function (model, resp, options) {
+              window.alert("保存成功");
+            },
+            error: function () {
+              console.log("server conn fail || request url address error!");
+            }
+          }
+          var save = purchasingManagementModel.save(opt.data, opts);
           if (!save) {
             //formView.triggerMethod("form:data:invalid", newDoctorClass.validationError);
           }

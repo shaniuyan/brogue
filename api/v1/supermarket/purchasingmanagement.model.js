@@ -207,7 +207,7 @@ exports.addPurchasingGoodsAsync = function(opts){
         var updGoodNumAsync = mysqlPool.queryAsync(updateSql);
 
 
-        var goodPurchasePrice = (opts.purchasingManagement.wholenum*good.conversionunit+opts.purchasingManagement.scatterednum)*good.purchasePrice;
+        var goodPurchasePrice = (opts.purchasingManagement.wholenum*good.conversionunit+opts.purchasingManagement.scatterednum)*good.price;
         var updObj = {
             set: {
                 totalprice:{
@@ -224,6 +224,7 @@ exports.addPurchasingGoodsAsync = function(opts){
             }
         };
         var updateSql = paramparse.parseUpdateSqlObj(updObj, "purchasing_management");
+        console.log(updateSql);
         //更新当前售货单为在售状态
         var updPurchasingManagementAsync = mysqlPool.queryAsync(updateSql);
 
