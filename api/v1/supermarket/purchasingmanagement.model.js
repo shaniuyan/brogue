@@ -55,7 +55,7 @@ exports.purchasingManagementDetailListAsync = function (opts) {
     return  mysqlPool.queryAsync(findDataStr).then(function(result){
         results.error_code = 0;
         results.error_msg = "获取售详情列表成功！";
-        results.data = result.data;
+        results.data = result;
         return results;
     });
 };
@@ -231,9 +231,28 @@ exports.addPurchasingGoodsAsync = function(opts){
         return join(addPmDetailAsync,updGoodNumAsync,updPurchasingManagementAsync,function(adddetail,goodNum,purchasingManagement){
             return {adddetail:adddetail,goodNum:goodNum,purchasingManagement:purchasingManagement};
         }).then(function(result){
-            results.error_code = 0;
-            results.error_msg = "添加售货商品成功！";
-            return results;
+            if (result.adddetail.affectedRows == 1) {
+                insertObj.pmDetailId = result.adddetail.insertId;
+            }
+
+
+
+            var findDetail = {
+                where: {pmDetailId: result.adddetail.insertId}
+            };
+
+            var findDetailStr = paramparse.parseFindSqlObj(findDetail, "purchasing_management_detail");
+            var findPurchasingAsync = mysqlPool.queryAsync(findSqlStr);
+            var findPurchasingDetailAsync = mysqlPool.queryAsync(findDetailStr);
+
+            return join(findPurchasingAsync,findPurchasingDetailAsync,function(purchasings,purchasingdetails){
+                return {purchasing:purchasings[0],purchasingdetail:purchasingdetails[0]};
+            }).then(function(result){
+                results.error_code = 0;
+                results.error_msg = "添加售货商品成功！";
+                results.data = result;
+                return results;
+            });
         });
     });
 };

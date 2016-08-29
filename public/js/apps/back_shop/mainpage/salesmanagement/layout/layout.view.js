@@ -33,9 +33,12 @@ define(["app", "marionette", "tpl!apps/back_shop/mainpage/salesmanagement/layout
           $(e.target).addClass("btn-default");
           $(".purchaserole").removeClass("btn-success");
           $(e.target).addClass("btn-success");
+          if(this.xevent){
+            this.xevent.triggerMethod("salesmanagement:chooseperson")
+          }
         },
         regions: {
-          //supplySupplierListRegion: ".supplySupplierListRegion"
+          goodListRegion: ".goodListRegion"
         }
       });
     });
