@@ -1,7 +1,7 @@
 /**
  * 程序入口
  */
-define(["marionette", "common/dialog"], function (Marionette) {
+define(["marionette", "common/dialog","common/message"], function (Marionette) {
   var BrogueApplication = new Marionette.Application({
     initialize: function (options) {
       //无论程序是否开始都回执行
@@ -21,6 +21,9 @@ define(["marionette", "common/dialog"], function (Marionette) {
     }),
     dialogFormRegion: Marionette.Region.Dialog.extend({
       el: "#dialogformregion"
+    }),
+    messageDialogRegion: Marionette.Region.Message.extend({
+      el: "#messagedialogregion"
     })
   });
 

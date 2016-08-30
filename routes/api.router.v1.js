@@ -37,6 +37,7 @@ router.get("/supermarket/purchasingmanagementlist.json", apiV1.purchasingmanagem
 router.get("/supermarket/purchasingmanagementdetaillist.json", apiV1.purchasingmanagement.purchasingManagementDetailList);
 router.post("/supermarket/addpurchasingmanagement.json", apiV1.purchasingmanagement.addPurchasingManagement);
 router.post("/supermarket/addpurchasinggoods.json", apiV1.purchasingmanagement.addPurchasingGoods);
+router.post("/supermarket/delpurchasinggoods.json", apiV1.purchasingmanagement.delPurchasingGoods);
 router.post("/supermarket/settlepurchasingmanagement.json", apiV1.purchasingmanagement.settlePurchasingManagement);
 
 

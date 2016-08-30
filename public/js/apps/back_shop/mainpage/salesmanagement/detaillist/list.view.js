@@ -13,7 +13,7 @@ define(["app",
                 tagName: "tr",
                 className: "unread checked",
                 events:{
-                    "click .btn-sales":"sales"
+                    "click .btn-delsales":"delsales"
                 },
                 initialize: function () {
                     if (this.getOption("xevent")) {
@@ -22,10 +22,10 @@ define(["app",
                 },
                 onRender: function () {
                 },
-                sales:function(e){
+                delsales:function(e){
                     e.preventDefault();
                     if(this.xevent){
-                        this.xevent.triggerMethod("sales:addgood",this.model);
+                        this.xevent.triggerMethod("sales:delsales",this.model);
                     }
                 }
             });

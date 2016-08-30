@@ -95,6 +95,22 @@ exports.addPurchasingGoods = function(req,res,next){
         res.status(200).json(body);
     });
 };
+
+exports.delPurchasingGoods = function(req,res,next){
+    var param = _.extend(req.query, req.body);
+    var body = {};
+    body.response_params = {};
+    var opts = {purchasingManagement:{},configs:{}};
+    opts.configs = req.configs;
+    opts.mysqldbs = req.mysqldbs;
+    opts.purchasingManagement.pmId = param.pmId;
+    opts.purchasingManagement.pmDetailId = param.pmDetailId;
+    return purchasingManagementModel.delPurchasingGoodsAsync(opts).then(function(result){
+        body.error_code = result.error_code;
+        body.error_msg = result.error_msg;
+        res.status(200).json(body);
+    });
+};
 /**
  * 更新收货单为结清状态
  * @param req

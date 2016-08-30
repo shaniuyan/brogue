@@ -54,6 +54,36 @@ define(["app", "bootstrapmodel", "apps/back_shop/mainpage/salesmanagement/layout
                 xobject.on("salesmanagement:chooseperson",function(){
                     that.chooseSalesManagement(xobject);
                 });
+
+                xobject.on("sales:delsales",function(model){
+
+                    BrogueApplication.messageDialogRegion.confirm({
+                        title: "删除提示", message: "您确认将该信息删除吗?",
+                        ok: function () {
+                            var data = {pmId:model.get("pmId"),pmDetailId:model.get("pmDetailId")};
+
+                            model.url = "/api/v1/supermarket/delpurchasinggoods.json";
+                            var opts = {
+                                success: function (model, resp, options) {
+                                    model.destroy();
+                                },
+                                error: function () {
+                                    console.log("server conn fail || request url address error!");
+                                }
+                            }
+                            var save = model.save(data, opts);
+                            if (!save) {
+                                //formView.triggerMethod("form:data:invalid", newDoctorClass.validationError);
+                            }
+
+                            //
+                        },
+                        cancel: function () {
+                        }
+                    }) ;
+
+
+                });
                 that.chooseSalesManagement(xobject);
             },
             chooseSalesManagement:function(xobject){

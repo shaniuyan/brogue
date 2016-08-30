@@ -257,6 +257,32 @@ exports.addPurchasingGoodsAsync = function(opts){
     });
 };
 
+
+exports.delPurchasingGoodsAsync = function(opts){
+    var results = {error_code: -1, error_msg: "error"};
+    var bbPromise = opts.mysqldbs.bbpromise;
+    var join = bbPromise.join;
+    var mysqlPool = opts.mysqldbs.mysqlPool;
+    var findPm = {
+        where: {pmId: opts.purchasingManagement.pmId}
+    };
+    var findPmDetail = {
+        where: {pmDetailId: opts.purchasingManagement.pmDetailId}
+    };
+    var findpmStr = paramparse.parseFindSqlObj(findPm,"purchasing_management");
+    var findpmDetailStr = paramparse.parseFindSqlObj(findPmDetail,"purchasing_management_detail");
+
+    var findpmAsync = mysqlPool.queryAsync(findpmStr);
+    var findpmDetailAsync = mysqlPool.queryAsync(findpmDetailStr);
+    return join(findpmAsync,findpmDetailAsync,function(pm,pmdetail){
+        return {pm:pm,pmdetail:pmdetail}
+    }).then(function(result){
+        results.error_code = 0;
+        results.error_msg = "删除商品成功！";
+        return results;
+    });
+};
+
 /**
  * 更改售货单信息
  * 已经付款金额

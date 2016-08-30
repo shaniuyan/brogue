@@ -5,6 +5,7 @@ requirejs.config({
     tether: "lib/tether-1.3.1/js/tether.min",
     //bootstrap: "lib/bootstrap-3.3.5/dist/js/bootstrap.min",
     bootstrap: "lib/bootstrap/js/bootstrap.min",
+    bootboxmin: "lib/bootstrap/js/bootbox.min",
     //bootstrapvalidator:"lib/bootstrapvalidator/js/bootstrapValidator",
     bootstrapvalidator:"lib/bootstrapvalidatormin/js/bootstrapValidator.min",
     jqueryui:"lib/jqueryui/jquery-ui",
@@ -33,6 +34,7 @@ requirejs.config({
   },
   shim: {
     'bootstrap': {deps: ['jquery'], exports: 'bootstrap'},
+    'bootboxmin':{deps:['jquery','bootstrap'],exports:'bootboxmin'},
     'underscore': {exports: "_"},
     'backbone': {deps: ['underscore', 'jquery', "json2"], exports: 'Backbone'},
     "backbone.picky": ["backbone","underscore"],
