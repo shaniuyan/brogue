@@ -19,16 +19,16 @@ exports.purchasingManagementListAsync = function (opts) {
     beginRowIndex = (pageIndex - 1) * pageSize;
 
     var findCountAsync = bbPromise.resolve();
-    if(!opts.page.searchCount){
-        var findSqlStr = paramparse.parseFindSqlObjTotal(null,"purchasing_management");
+    if (!opts.page.searchCount) {
+        var findSqlStr = paramparse.parseFindSqlObjTotal(null, "purchasing_management");
         findCountAsync = mysqlPool.queryAsync(findSqlStr);
     }
-    var findDataStr = paramparse.parseFindSqlObjLimit(null,"purchasing_management",beginRowIndex,pageSize);
+    var findDataStr = paramparse.parseFindSqlObjLimit(null, "purchasing_management", beginRowIndex, pageSize);
     var findDataAsync = mysqlPool.queryAsync(findDataStr);
 
-    return join(findCountAsync,findDataAsync,function(total,data){
-        return {total:total[0].total,data:data}
-    }).then(function(result){
+    return join(findCountAsync, findDataAsync, function (total, data) {
+        return {total: total[0].total, data: data}
+    }).then(function (result) {
         results.error_code = 0;
         results.error_msg = "获取售货单列表成功！";
         results.data = result.data;
@@ -50,9 +50,9 @@ exports.purchasingManagementDetailListAsync = function (opts) {
         pageSize = parseInt(opts.page.pageSize);
     }
     beginRowIndex = (pageIndex - 1) * pageSize;
-    var findObj = {where:{pmId:opts.purchasingManagement.pmId}};
-    var findDataStr = paramparse.parseFindSqlObjLimit(findObj,"purchasing_management_detail",beginRowIndex,pageSize);
-    return  mysqlPool.queryAsync(findDataStr).then(function(result){
+    var findObj = {where: {pmId: opts.purchasingManagement.pmId}};
+    var findDataStr = paramparse.parseFindSqlObjLimit(findObj, "purchasing_management_detail", beginRowIndex, pageSize);
+    return mysqlPool.queryAsync(findDataStr).then(function (result) {
         results.error_code = 0;
         results.error_msg = "获取售详情列表成功！";
         results.data = result;
@@ -77,10 +77,10 @@ exports.addPurchasingManagementAsync = function (opts) {
     };
 
     var findPm = {
-        where:{purchaserole: opts.purchasingManagement.purchaserole}
+        where: {purchaserole: opts.purchasingManagement.purchaserole}
     };
     var findSqlStr = paramparse.parseFindSqlObj(findPm, "purchasing_management");
-    return mysqlPool.queryAsync(findSqlStr).then(function(result){
+    return mysqlPool.queryAsync(findSqlStr).then(function (result) {
         if (!result.length) {
             return getNextPurchasingManagementAsync(opts).then(function (result) {
                 var tableName = "purchasing_management";
@@ -100,7 +100,7 @@ exports.addPurchasingManagementAsync = function (opts) {
                     return results;
                 });
             });
-        }else{
+        } else {
             results.error_code = 1;
             results.error_msg = "获取售货单成功";
             results.data = result[0];
@@ -110,7 +110,7 @@ exports.addPurchasingManagementAsync = function (opts) {
 
 };
 
-exports.addPurchasingGoodsAsync = function(opts){
+exports.addPurchasingGoodsAsync = function (opts) {
     var results = {error_code: -1, error_msg: "error"};
     var bbPromise = opts.mysqldbs.bbpromise;
     var join = bbPromise.join;
@@ -123,14 +123,14 @@ exports.addPurchasingGoodsAsync = function(opts){
     };
     var tableName = "purchasing_management";
     var findSqlStr = paramparse.parseFindSqlObj(findPm, tableName);
-    var findGoodStr = paramparse.parseFindSqlObj(findGood,"goods");
+    var findGoodStr = paramparse.parseFindSqlObj(findGood, "goods");
 
     var findGoodAsync = mysqlPool.queryAsync(findGoodStr);
     var findPurchasingManagementAsync = mysqlPool.queryAsync(findSqlStr);
 
-    return join(findGoodAsync,findPurchasingManagementAsync,function(good,purchasing){
-        return {good:good,purchasing:purchasing};
-    }).then(function(result){
+    return join(findGoodAsync, findPurchasingManagementAsync, function (good, purchasing) {
+        return {good: good, purchasing: purchasing};
+    }).then(function (result) {
         if (!result.purchasing.length) {
             results.error_code = 1001;
             results.error_msg = "该售货单不存在!";
@@ -147,43 +147,46 @@ exports.addPurchasingGoodsAsync = function(opts){
             results.error_msg = "该商品不存在!";
             return results;
         }
-        if(opts.purchasingManagement.wholenum == 0 && opts.purchasingManagement.scatterednum == 0){
+        if (opts.purchasingManagement.wholenum == 0 && opts.purchasingManagement.scatterednum == 0) {
             results.error_code = 1001;
             results.error_msg = "请输入要卖出商品的正确数量";
             return results;
         }
         var good = result.good[0];
-        if(opts.purchasingManagement.wholenum>good.wholenum){
+        if (opts.purchasingManagement.wholenum > good.wholenum) {
             results.error_code = 1001;
             results.error_msg = "库存整件数量小于库存整件数量，请调整整件数量后批发！";
             return results;
         }
 
-        if(opts.purchasingManagement.scatterednum>good.scatterednum){
+        if (opts.purchasingManagement.scatterednum > good.scatterednum) {
             results.error_code = 1001;
             results.error_msg = "库存零件数量小于库存零件数量，请调整零件数量后批发！";
             return results;
         }
+        var goodPurchasePrice = (opts.purchasingManagement.wholenum * good.conversionunit + opts.purchasingManagement.scatterednum) * good.price;
         var insertObj = {
             pmId: opts.purchasingManagement.pmId,
-            goodId:good.goodId,
+            goodId: good.goodId,
             goodCode: good.goodCode,
             goodName: good.goodName,
             brand: good.brand,
             model: good.model,
             goodBar: good.goodBar,
-            purchasePrice:good.purchasePrice,
+            purchasePrice: good.purchasePrice,
             price: good.price,
-            tradePrice:good.tradePrice,
+            tradePrice: good.tradePrice,
             wholenum: opts.purchasingManagement.wholenum,
             wholeUnit: good.wholeUnit,
+            conversionunit:good.conversionunit,
             scatterednum: opts.purchasingManagement.scatterednum,
             unit: good.unit,
-            tradeTime:new Date().getTime()
+            tradeTime: new Date().getTime(),
+            subtotalprice:goodPurchasePrice
         };
 
         var tableName = "purchasing_management_detail";
-        var sqlObj = paramparse.parseInsertSqlObj(insertObj,tableName);
+        var sqlObj = paramparse.parseInsertSqlObj(insertObj, tableName);
 
         //添加售货商品信息
         var addPmDetailAsync = mysqlPool.queryAsync(sqlObj.sqlStr, sqlObj.insertInfos);
@@ -200,17 +203,17 @@ exports.addPurchasingGoodsAsync = function(opts){
                 }
             },
             where: {
-                goodId:opts.purchasingManagement.goodId
+                goodId: opts.purchasingManagement.goodId
             }
         };
         var updateSql = paramparse.parseUpdateSqlObj(updGoodNumObj, "goods");
         var updGoodNumAsync = mysqlPool.queryAsync(updateSql);
 
 
-        var goodPurchasePrice = (opts.purchasingManagement.wholenum*good.conversionunit+opts.purchasingManagement.scatterednum)*good.price;
+
         var updObj = {
             set: {
-                totalprice:{
+                totalprice: {
                     relationship: "+",
                     value: goodPurchasePrice
                 },
@@ -220,7 +223,7 @@ exports.addPurchasingGoodsAsync = function(opts){
                 }
             },
             where: {
-                pmId:opts.purchasingManagement.pmId
+                pmId: opts.purchasingManagement.pmId
             }
         };
         var updateSql = paramparse.parseUpdateSqlObj(updObj, "purchasing_management");
@@ -228,13 +231,12 @@ exports.addPurchasingGoodsAsync = function(opts){
         //更新当前售货单为在售状态
         var updPurchasingManagementAsync = mysqlPool.queryAsync(updateSql);
 
-        return join(addPmDetailAsync,updGoodNumAsync,updPurchasingManagementAsync,function(adddetail,goodNum,purchasingManagement){
-            return {adddetail:adddetail,goodNum:goodNum,purchasingManagement:purchasingManagement};
-        }).then(function(result){
+        return join(addPmDetailAsync, updGoodNumAsync, updPurchasingManagementAsync, function (adddetail, goodNum, purchasingManagement) {
+            return {adddetail: adddetail, goodNum: goodNum, purchasingManagement: purchasingManagement};
+        }).then(function (result) {
             if (result.adddetail.affectedRows == 1) {
                 insertObj.pmDetailId = result.adddetail.insertId;
             }
-
 
 
             var findDetail = {
@@ -245,9 +247,9 @@ exports.addPurchasingGoodsAsync = function(opts){
             var findPurchasingAsync = mysqlPool.queryAsync(findSqlStr);
             var findPurchasingDetailAsync = mysqlPool.queryAsync(findDetailStr);
 
-            return join(findPurchasingAsync,findPurchasingDetailAsync,function(purchasings,purchasingdetails){
-                return {purchasing:purchasings[0],purchasingdetail:purchasingdetails[0]};
-            }).then(function(result){
+            return join(findPurchasingAsync, findPurchasingDetailAsync, function (purchasings, purchasingdetails) {
+                return {purchasing: purchasings[0], purchasingdetail: purchasingdetails[0]};
+            }).then(function (result) {
                 results.error_code = 0;
                 results.error_msg = "添加售货商品成功！";
                 results.data = result;
@@ -257,8 +259,12 @@ exports.addPurchasingGoodsAsync = function(opts){
     });
 };
 
-
-exports.delPurchasingGoodsAsync = function(opts){
+/**
+ * 删除售货单的商品信息
+ * @param opts
+ * @returns {*}
+ */
+exports.delPurchasingGoodsAsync = function (opts) {
     var results = {error_code: -1, error_msg: "error"};
     var bbPromise = opts.mysqldbs.bbpromise;
     var join = bbPromise.join;
@@ -266,17 +272,66 @@ exports.delPurchasingGoodsAsync = function(opts){
     var findPm = {
         where: {pmId: opts.purchasingManagement.pmId}
     };
-    var findPmDetail = {
-        where: {pmDetailId: opts.purchasingManagement.pmDetailId}
-    };
-    var findpmStr = paramparse.parseFindSqlObj(findPm,"purchasing_management");
-    var findpmDetailStr = paramparse.parseFindSqlObj(findPmDetail,"purchasing_management_detail");
+    var findpmStr = paramparse.parseFindSqlObj(findPm, "purchasing_management");
+
+    return mysqlPool.queryAsync(findpmStr).then(function (result) {
+        if (!result.length) {
+            results.error_code = 1001;
+            results.error_msg = "该售货单不存在!";
+            return results;
+        }
+        var purchasingmanagement = result[0];
+        if (purchasingmanagement.paystatus == 3) {
+            results.error_code = 1001;
+            results.error_msg = "该售货单已经结清!";
+            return results;
+        }
+        var findPmDetailWhere = {
+            where: {pmDetailId: opts.purchasingManagement.pmDetailId}
+        };
+        var findpmDetailStr = paramparse.parseFindSqlObj(findPmDetailWhere, "purchasing_management_detail");
+        return mysqlPool.queryAsync(findpmDetailStr).then(function (result) {
+            if (!result.length) {
+                results.error_code = 1001;
+                results.error_msg = "该出售商品已经删除!";
+                return results;
+            }
+            var findpmDetail = result[0];
+            //计算收货单应该减掉的金额
+            var goodPurchasePrice = (findpmDetail.wholenum * findpmDetail.conversionunit + findpmDetail.scatterednum) * findpmDetail.price;
+
+            var deletePmDetailStr = paramparse.deleteFindSqlObj(findPmDetailWhere, "purchasing_management_detail");
+            var updWhere = {
+                set: {
+                    totalprice: {
+                        relationship: "-",
+                        value: goodPurchasePrice
+                    }
+                },
+                where: {
+                    pmId: findpmDetail.pmId
+                }
+            };
+            var updPmPriceStr = paramparse.parseUpdateSqlObj(updWhere, "purchasing_management");
+            var deletePmDetailAsync = mysqlPool.query(deletePmDetailStr);
+            var updatePmPriceAsync = mysqlPool.query(updPmPriceStr);
+            return join(updatePmPriceAsync, deletePmDetailAsync, function (updPm, deletePmDetail) {
+                return {updPm: updPm, deletePmDetail: deletePmDetail};
+            }).then(function (result) {
+                results.error_code = 0;
+                results.error_msg = "删除商品成功！";
+                return results;
+            });
+        });
+
+    });
+
 
     var findpmAsync = mysqlPool.queryAsync(findpmStr);
     var findpmDetailAsync = mysqlPool.queryAsync(findpmDetailStr);
-    return join(findpmAsync,findpmDetailAsync,function(pm,pmdetail){
-        return {pm:pm,pmdetail:pmdetail}
-    }).then(function(result){
+    return join(findpmAsync, findpmDetailAsync, function (pm, pmdetail) {
+        return {pm: pm, pmdetail: pmdetail}
+    }).then(function (result) {
         results.error_code = 0;
         results.error_msg = "删除商品成功！";
         return results;
@@ -290,14 +345,14 @@ exports.delPurchasingGoodsAsync = function(opts){
  * 购买人联系方式
  * @param opts
  */
-exports.updPurchasingManagementAsync = function(opts){
+exports.updPurchasingManagementAsync = function (opts) {
 
 };
 /**
  * 更改价格
  * @param opts
  */
-exports.updPurchasingGoodPriceAsync = function(opts){
+exports.updPurchasingGoodPriceAsync = function (opts) {
 
 };
 
@@ -305,7 +360,7 @@ exports.updPurchasingGoodPriceAsync = function(opts){
 /**
  * 退单
  */
-exports.reBackPurchasingManagementAsync = function(opts){
+exports.reBackPurchasingManagementAsync = function (opts) {
 
 };
 
@@ -313,7 +368,7 @@ exports.reBackPurchasingManagementAsync = function(opts){
 /**
  * 删除售货单信息
  */
-exports.delPurchasingManagementAsync = function(opts){
+exports.delPurchasingManagementAsync = function (opts) {
 
 };
 
@@ -321,7 +376,7 @@ exports.delPurchasingManagementAsync = function(opts){
  * 删除商品
  * @param opts
  */
-exports.delPurchasingGoodAsync = function(opts){
+exports.delPurchasingGoodAsync = function (opts) {
 
 };
 
@@ -361,12 +416,12 @@ exports.settlePurchasingManagementAsync = function (opts) {
                 }
             },
             where: {
-                pmId:opts.purchasingManagement.pmId
+                pmId: opts.purchasingManagement.pmId
             }
         };
         var updateSql = paramparse.parseUpdateSqlObj(updObj, tableName);
         // var insertRecordAsync = mysqlPool.queryAsync(sqlObj.sqlStr, sqlObj.insertInfos);
-        return mysqlPool.queryAsync(updateSql).then(function(result){
+        return mysqlPool.queryAsync(updateSql).then(function (result) {
             results.error_code = 0;
             results.error_msg = "账单结清操作成功！";
             return results;
@@ -374,20 +429,20 @@ exports.settlePurchasingManagementAsync = function (opts) {
     });
 };
 
-var calcPurchasingManagementPriceAsync = exports.calcPurchasingManagementPriceAsync = function(opts){
+var calcPurchasingManagementPriceAsync = exports.calcPurchasingManagementPriceAsync = function (opts) {
     var results = {error_code: -1, error_msg: "error"};
     var bbPromise = opts.mysqldbs.bbpromise;
     var mysqlPool = opts.mysqldbs.mysqlPool;
     var join = bbPromise.join;
     var findPurchasingManagementDetailObj = {
-        where:{pmId:opts.purchasingManagement.pmId},
-        fields:{
-            sumprice:"sum(price)"
+        where: {pmId: opts.purchasingManagement.pmId},
+        fields: {
+            sumprice: "sum(price)"
         }
     };
 
-    var findSql = paramparse.parseFindFieldSqlObj(findPurchasingManagementDetailObj,"purchasing_management_detail");
-    return mysqlPool.queryAsync(findSql).then(function(result){
+    var findSql = paramparse.parseFindFieldSqlObj(findPurchasingManagementDetailObj, "purchasing_management_detail");
+    return mysqlPool.queryAsync(findSql).then(function (result) {
         if (!result.length) {
             results.error_code = 1001;
             results.error_msg = "该售货单不存在售货信息!";
@@ -395,10 +450,10 @@ var calcPurchasingManagementPriceAsync = exports.calcPurchasingManagementPriceAs
         }
         delete findPurchasingManagementDetailObj.fields;
         findPurchasingManagementDetailObj.set = {
-            tradePrice:result[0].sumprice
+            tradePrice: result[0].sumprice
         };
-        var updSql = paramparse.parseUpdateSqlObj(findPurchasingManagementDetailObj,"purchasing_management");
-        return mysqlPool.queryAsync(updSql).then(function(result){
+        var updSql = paramparse.parseUpdateSqlObj(findPurchasingManagementDetailObj, "purchasing_management");
+        return mysqlPool.queryAsync(updSql).then(function (result) {
             results.error_code = 0;
             results.error_msg = "该收货单已经重新结算!";
             return results;

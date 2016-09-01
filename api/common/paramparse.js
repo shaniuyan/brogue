@@ -151,3 +151,16 @@ exports.parseFindSqlObjTotal = function(obj,tableName){
     findSql = findSql.replace("{where}",wheres.join(" "+obj.relationship+" "));
     return findSql;
 };
+
+exports.deleteFindSqlObj = function(obj,tableName){
+    obj=obj||{where:{1:1}};
+    var findSql = "delete from "+tableName+" where {where}";
+    var keys = _.keys(obj.where);
+    var wheres = [];
+    _.each(keys,function(key){
+        wheres.push(key+"='"+obj.where[key]+"'");
+    });
+    obj.relationship = obj.relationship || "and";
+    findSql = findSql.replace("{where}",wheres.join(" "+obj.relationship+" "));
+    return findSql;
+};

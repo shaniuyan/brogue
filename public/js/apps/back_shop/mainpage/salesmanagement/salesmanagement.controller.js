@@ -28,8 +28,8 @@ define(["app", "bootstrapmodel", "apps/back_shop/mainpage/salesmanagement/layout
                 xobject.on("sales:addgood", function (model) {
                     model.set("scatterednum", 1);
                     model.set("wholenum", 1);
-                    var mainFormView = new MainFormView.Form({model: model, xevent: xobject});
-                    BrogueApplication.dialogFormRegion.show(mainFormView, {title: "出售信息", height: 430, width: 400});
+                    that.mainFormView = new MainFormView.Form({model: model, xevent: xobject});
+                    BrogueApplication.dialogFormRegion.show(that.mainFormView, {title: "出售信息", height: 430, width: 400});
                 });
 
                 xobject.on("salesmanagement:add", function (opt) {
@@ -39,6 +39,7 @@ define(["app", "bootstrapmodel", "apps/back_shop/mainpage/salesmanagement/layout
                             var adddetail = new BrogueApplication.Entities.PurchasingManagementDetail;
                             adddetail.set(resp.response_params.purchasingdetail);
                             that.goodListView.collection.unshift(adddetail);
+                            that.mainFormView.trigger("dialog:close");
                         },
                         error: function () {
                             console.log("server conn fail || request url address error!");
