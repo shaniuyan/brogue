@@ -42,4 +42,12 @@ router.post("/supermarket/delpurchasinggoods.json", apiV1.purchasingmanagement.d
 router.post("/supermarket/settlepurchasingmanagement.json", apiV1.purchasingmanagement.settlePurchasingManagement);
 
 
+router.get("/supermarket/wholesalemanagementlist.json", apiV1.wholesalemanagement.wholesalemanagementList);
+router.get("/supermarket/wholesalemanagementdetaillist.json", apiV1.wholesalemanagement.wholesalemanagementDetailList);
+router.post("/supermarket/addwholesalemanagement.json", apiV1.wholesalemanagement.addWholesalemanagement);
+router.post("/supermarket/wmpaymentoperation.json", apiV1.wholesalemanagement.paymentOperation);
+router.post("/supermarket/wmaddpurchasinggoods.json", apiV1.wholesalemanagement.addPurchasingGoods);
+router.post("/supermarket/wmdelpurchasinggoods.json", apiV1.wholesalemanagement.delPurchasingGoods);
+router.post("/supermarket/settlewholesalemanagement.json", apiV1.wholesalemanagement.settleWholesalemanagement);
+
 module.exports = router;

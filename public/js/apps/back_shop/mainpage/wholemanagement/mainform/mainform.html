@@ -1,0 +1,51 @@
+<form id="SalesPrice" class="form-horizontal">
+    <div class="col-md-12 mt-10 form-group">
+        <div class="col-md-5 text-right">批发编号:</div>
+        <div class="col-md-7 p-0">
+            <%=whcode%>
+        </div>
+    </div>
+    <div class="col-md-12 mt-10 form-group">
+        <div class="col-md-5 text-right">购买人:</div>
+        <div class="col-md-7 p-0">
+            <%=purchaserole%>
+        </div>
+    </div>
+    <div class="col-md-12 mt-10 form-group">
+        <div class="col-md-5 text-right">售货总价:</div>
+        <div class="col-md-7 p-0">
+            <%=totalprice%>
+        </div>
+    </div>
+    <div class="col-md-12 mt-10 form-group">
+        <div class="col-md-5 text-right">已经付款:</div>
+        <div class="col-md-7 p-0">
+            <%=alreadypaidmoney%>
+        </div>
+    </div>
+    <div class="col-md-12 mt-10 form-group">
+        <div class="col-md-5 text-right" style="margin-top: 6px;">付款金额:</div>
+        <div class="col-md-7 p-0">
+            <input type="text" name="price" class="form-control" value="" placeholder="请输入付款金额">
+        </div>
+    </div>
+    <div class="col-md-12 mt-10 form-group" style="background-color:greenyellow;">
+        <div class="col-md-6 mt-10 form-group">
+            <div class="col-md-8 text-right">实际付款:</div>
+            <div class="col-md-4 p-0">
+                <h4 id="getchange"></h4>
+            </div>
+        </div>
+        <div class="col-md-6 mt-10 form-group">
+            <div class="col-md-7 text-right">找零:</div>
+            <div class="col-md-5 p-0">
+                <h4 id="givechange"></h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 mt-10 text-center form-group">
+        <div class="col-md-4 col-md-offset-4">
+            <button class="btn btn-success form-control btn-paymentoperation" style="border-radius: 0px;" type="submit">结算</button>
+        </div>
+    </div>
+</form>

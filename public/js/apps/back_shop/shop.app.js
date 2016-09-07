@@ -65,6 +65,12 @@ define(["app"], function (BrogueApplication) {
           var region =BrogueApplication.rightRegion || BrogueApplication.bodyRegion;
           wholesaleController.showWholesalePage(region);
         });
+
+        BrogueApplication.navigate("wholesalepage");
+        require(["apps/back_shop/mainpage/wholemanagement/wholemanagement.controller"],function(wholeManagementController){
+          var region =BrogueApplication.rightRegion || BrogueApplication.bodyRegion;
+          wholeManagementController.showWholeManagement(region);
+        });
       },
       salesmanagementlist:function(){
         BrogueApplication.navigate("salesmanagementlist");

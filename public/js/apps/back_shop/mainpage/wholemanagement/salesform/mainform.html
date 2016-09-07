@@ -1,0 +1,48 @@
+<form id="SalesForm" class="form-horizontal">
+    <div class="col-md-12 mt-10 form-group">
+        <div class="col-md-5 text-right" style="margin-top: 6px;">商品编号:</div>
+        <div class="col-md-7 p-0" style="margin-top: 6px;">
+            <%=goodCode%>
+        </div>
+    </div>
+    <div class="col-md-12 mt-10 form-group">
+        <div class="col-md-5 text-right" style="margin-top: 6px;">商品名称:</div>
+        <div class="col-md-7 p-0" style="margin-top: 6px;">
+            <%=goodName%>
+        </div>
+    </div>
+    <div class="col-md-12 mt-10 form-group">
+        <div class="col-md-5 text-right" style="margin-top: 6px;">批发价:</div>
+        <div class="col-md-7 p-0">
+            <input type="text" name="tradePrice" class="form-control" value="<%=tradePrice%>" placeholder="请输入批发价">
+        </div>
+    </div>
+    <div class="col-md-12 mt-10 form-group">
+        <div class="col-md-5 text-right" style="margin-top: 6px;">售价:</div>
+        <div class="col-md-7 p-0">
+            <input type="text" name="price" class="form-control" value="<%=price%>" placeholder="请输入售价">
+        </div>
+    </div>
+    <div class="col-md-12 mt-10 form-group">
+        <div class="col-md-5 text-right" style="margin-top: 6px;">出售数量:</div>
+        <div class="col-md-7 p-0">
+            <div class="col-md-5 p-0">
+                <input type="text" name="wholenum" class="form-control" value="<%=wholenum%>" placeholder="整售">
+            </div>
+            <div class="col-md-1 p-0" style="margin-top: 6px;">
+                <%=wholeUnit%>
+            </div>
+            <div class="col-md-5 p-0">
+                <input type="text" name="scatterednum" class="form-control" value="<%=scatterednum%>" placeholder="零售">
+            </div>
+            <div class="col-md-1 p-0" style="margin-top: 6px;">
+                <%=unit%>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 mt-10 text-center form-group">
+        <div class="col-md-4 col-md-offset-4">
+            <button class="btn btn-success form-control btn-save" style="border-radius: 0px;" type="submit">保存</button>
+        </div>
+    </div>
+</form>
