@@ -103,15 +103,19 @@ exports.unboxingAsync = function (opts) {
             results.error_msg = "您要零卖的商品库存不足，现在剩余" + result[0].wholenum + result[0].wholeUnit + "!";
             return results;
         }
-
-        if (opts.good.wholescatterednum != result[0].conversionunit) {
+        if(result[0].wholenum - opts.good.wholenum<0){
+            results.error_code = 1001;
+            results.error_msg = "小于要零卖的件数!";
+            return results;
+        }
+        /*if (opts.good.wholescatterednum != result[0].conversionunit) {
             results.error_code = 1001;
             results.error_msg = "不能随意更改换算单位!";
             return results;
-        }
+        }*/
 
         //计算整拆后库存整 零数量
-        var addScatterednum = opts.good.wholenum * opts.good.wholescatterednum;
+        var addScatterednum = opts.good.wholenum * result[0].conversionunit;
         var updObj = {
             set: {
                 wholenum: {
@@ -127,10 +131,14 @@ exports.unboxingAsync = function (opts) {
                 goodId: opts.good.goodId
             }
         };
+
+        result[0].scatterednum = result[0].scatterednum+addScatterednum;
+        result[0].wholenum = result[0].wholenum - opts.good.wholenum;
         var updateSql = paramparse.parseUpdateSqlObj(updObj, "goods");
-        return mysqlPool.queryAsync(updateSql).then(function (result) {
+        return mysqlPool.queryAsync(updateSql).then(function (result1) {
             results.error_code = 0;
             results.error_msg = "拆箱成功！";
+            results.data = result[0];
             return results;
         });
     });

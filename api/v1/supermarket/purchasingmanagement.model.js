@@ -23,7 +23,15 @@ exports.purchasingManagementListAsync = function (opts) {
         var findSqlStr = paramparse.parseFindSqlObjTotal(null, "purchasing_management");
         findCountAsync = mysqlPool.queryAsync(findSqlStr);
     }
-    var findDataStr = paramparse.parseFindSqlObjLimit(null, "purchasing_management", beginRowIndex, pageSize);
+    var obj = {
+        where :{}
+    };
+
+    if(!isNaN(opts.purchasing.paystatus)){
+        obj.where.paystatus = opts.purchasing.paystatus;
+    }
+
+    var findDataStr = paramparse.parseFindSqlObjLimit(obj, "purchasing_management", beginRowIndex, pageSize);
     var findDataAsync = mysqlPool.queryAsync(findDataStr);
 
     return join(findCountAsync, findDataAsync, function (total, data) {
@@ -77,9 +85,18 @@ exports.addPurchasingManagementAsync = function (opts) {
     };
 
     var findPm = {
-        where: {purchaserole: opts.purchasingManagement.purchaserole}
+        where: {
+            purchaserole: {
+                relationship: "=",
+                value: opts.purchasingManagement.purchaserole
+            },
+            paystatus:{
+                relationship: "in",
+                value: "0,1"
+            }
+        }
     };
-    var findSqlStr = paramparse.parseFindSqlObj(findPm, "purchasing_management");
+    var findSqlStr = paramparse.parseFindSqlObjs(findPm, "purchasing_management");
     return mysqlPool.queryAsync(findSqlStr).then(function (result) {
         if (!result.length) {
             return getNextPurchasingManagementAsync(opts).then(function (result) {
@@ -108,6 +125,63 @@ exports.addPurchasingManagementAsync = function (opts) {
         }
     });
 
+};
+
+exports.paymentOperationAsync = function (opts) {
+    var results = {error_code: -1, error_msg: "error"};
+    var bbPromise = opts.mysqldbs.bbpromise;
+    var join = bbPromise.join;
+    var mysqlPool = opts.mysqldbs.mysqlPool;
+    var findPm = {
+        where: {pmId: opts.purchasingManagement.pmId}
+    };
+    var tableName = "purchasing_management";
+    var findSqlStr = paramparse.parseFindSqlObj(findPm, tableName);
+    return mysqlPool.queryAsync(findSqlStr).then(function (purchasings) {
+        if (!purchasings.length) {
+            results.error_code = 1001;
+            results.error_msg = "该售货单不存在!";
+            return results;
+        }
+        var purchasingmanagement = purchasings[0];
+        if (purchasingmanagement.paystatus == 3) {
+            results.error_code = 1001;
+            results.error_msg = "该售货单已经结清!";
+            return results;
+        }
+        var totalprice = purchasingmanagement.totalprice;
+        var alreadypaidmoney = purchasingmanagement.alreadypaidmoney + parseInt(opts.purchasingManagement.price);
+
+        var updObj = {
+            set: {
+                alreadypaidmoney: {
+                    relationship: "+",
+                    value: alreadypaidmoney
+                },
+                paystatus: {
+                    relationship: "=",
+                    value: 2
+                }
+            },
+            where: {
+                pmId: opts.purchasingManagement.pmId
+            }
+        };
+
+        if (alreadypaidmoney >= totalprice) {
+            updObj.set.paystatus.value = 3;
+            updObj.set.clearTime = {
+                relationship: "=",
+                value: new Date().getTime()
+            };
+        }
+        var updateSql = paramparse.parseUpdateSqlObj(updObj, "purchasing_management");
+        return mysqlPool.queryAsync(updateSql).then(function (result) {
+            results.error_code = 0;
+            results.error_msg = "结算成功!";
+            return results;
+        });
+    });
 };
 
 exports.addPurchasingGoodsAsync = function (opts) {
@@ -178,11 +252,11 @@ exports.addPurchasingGoodsAsync = function (opts) {
             tradePrice: good.tradePrice,
             wholenum: opts.purchasingManagement.wholenum,
             wholeUnit: good.wholeUnit,
-            conversionunit:good.conversionunit,
+            conversionunit: good.conversionunit,
             scatterednum: opts.purchasingManagement.scatterednum,
             unit: good.unit,
             tradeTime: new Date().getTime(),
-            subtotalprice:goodPurchasePrice
+            subtotalprice: goodPurchasePrice
         };
 
         var tableName = "purchasing_management_detail";
@@ -208,7 +282,6 @@ exports.addPurchasingGoodsAsync = function (opts) {
         };
         var updateSql = paramparse.parseUpdateSqlObj(updGoodNumObj, "goods");
         var updGoodNumAsync = mysqlPool.queryAsync(updateSql);
-
 
 
         var updObj = {
@@ -372,13 +445,6 @@ exports.delPurchasingManagementAsync = function (opts) {
 
 };
 
-/**
- * 删除商品
- * @param opts
- */
-exports.delPurchasingGoodAsync = function (opts) {
-
-};
 
 exports.settlePurchasingManagementAsync = function (opts) {
     var results = {error_code: -1, error_msg: "error"};

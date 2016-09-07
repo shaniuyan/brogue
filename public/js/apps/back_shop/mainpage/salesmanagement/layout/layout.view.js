@@ -8,7 +8,8 @@ define(["app", "marionette", "tpl!apps/back_shop/mainpage/salesmanagement/layout
         template: layoutTpl,
         events:{
           "click .btn_addGood":"addGood",
-          "click .purchaserole":"purchaserole"
+          "click .purchaserole":"purchaserole",
+          "click .btn_salesmanagementlist":"salesmanagementlist"
         },
         initialize: function () {
           if (this.getOption("xevent")) {
@@ -37,8 +38,15 @@ define(["app", "marionette", "tpl!apps/back_shop/mainpage/salesmanagement/layout
             this.xevent.triggerMethod("salesmanagement:chooseperson")
           }
         },
+        salesmanagementlist:function(e){
+          e.preventDefault();
+          if(this.xevent){
+            this.xevent.triggerMethod("salesmanagement:salesmanagementlist",this.xevent);
+          }
+        },
         regions: {
-          goodListRegion: ".goodListRegion"
+          goodListRegion: ".goodListRegion",
+          saleManagementRegion:".saleManagementRegion"
         }
       });
     });

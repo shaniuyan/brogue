@@ -40,7 +40,8 @@ define(["app"], function (BrogueApplication) {
                     data: {
                         pageIndex: 1,
                         pageSize: 15,
-                        pmId:opts.pmId
+                        pmId:opts.pmId,
+                        time:new Date().getTime()
                     },
                     success: function (data) {
                         defer.resolve(data);

@@ -69,6 +69,27 @@ exports.parseFindSqlObj = function(obj,tableName){
     return findSql;
 };
 
+exports.parseFindSqlObjs = function(obj,tableName){
+    obj=obj||{where:{1:1}};
+    var findSql = "select * from "+tableName+" where {where}";
+    var keys = _.keys(obj.where);
+    var wheres = [];
+    _.each(keys,function(key){
+        switch (obj.where[key].relationship){
+            case "=":
+                wheres.push(key+"='"+obj.where[key].value+"'");
+                break;
+            case "in":
+                wheres.push(key+" in("+obj.where[key].value+")");
+                break;
+        }
+
+    });
+    obj.relationship = obj.relationship || "and";
+    findSql = findSql.replace("{where}",wheres.join(" "+obj.relationship+" "));
+    return findSql;
+};
+
 exports.parseFindFieldSqlObj = function(obj,tableName){
     obj=obj||{where:{1:1}};
     var findSql = "select {field} from "+tableName+" where {where}";
@@ -132,7 +153,7 @@ exports.parseFindSqlObjLimit = function(obj,tableName,beginRowIndex,pageSize){
     var keys = _.keys(obj.where);
     var wheres = [];
     _.each(keys,function(key){
-        wheres.push(key+"="+obj.where[key]);
+        wheres.push(key+"='"+obj.where[key]+"'");
     });
     obj.relationship = obj.relationship || "and";
     findSql = findSql.replace("{where}",wheres.join(" "+obj.relationship+" ")).replace("{limit}",beginRowIndex+","+pageSize);

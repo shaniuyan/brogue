@@ -37,7 +37,8 @@ define(["app"], function (BrogueApplication) {
                 goodList.fetch({
                     data: {
                         pageIndex: 1,
-                        pageSize: 15
+                        pageSize: 15,
+                        time:new Date().getTime()
                     },
                     success: function (data) {
                         defer.resolve(data);

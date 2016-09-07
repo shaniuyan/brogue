@@ -288,5 +288,22 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
+
+
+        it("付款操作", function (done) {
+            request.post(testrooturl + '/api/v1/supermarket/paymentoperation.json')
+                .send({
+                    pmId:2,
+                    price:30
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
+
+        });
     });
 });

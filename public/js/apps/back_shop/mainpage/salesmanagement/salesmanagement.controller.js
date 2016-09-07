@@ -3,10 +3,12 @@
  */
 define(["app", "bootstrapmodel", "apps/back_shop/mainpage/salesmanagement/layout/layout.view",
     "apps/back_shop/mainpage/salesmanagement/salesform/mainform.view",
+    "apps/back_shop/mainpage/salesmanagement/mainform/mainform.view",
     "apps/back_shop/mainpage/salesmanagement/searchgood/good.controller",
+    "apps/back_shop/mainpage/salesmanagement/list/list.view",
     "apps/back_shop/mainpage/salesmanagement/detaillist/list.view",
     "apps/back_shop/entity/purchasingmanagement.entities",
-    "apps/back_shop/entity/purchasingmanagementdetail.entities"], function (BrogueApplication, bootstrapModel, LayoutView, MainFormView, goodController,ListView) {
+    "apps/back_shop/entity/purchasingmanagementdetail.entities"], function (BrogueApplication, bootstrapModel, LayoutView, MainFormView, PriceFormView, goodController, SalesListView, ListView) {
     BrogueApplication.module("BrogueApp.BackShop.MainPage.SalesManagement", function (SalesManagementController, BrogueApplication, Backbone, Marionette, $, _) {
         SalesManagementController.Controller = {
             showSalesManagement: function (Region, xobject) {
@@ -29,7 +31,41 @@ define(["app", "bootstrapmodel", "apps/back_shop/mainpage/salesmanagement/layout
                     model.set("scatterednum", 1);
                     model.set("wholenum", 1);
                     that.mainFormView = new MainFormView.Form({model: model, xevent: xobject});
-                    BrogueApplication.dialogFormRegion.show(that.mainFormView, {title: "出售信息", height: 430, width: 400});
+                    BrogueApplication.dialogFormRegion.show(that.mainFormView, {
+                        title: "出售信息",
+                        height: 430,
+                        width: 400
+                    });
+                });
+                xobject.on("sales:retail", function (model) {
+                    BrogueApplication.messageDialogRegion.confirm({
+                        title: "零售操作提示", message: "您确认要添加零售信息吗?",
+                        ok: function () {
+                            var data = {
+                                goodId:model.get("goodId"),
+                                wholenum:1
+                            };
+
+                            model.url = "/api/v1/supermarket/unboxing.json";
+                            var opts = {
+                                success: function (model, resp, options) {
+                                    model.set(resp.response_params);
+                                    xobject.goodListView.render();
+                                },
+                                error: function () {
+                                    console.log("server conn fail || request url address error!");
+                                }
+                            }
+                            var save = model.save(data, opts);
+                            if (!save) {
+                                //formView.triggerMethod("form:data:invalid", newDoctorClass.validationError);
+                            }
+
+                            //
+                        },
+                        cancel: function () {
+                        }
+                    });
                 });
 
                 xobject.on("salesmanagement:add", function (opt) {
@@ -40,6 +76,15 @@ define(["app", "bootstrapmodel", "apps/back_shop/mainpage/salesmanagement/layout
                             adddetail.set(resp.response_params.purchasingdetail);
                             that.goodListView.collection.unshift(adddetail);
                             that.mainFormView.trigger("dialog:close");
+                            var substotalprice = adddetail.get("subtotalprice");
+                            var curtotalprice = that.purchasingManagementModel.get("totalprice")
+
+                            that.purchasingManagementModel.set("totalprice", substotalprice + curtotalprice);
+                            that.salesListView = new SalesListView.Form({
+                                model: that.purchasingManagementModel,
+                                xevent: xobject
+                            });
+                            that.layoutView.saleManagementRegion.show(that.salesListView);
                         },
                         error: function () {
                             console.log("server conn fail || request url address error!");
@@ -52,20 +97,25 @@ define(["app", "bootstrapmodel", "apps/back_shop/mainpage/salesmanagement/layout
                     }
                 });
 
-                xobject.on("salesmanagement:chooseperson",function(){
+                xobject.on("salesmanagement:chooseperson", function () {
                     that.chooseSalesManagement(xobject);
                 });
 
-                xobject.on("sales:delsales",function(model){
+                xobject.on("sales:delsales", function (model) {
 
                     BrogueApplication.messageDialogRegion.confirm({
                         title: "删除提示", message: "您确认将该信息删除吗?",
                         ok: function () {
-                            var data = {pmId:model.get("pmId"),pmDetailId:model.get("pmDetailId")};
+                            var data = {pmId: model.get("pmId"), pmDetailId: model.get("pmDetailId")};
 
                             model.url = "/api/v1/supermarket/delpurchasinggoods.json";
                             var opts = {
                                 success: function (model, resp, options) {
+                                    var totalprice = that.purchasingManagementModel.get("totalprice");
+                                    var subtotalprice = model.get("subtotalprice");
+                                    that.purchasingManagementModel.set("totalprice", totalprice - subtotalprice);
+                                    that.salesListView = new SalesListView.Form({model: that.purchasingManagementModel});
+                                    that.layoutView.saleManagementRegion.show(that.salesListView);
                                     model.destroy();
                                 },
                                 error: function () {
@@ -81,13 +131,57 @@ define(["app", "bootstrapmodel", "apps/back_shop/mainpage/salesmanagement/layout
                         },
                         cancel: function () {
                         }
-                    }) ;
+                    });
 
 
                 });
+
+                xobject.on("salesmanagement:paymentoperation", function (opt) {
+                    that.purchasingManagementModel.url = "/api/v1/supermarket/paymentoperation.json";
+                    var opts = {
+                        success: function (model, resp, options) {
+                            if (resp.error_code != 1001) {
+                                that.chooseSalesManagement(xobject);
+                                that.priceFormView.trigger("dialog:close")
+                            }
+                        },
+                        error: function () {
+                            console.log("server conn fail || request url address error!");
+                        }
+                    }
+                    var save = that.purchasingManagementModel.save(opt.data, opts);
+                    if (!save) {
+                        //formView.triggerMethod("form:data:invalid", newDoctorClass.validationError);
+                    }
+                });
+
+                xobject.on("salesmanagement:clear", function (opt) {
+
+                    if (!that.goodListView.collection.length) {
+                        BrogueApplication.messageDialogRegion.alert({
+                            title: "结算提示", message: "请添加出售商品！"
+                        });
+                        return;
+                    }
+                    if (xobject.GoodlayoutView) {
+                        xobject.GoodlayoutView.trigger("dialog:close");
+                    }
+                    that.showPriceView(xobject);
+                });
+
+                xobject.on("salesmanagement:salesmanagementlist",function(){
+                    xobject.param = {
+                        paystatus:0
+                    };
+                    require(["apps/back_shop/mainpage/salesmanagementlist/salesmanagementlist.controller"],function(salesmanagementlistController){
+                        salesmanagementlistController.showManagementList(xobject);
+                    });
+                });
+
+
                 that.chooseSalesManagement(xobject);
             },
-            chooseSalesManagement:function(xobject){
+            chooseSalesManagement: function (xobject) {
                 var that = this;
 
                 that.purchasingManagementModel.url = "/api/v1/supermarket/addpurchasingmanagement.json";
@@ -100,11 +194,12 @@ define(["app", "bootstrapmodel", "apps/back_shop/mainpage/salesmanagement/layout
                             var pmId = that.purchasingManagementModel.get("pmId");
 
                             var options = {
-                                pmId:pmId,
-                                region:that.layoutView.goodListRegion
+                                pmId: pmId,
+                                listRegion: that.layoutView.saleManagementRegion,
+                                region: that.layoutView.goodListRegion
                             };
 
-                            that.showSalesGoods(options,xobject);
+                            that.showSalesGoods(options, xobject);
                         }
                     },
                     error: function () {
@@ -117,15 +212,28 @@ define(["app", "bootstrapmodel", "apps/back_shop/mainpage/salesmanagement/layout
                 }
 
             },
-            showSalesGoods:function(options,xobject){
+            showSalesGoods: function (options, xobject) {
                 var that = this;
                 var region = options.region;
-                var opts = {pmId:options.pmId};
-                var fetchGoods = BrogueApplication.request("purchasingmanagementdetail:entities",opts);
+                var listRegion = options.listRegion;
+                var opts = {pmId: options.pmId};
+
+                that.salesListView = new SalesListView.Form({model: that.purchasingManagementModel, xevent: xobject});
+                listRegion.show(that.salesListView);
+                var fetchGoods = BrogueApplication.request("purchasingmanagementdetail:entities", opts);
                 $.when(fetchGoods).done(function (goods) {
-                    that.goodListView = new ListView.Table({collection:goods,xevent:xobject,childViewOptions: {xevent: xobject}});
+                    that.goodListView = new ListView.Table({
+                        collection: goods,
+                        xevent: xobject,
+                        childViewOptions: {xevent: xobject}
+                    });
                     region.show(that.goodListView);
                 });
+            },
+            showPriceView: function (xobject) {
+                var that = this;
+                that.priceFormView = new PriceFormView.Form({model: that.purchasingManagementModel, xevent: xobject});
+                BrogueApplication.dialogFormRegion.show(that.priceFormView, {title: "结算窗口", height: 480, width: 400});
             }
         };
     });

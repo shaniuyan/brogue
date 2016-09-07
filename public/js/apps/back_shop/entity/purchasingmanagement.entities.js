@@ -22,18 +22,21 @@ define(["app"], function (BrogueApplication) {
             initialize: function () {
             },
             parse: function (response) {
-                return response.response_params;
+                return response.response_params.data;
             }
         });
         var API = {
-            getPurchasingManagementList: function () {
+            getPurchasingManagementList: function (param) {
+                param = param || {};
                 var goodList = new Entities.PurchasingManagementList();
                 var defer = $.Deferred();
                 goodList.url = "/api/v1/supermarket/purchasingmanagementlist.json";
                 goodList.fetch({
                     data: {
                         pageIndex: 1,
-                        pageSize: 15
+                        pageSize: 15,
+                        time:new Date().getTime(),
+                        paystatus:param.paystatus
                     },
                     success: function (data) {
                         defer.resolve(data);
@@ -43,8 +46,8 @@ define(["app"], function (BrogueApplication) {
                 return promise;
             }
         };
-        BrogueApplication.reqres.setHandler("purchasingmanagement:entities", function () {
-            return API.getPurchasingManagementList();
+        BrogueApplication.reqres.setHandler("purchasingmanagement:entities", function (param) {
+            return API.getPurchasingManagementList(param);
         });
     });
 });

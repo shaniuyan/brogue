@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form id="SalesList" class="form-horizontal">
+            <div class="col-md-3 mt-10 form-group">
+                <div class="col-md-5 text-right" style="padding-top: 6px;">售货编号:</div>
+                <div class="col-md-7 p-0" style="padding-top: 6px;">
+                    <%=phcode%>
+                </div>
+            </div>
+            <div class="col-md-3 mt-10 form-group">
+                <div class="col-md-5 text-right" style="padding-top: 6px;">购买人:</div>
+                <div class="col-md-7 p-0">
+                    <input type="text" name="purchaseperson" class="form-control" value="<%=purchaseperson%>" placeholder="购买人姓名">
+                </div>
+            </div>
+            <div class="col-md-3 mt-10 form-group">
+                <div class="col-md-5 text-right" style="padding-top: 6px;">联系方式:</div>
+                <div class="col-md-7 p-0">
+                    <input type="text" name="purchasephone" class="form-control" value="<%=purchasephone%>" placeholder="购买人手机号">
+                </div>
+            </div>
+            <div class="col-md-3 mt-10 form-group">
+                <div class="col-md-5 text-right" style="padding-top: 6px;">账单总价:</div>
+                <div class="col-md-5 p-0">
+                    <input type="text" name="totalprice" class="form-control" value="<%=totalprice%>" placeholder="请输入账单总价">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-success form-control btn-clear" style="border-radius: 0px;" type="submit">结算</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

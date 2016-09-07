@@ -8,12 +8,12 @@ define(["app",
     BrogueApplication.module("BrogueApp.BackShop.SalesManagement.GoodList", function (GoodListController, BrogueApplication, Backbone, Marionette, $, _) {
         GoodListController.Controller = {
             showGoodList: function (xobject) {
-                var layoutView = new LayoutView.Layout();
-                BrogueApplication.dialogRegion.show(layoutView,{title:"添加出售商品",height:400,width:820});
+                xobject.GoodlayoutView = new LayoutView.Layout({xevent:xobject});
+                BrogueApplication.dialogRegion.show(xobject.GoodlayoutView,{title:"添加出售商品",height:400,width:820});
                 var fetchGoods = BrogueApplication.request("good:entities");
                 $.when(fetchGoods).done(function (goods) {
-                    var goodListView = new ListView.Table({collection:goods,xevent:xobject,childViewOptions: {xevent: xobject}});
-                    layoutView.goodListRegion.show(goodListView);
+                    xobject.goodListView = new ListView.Table({collection:goods,xevent:xobject,childViewOptions: {xevent: xobject}});
+                    xobject.GoodlayoutView.goodListRegion.show(xobject.goodListView);
                     //layoutView.goodListRegion.show(goodTables);
                 });
             }
