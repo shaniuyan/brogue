@@ -2,6 +2,7 @@ requirejs.config({
   baseUrl: 'js/',
   paths: {
     jquery: "lib/jquery.min",
+    zxxfile: "lib/zxxFile",
     tether: "lib/tether-1.3.1/js/tether.min",
     //bootstrap: "lib/bootstrap-3.3.5/dist/js/bootstrap.min",
     bootstrap: "lib/bootstrap/js/bootstrap.min",
@@ -25,7 +26,8 @@ requirejs.config({
     //shop后台登录页面
     loginView:"apps/back_shop/login/login.view",
     shopMainView:"apps/back_shop/mainpage/layout/layout.view",
-    addMarketQuotientView:'apps/back_shop/mainpage/marketquotient/form/form.view'
+    addMarketQuotientView:'apps/back_shop/mainpage/marketquotient/form/form.view',
+    uploadView:"apps/back_shop/mainpage/resources/album/upload/upload.view"
   },
   'map': {
     '*': {
@@ -33,6 +35,7 @@ requirejs.config({
     }
   },
   shim: {
+    'zxxfile': {deps: ['jquery'], exports: 'zxxfile'},
     'bootstrap': {deps: ['jquery'], exports: 'bootstrap'},
     'bootboxmin':{deps:['jquery','bootstrap'],exports:'bootboxmin'},
     'underscore': {exports: "_"},
@@ -50,7 +53,8 @@ requirejs.config({
     'jqueryui':["jquery","css!lib/jqueryui/jquery-ui-1.10.3.custom.css"],
     'loginView':["css!lib/bootstrap/css/bootstrap.min.css","css!lib/helpercss/dashboard.css","css!lib/custom-css/login.css","css!lib/custom-css/main.css"],
     'shopMainView':["css!lib/bootstrap/css/bootstrap.min.css","css!lib/helpercss/dashboard.css","css!lib/bootstrap-3.3.5/dist/css/font-awesome.css","css!lib/custom-css/main.css"],
-    'bootstrapvalidator':['jquery','bootstrap',"css!lib/bootstrapvalidatormin/css/bootstrapValidator.css"]
+    'bootstrapvalidator':['jquery','bootstrap',"css!lib/bootstrapvalidatormin/css/bootstrapValidator.css"],
+    'uploadView':['zxxfile']
   }
 });
 

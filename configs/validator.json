@@ -2,25 +2,11 @@
   "good": {
     "addGood": [
       {
-        "field": "goodCode",
-        "type": "string",
-        "noEmpty": true,
-        "desc": "商品编号不能为空",
-        "typedesc": "商品编号不能为空"
-      },
-      {
         "field": "goodName",
         "type": "string",
         "noEmpty": true,
         "desc": "商品名称不能为空",
         "typedesc": "商品名称不能为空"
-      },
-      {
-        "field": "brand",
-        "type": "string",
-        "noEmpty": true,
-        "desc": "品牌不能为空",
-        "typedesc": "品牌不能为空！"
       }
     ],
     "goodList": [

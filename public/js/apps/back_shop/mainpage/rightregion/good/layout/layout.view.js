@@ -7,6 +7,11 @@ define(["app", "marionette", "tpl!apps/back_shop/mainpage/rightregion/good/layou
             GoodList.Layout = Marionette.LayoutView.extend({
                 className: "container",
                 template: workspaceTpl,
+                initialize: function () {
+                    if (this.getOption("xevent")) {
+                        this.xevent = this.getOption("xevent");
+                    }
+                },
                 regions: {
                     goodListRegion: ".goodListRegion"
                 },
@@ -15,7 +20,9 @@ define(["app", "marionette", "tpl!apps/back_shop/mainpage/rightregion/good/layou
                 },
                 addGood: function (e) {
                     e.preventDefault();
-                    window.alert("添加商铺信息");
+                    if(this.xevent){
+                        this.xevent.triggerMethod("goodadd:form");
+                    }
                 }
             });
         });

@@ -34,6 +34,16 @@ exports.nextBatchNumber = function(lastWholesaleNum){
     return strformat + curNum;
 };
 
+exports.nextNumber = function(prefix,lastWholesaleNum){
+    if(!lastWholesaleNum){
+        return null;
+    }
+    var NSnum = lastWholesaleNum.substr(3);
+    var nextNum = parseInt(NSnum)+1;
+    var curNum = pad(nextNum,5);
+    return prefix + curNum;
+};
+
 
 exports.parseInsertSqlObj = function(obj,tableName){
     var sqlStr = "insert into "+tableName+"({insertcol}) values ({insertval})";

@@ -24,7 +24,7 @@ define(["app",
 
       View.Table = Marionette.CompositeView.extend({
         tagName: "table",
-        className:"table table-responsive",
+        className:"table table-hover",
         template: tableTpl,
         childView: View.Tr,
         emptyView: NoneView,

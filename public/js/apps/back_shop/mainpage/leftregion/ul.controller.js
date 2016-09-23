@@ -31,8 +31,14 @@ define(["app", "apps/back_shop/mainpage/leftregion/nav.view"], function (BrogueA
                         case "1003001":
                             BrogueApplication.trigger("shopback:supplysupplierlist");
                             break;
+                        case "1004001":
+                            BrogueApplication.trigger("shopback:album");
+                            break;
                         case "1003002":
                             BrogueApplication.trigger("shopback:marketquotientlist");
+                            break;
+                        case "1099003":
+                            BrogueApplication.trigger("shopback:sysusermanager");
                             break;
                     }
                 });

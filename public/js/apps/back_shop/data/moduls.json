@@ -84,6 +84,20 @@
     ]
   },
   {
+    "permId":"1004",
+    "permName":"资源管理",
+    "icon":"sr-only",
+    "desc":"",
+    "childModuls":[
+      {
+        "permId":"1004001",
+        "permName":"相册管理",
+        "icon":"fa fa-database",
+        "desc":""
+      }
+    ]
+  },
+  {
     "permId":"1099",
     "permName":"系统管理",
     "icon":"sr-only",

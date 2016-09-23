@@ -50,4 +50,8 @@ router.post("/supermarket/wmaddpurchasinggoods.json", apiV1.wholesalemanagement.
 router.post("/supermarket/wmdelpurchasinggoods.json", apiV1.wholesalemanagement.delPurchasingGoods);
 router.post("/supermarket/settlewholesalemanagement.json", apiV1.wholesalemanagement.settleWholesalemanagement);
 
+
+router.post("/manageuser/addcustomer.json", apiV1.manageuser.addCustomer);
+router.get("/manageuser/goodcustomer.json", apiV1.manageuser.goodCustomer);
+
 module.exports = router;

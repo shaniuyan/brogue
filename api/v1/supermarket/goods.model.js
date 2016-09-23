@@ -51,31 +51,34 @@ exports.goodListAsync = function (opts) {
 exports.addGoodAsync = function (opts) {
     var results = {error_code: -1, error_msg: "error"};
     var bbPromise = opts.mysqldbs.bbpromise;
-    var mysqlPool = opts.mysqldbs.mysqlPool;
 
-    var insertObj = {
-        goodCode: opts.good.goodCode,
-        goodName: opts.good.goodName,
-        brand: opts.good.brand,
-        model: opts.good.model,
-        purchasePrice: opts.good.purchasePrice,
-        price: opts.good.price,
-        tradePrice: opts.good.tradePrice,
-        wholenum: opts.good.wholenum,
-        scatterednum: opts.good.scatterednum,
-        wholeUnit: opts.good.wholeUnit,
-        unit: opts.good.unit,
-        conversionunit: opts.good.conversionunit,
-        goodBar: opts.good.goodBar,
-        lastStorageTime: new Date().getTime()
-    };
-
-    var tableName = "goods";
-    var sqlObj = paramparse.parseInsertSqlObj(insertObj, tableName);
-    return mysqlPool.queryAsync(sqlObj.sqlStr, sqlObj.insertInfos).then(function (result) {
-        results.error_code = 0;
-        results.error_msg = "添加成功";
-        return results;
+    return getNextGoodAsync(opts).then(function(result){
+        var mysqlPool = opts.mysqldbs.mysqlPool;
+        var insertObj = {
+            goodCode: '',
+            goodName: opts.good.goodName,
+            brand: opts.good.brand,
+            model: opts.good.model,
+            purchasePrice: opts.good.purchasePrice,
+            price: opts.good.price,
+            tradePrice: opts.good.tradePrice,
+            wholenum: opts.good.wholenum,
+            scatterednum: opts.good.scatterednum,
+            wholeUnit: opts.good.wholeUnit,
+            unit: opts.good.unit,
+            conversionunit: opts.good.conversionunit,
+            goodBar: opts.good.goodBar,
+            lastStorageTime: new Date().getTime()
+        };
+        insertObj.goodCode = result.data;
+        var tableName = "goods";
+        var sqlObj = paramparse.parseInsertSqlObj(insertObj, tableName);
+        return mysqlPool.queryAsync(sqlObj.sqlStr, sqlObj.insertInfos).then(function (result) {
+            results.error_code = 0;
+            results.error_msg = "添加成功";
+            results.data = insertObj;
+            return results;
+        });
     });
 };
 
@@ -271,5 +274,27 @@ exports.updGoodNumAsync = function (opts) {
             results.error_msg = "更新商品信息成功！";
             return results;
         });
+    });
+};
+
+
+var getNextGoodAsync = function (opts) {
+    var results = {error_code: -1, error_msg: "error"};
+    var bbPromise = opts.mysqldbs.bbpromise;
+    var mysqlPool = opts.mysqldbs.mysqlPool;
+    return mysqlPool.queryAsync("select max(goodCode) goodCode from brogue_db.goods").then(function (result) {
+        results.error_code = 0;
+        results.error_msg = "获取服务器最新商品编号成功!";
+        if (!result[0].goodCode) {
+            result[0].goodCode = 'GD100001';
+        } else {
+            result[0].goodCode = paramparse.nextNumber('GD1',result[0].goodCode);
+        }
+        results.data = result[0].goodCode;
+        return results;
+    }).catch(function (e) {
+        results.error_code = 1001;
+        results.error_msg = "获取最新最新商品编号失败，请联系平台管理员!";
+        return results;
     });
 };

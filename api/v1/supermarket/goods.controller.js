@@ -55,6 +55,7 @@ exports.addGood = function (req, res, next) {
     return goodModel.addGoodAsync(opts).then(function (result) {
         body.error_code = result.error_code;
         body.error_msg = result.error_msg;
+        body.response_params = result.data;
         res.status(200).json(body);
     });
 };

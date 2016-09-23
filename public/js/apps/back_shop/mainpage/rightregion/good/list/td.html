@@ -1,15 +1,24 @@
 <td class="hidden-xs">
-    <%-goodCode%>
+    <%-goodCode+goodName%>
 </td>
-<td class="hidden-xs">
-    <%-goodName%>
-</td>
-<td class="hidden-xs">
+<td class="hidden-xs text-center">
     <%-brand%>
 </td>
-<td>
+<td class="hidden-xs text-center">
     <%-model%>
 </td>
-<td>
-    备注
+<td class="hidden-xs text-center">
+    <%-wholenum+wholeUnit+scatterednum+unit%>
+</td>
+<td class="hidden-xs text-center">
+    <%-price%>
+</td>
+<td class="hidden-xs text-center">
+    <%-tradePrice%>
+</td>
+<td class="hidden-xs text-center">
+    <button class="btn btn-success btn-sm btn-sales" style="border-radius: 0px;">出售</button>
+    <button class="btn btn-info btn-sm btn-retail" style="border-radius: 0px;">
+        <span class="glyphicon glyphicon-share"></span>
+    </button>
 </td>
