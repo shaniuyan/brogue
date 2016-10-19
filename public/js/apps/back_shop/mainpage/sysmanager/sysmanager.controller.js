@@ -19,7 +19,7 @@ define(["app", "apps/back_shop/mainpage/sysmanager/layout/layout.view",
                 layoutView.SysManagerRegion.show(userLayoutView);
                 var fetchCustomers = BrogueApplication.request("customer:entities");
                 $.when(fetchCustomers).done(function (customers) {
-                    that.customerListView = new ListView.Table({collection:customers,xevent:xobject,childViewOptions: {xevent: xobject}});
+                    that.customerListView = new ListView.Table({collection:customers,xevent:that.xobject,childViewOptions: {xevent: that.xobject}});
                     userLayoutView.UserListRegion.show(that.customerListView);
                 });
 
@@ -40,7 +40,7 @@ define(["app", "apps/back_shop/mainpage/sysmanager/layout/layout.view",
                     var opts = {
                         success: function (model, resp, options) {
                             that.customerModel.set(resp.response_params);
-                            that.customerListView.collection.add(that.customerModel);
+                            that.customerListView.collection.unshift(that.customerModel);
                             that.mainFormView.trigger("dialog:close");
                         },
                         error: function () {
@@ -51,6 +51,34 @@ define(["app", "apps/back_shop/mainpage/sysmanager/layout/layout.view",
                     if (!save) {
                         //formView.triggerMethod("form:data:invalid", newDoctorClass.validationError);
                     }
+                });
+
+
+                that.xobject.on("customers:delcustomer",function(model){
+                    BrogueApplication.messageDialogRegion.confirm({
+                        title: "删除提示", message: "您确认将该职工信息删除吗?",
+                        ok: function () {
+                            var data = {accountNumber: model.get("accountNumber")};
+
+                            model.url = "/api/v1/manageuser/delcustomer.json";
+                            var opts = {
+                                success: function (model, resp, options) {
+                                    model.destroy();
+                                },
+                                error: function () {
+                                    console.log("server conn fail || request url address error!");
+                                }
+                            }
+                            var save = model.save(data, opts);
+                            if (!save) {
+                                //formView.triggerMethod("form:data:invalid", newDoctorClass.validationError);
+                            }
+
+                            //
+                        },
+                        cancel: function () {
+                        }
+                    });
                 });
             }
         };

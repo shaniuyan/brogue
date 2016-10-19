@@ -128,7 +128,7 @@ exports.parseUpdateSqlObj = function(obj,tableName){
         obj.set[key].relationship=obj.set[key].relationship||'=';
         switch (obj.set[key].relationship){
             case "=":
-                sets.push(key+"="+obj.set[key].value);
+                sets.push(key+"='"+obj.set[key].value+"'");
                 break;
             case "+":
                 sets.push(key+"=ifnull("+key+",0)+"+obj.set[key].value);
@@ -149,7 +149,7 @@ exports.parseUpdateSqlObj = function(obj,tableName){
     var keys = _.keys(obj.where);
     var wheres = [];
     _.each(keys,function(key){
-        wheres.push(key+"="+obj.where[key]);
+        wheres.push(key+"='"+obj.where[key]+"'");
     });
     obj.relationship = obj.relationship || "and";
     updateSql = updateSql.replace("{set}",sets.join(",")).replace("{where}",wheres.join(" "+obj.relationship+" "));
@@ -167,6 +167,7 @@ exports.parseFindSqlObjLimit = function(obj,tableName,beginRowIndex,pageSize){
     });
     obj.relationship = obj.relationship || "and";
     findSql = findSql.replace("{where}",wheres.join(" "+obj.relationship+" ")).replace("{limit}",beginRowIndex+","+pageSize);
+    console.log(findSql);
     return findSql;
 };
 

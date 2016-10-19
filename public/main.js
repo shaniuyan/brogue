@@ -60,5 +60,19 @@ requirejs.config({
 
 require(['app', "apps/back_shop/shop.app"],
   function (AppManager) {
+    var sessionId = window.localStorage.sessionId||"";
+    var data = {
+      sessionId:sessionId,
+      deviceType:1
+    };
+    $.ajax({
+      url: "/api/v1/auth/getclientid.json",
+      data: data,
+      success: function(resp){
+        window.localStorage.sessionId = resp.response_params
+      },
+      dataType: "json"
+    });
+
     AppManager.start();
   });

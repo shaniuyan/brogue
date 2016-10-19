@@ -31,6 +31,9 @@ define(["app", "apps/back_shop/mainpage/leftregion/nav.view"], function (BrogueA
                         case "1003001":
                             BrogueApplication.trigger("shopback:supplysupplierlist");
                             break;
+                        case "1004000":
+                            BrogueApplication.trigger("shopback:filemanage");
+                            break;
                         case "1004001":
                             BrogueApplication.trigger("shopback:album");
                             break;

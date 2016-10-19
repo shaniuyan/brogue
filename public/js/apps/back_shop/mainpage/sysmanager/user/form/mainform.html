@@ -1,11 +1,5 @@
 <form id="CustomerForm" class="form-horizontal">
     <div class="col-md-12 mt-10 form-group">
-        <div class="col-md-5 text-right" style="margin-top: 6px;">账号:</div>
-        <div class="col-md-7 p-0">
-            <input type="text" name="accountNumber" class="form-control" value="" placeholder="请输入账号">
-        </div>
-    </div>
-    <div class="col-md-12 mt-10 form-group">
         <div class="col-md-5 text-right" style="margin-top: 6px;">姓名:</div>
         <div class="col-md-7 p-0">
             <input type="text" name="name" class="form-control" value="" placeholder="请输入职工姓名">
@@ -17,6 +11,14 @@
             <input type="text" name="nickname" class="form-control" value="" placeholder="请输入昵称">
         </div>
     </div>
+    <div class="col-md-12 mt-10 form-group">
+        <div class="col-md-5 text-right" style="margin-top: 6px;">性别:</div>
+        <div class="col-md-7 p-0">
+            <label for="man">男:</label><input id="man" type="radio" class="sex" name="sex" checked="checked" value="1">
+            <label for="woman">女:</label><input id="woman" type="radio" class="sex" name="sex" value="0">
+        </div>
+    </div>
+
     <div class="col-md-12 mt-10 form-group">
         <div class="col-md-5 text-right" style="margin-top: 6px;">手机号:</div>
         <div class="col-md-7 p-0">
@@ -44,7 +46,7 @@
     <div class="col-md-12 mt-10 form-group">
         <div class="col-md-5 text-right" style="margin-top: 6px;">现住址:</div>
         <div class="col-md-7 p-0">
-            <input type="text" name="presentAddress" class="form-control" value="0" placeholder="请输入现住址">
+            <input type="text" name="presentAddress" class="form-control" value="" placeholder="请输入现住址">
         </div>
     </div>
     <div class="col-md-12 mt-10 text-center form-group">

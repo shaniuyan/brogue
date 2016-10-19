@@ -72,3 +72,11 @@
              详细描述：
                  针对现实生活中的业务乡民汇将商铺的流程总结如下：做出计划（可以提前做好本次进货进货清单）-进货-售出（批发）-入账(赊账)-利润
    平台后台：
+
+
+
+
+添加token验证方法
+安装依赖包
+$ npm install oauth20-provider
+1、定义你的实体类和控制器方法。（Define your models and decision controller）

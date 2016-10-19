@@ -90,9 +90,15 @@
     "desc":"",
     "childModuls":[
       {
+        "permId":"1004000",
+        "permName":"我的文件",
+        "icon":"fa fa-folder-o",
+        "desc":""
+      },
+      {
         "permId":"1004001",
         "permName":"相册管理",
-        "icon":"fa fa-database",
+        "icon":"fa fa-camera-retro",
         "desc":""
       }
     ]

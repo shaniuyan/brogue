@@ -3,7 +3,7 @@
  */
 var _ = require('lodash');
 var manageUserModel = require("./manageuser.model");
-
+var jwt  = require("jsonwebtoken");
 
 exports.goodCustomer = function (req, res, next) {
     var param = _.extend(req.query, req.body);
@@ -14,6 +14,8 @@ exports.goodCustomer = function (req, res, next) {
     opts.mysqldbs = req.mysqldbs;
     opts.page.pageIndex = param.pageIndex;
     opts.page.pageSize = param.pageSize;
+
+    opts.customer.deltag = param.deltag || 0;
     return manageUserModel.goodCustomerAsync(opts).then(function (result) {
         body.error_code = result.error_code;
         body.error_msg = result.error_msg;
@@ -57,9 +59,29 @@ exports.addCustomer = function(req,res,next){
     opts.customer.placeOfOrigin = param.placeOfOrigin;
     opts.customer.presentAddress = param.presentAddress;
     opts.customer.password = param.password;
-    opts.customer.token = param.token;
-
+    //opts.customer.token = param.token;
+    opts.customer.token = jwt.sign({
+        name:param.name,
+        sex:param.sex,
+        nickname:param.nickname
+    }, "LJNKSP");
     return manageUserModel.addCustomerAsync(opts).then(function (result) {
+        body.error_code = result.error_code;
+        body.error_msg = result.error_msg;
+        body.response_params = result.data;
+        res.status(200).json(body);
+    });
+};
+
+exports.delCustomer = function(req,res,next){
+    var param = _.extend(req.query, req.body);
+    var body = {};
+    body.response_params = {};
+    var opts = {customer: {}, configs: {}};
+    opts.configs = req.configs;
+    opts.mysqldbs = req.mysqldbs;
+    opts.customer.accountNumber = param.accountNumber;
+    return manageUserModel.delCustomerAsync(opts).then(function(result){
         body.error_code = result.error_code;
         body.error_msg = result.error_msg;
         body.response_params = result.data;

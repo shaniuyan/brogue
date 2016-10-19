@@ -19,12 +19,16 @@ exports.goodCustomerAsync = function (opts) {
     }
     beginRowIndex = (pageIndex - 1) * pageSize;
 
+    var obj={
+        where:{deltag:opts.customer.deltag}
+    };
+
     var findCountAsync = bbPromise.resolve();
     if (!opts.page.searchCount) {
-        var findSqlStr = paramparse.parseFindSqlObjTotal(null, "customers");
+        var findSqlStr = paramparse.parseFindSqlObjTotal(obj, "customers");
         findCountAsync = mysqlPool.queryAsync(findSqlStr);
     }
-    var findDataStr = paramparse.parseFindSqlObjLimit(null, "customers", beginRowIndex, pageSize);
+    var findDataStr = paramparse.parseFindSqlObjLimit(obj, "customers", beginRowIndex, pageSize);
     var findDataAsync = mysqlPool.queryAsync(findDataStr);
 
     return join(findCountAsync, findDataAsync, function (total, data) {
@@ -41,28 +45,30 @@ exports.goodCustomerAsync = function (opts) {
 exports.addCustomerAsync = function (opts) {
     var results = {error_code: -1, error_msg: "error"};
     var bbPromise = opts.mysqldbs.bbpromise;
-
-    var mysqlPool = opts.mysqldbs.mysqlPool;
-    var insertObj = {
-        name: opts.customer.name,
-        sex: opts.customer.sex,
-        nickname: opts.customer.nickname,
-        accountNumber: opts.customer.accountNumber,
-        phone: opts.customer.phone,
-        telephone: opts.customer.telephone,
-        idNumber: opts.customer.idNumber,
-        placeOfOrigin: opts.customer.placeOfOrigin,
-        presentAddress: opts.customer.presentAddress,
-        password: opts.customer.password,
-        token: opts.customer.token
-    };
-    var tableName = "customers";
-    var sqlObj = paramparse.parseInsertSqlObj(insertObj, tableName);
-    return mysqlPool.queryAsync(sqlObj.sqlStr, sqlObj.insertInfos).then(function (result) {
-        results.error_code = 0;
-        results.error_msg = "添加成功";
-        results.data = insertObj;
-        return results;
+    return getNextAccountAsync(opts).then(function(result){
+        var mysqlPool = opts.mysqldbs.mysqlPool;
+        var insertObj = {
+            name: opts.customer.name,
+            sex: opts.customer.sex,
+            nickname: opts.customer.nickname,
+            accountNumber: "",
+            phone: opts.customer.phone,
+            telephone: opts.customer.telephone,
+            idNumber: opts.customer.idNumber,
+            placeOfOrigin: opts.customer.placeOfOrigin,
+            presentAddress: opts.customer.presentAddress,
+            password: opts.customer.password,
+            token: opts.customer.token
+        };
+        insertObj.accountNumber = result.data;
+        var tableName = "customers";
+        var sqlObj = paramparse.parseInsertSqlObj(insertObj, tableName);
+        return mysqlPool.queryAsync(sqlObj.sqlStr, sqlObj.insertInfos).then(function (result) {
+            results.error_code = 0;
+            results.error_msg = "添加成功";
+            results.data = insertObj;
+            return results;
+        });
     });
 };
 exports.updCustomerAsync = function (opts) {
@@ -70,5 +76,58 @@ exports.updCustomerAsync = function (opts) {
 };
 
 exports.delCustomerAsync = function (opts) {
+    var results = {error_code: -1, error_msg: "error"};
+    var bbPromise = opts.mysqldbs.bbpromise;
+    var mysqlPool = opts.mysqldbs.mysqlPool;
 
+    var findCustomer = {
+        where: {accountNumber: opts.customer.accountNumber}
+    };
+    var findSqlStr = paramparse.parseFindSqlObj(findCustomer, "customers");
+    return mysqlPool.queryAsync(findSqlStr).then(function (result) {
+        if (!result.length) {
+            results.error_code = 1001;
+            results.error_msg = "您要删除的职工信息不存在!";
+            return results;
+        }
+        var updObj = {
+            set: {
+                deltag: {
+                    relationship: "=",
+                    value: 1
+                }
+            },
+            where: {
+                accountNumber: opts.customer.accountNumber
+            }
+        };
+        var updateSql = paramparse.parseUpdateSqlObj(updObj, "customers");
+        return mysqlPool.queryAsync(updateSql).then(function (result1) {
+            results.error_code = 0;
+            results.error_msg = "删除职工信息成功！";
+            return results;
+        });
+    });
+};
+
+
+var getNextAccountAsync = function (opts) {
+    var results = {error_code: -1, error_msg: "error"};
+    var bbPromise = opts.mysqldbs.bbpromise;
+    var mysqlPool = opts.mysqldbs.mysqlPool;
+    return mysqlPool.queryAsync("select max(accountNumber) accountNumber from brogue_db.customers").then(function (result) {
+        results.error_code = 0;
+        results.error_msg = "获取服务器最新客户编号成功!";
+        if (!result[0].accountNumber) {
+            result[0].accountNumber = 'AN100001';
+        } else {
+            result[0].accountNumber = paramparse.nextNumber('AN1',result[0].accountNumber);
+        }
+        results.data = result[0].accountNumber;
+        return results;
+    }).catch(function (e) {
+        results.error_code = 1001;
+        results.error_msg = "获取服务器最新客户编号失败，请联系平台管理员!";
+        return results;
+    });
 };

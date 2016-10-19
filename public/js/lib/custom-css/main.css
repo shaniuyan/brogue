@@ -90,3 +90,8 @@
   background-color: #eee;
   border: 1px solid #ddd;
 }
+
+.pointer{
+  cursor: pointer;
+  border:1px dashed greenyellow;
+}

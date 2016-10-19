@@ -4,6 +4,10 @@
 var express = require('express');
 var router = express.Router();
 var apiV1 = require("../api/v1");
+
+router.post("/auth/login.json", apiV1.auth.login);
+router.get("/auth/getclientid.json", apiV1.auth.getClientId);
+
 router.post("/customer/login.json", apiV1.customer.login);
 router.get("/customer/login.json", apiV1.customer.login);
 router.get("/customer/userlist.json", apiV1.customer.getUserList);
@@ -52,6 +56,11 @@ router.post("/supermarket/settlewholesalemanagement.json", apiV1.wholesalemanage
 
 
 router.post("/manageuser/addcustomer.json", apiV1.manageuser.addCustomer);
+router.post("/manageuser/delcustomer.json", apiV1.manageuser.delCustomer);
 router.get("/manageuser/goodcustomer.json", apiV1.manageuser.goodCustomer);
 
+//创建文件夹、文件
+router.post("/filemanager/addfolder.json", apiV1.filemanager.addFolder);
+//获取文件列表
+router.get("/filemanager/folderlist.json", apiV1.filemanager.folderList);
 module.exports = router;

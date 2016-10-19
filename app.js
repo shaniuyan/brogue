@@ -7,6 +7,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //var dbs = require("./db");
 
+var oauth2lib = require('oauth20-provider');
+var oauth2 = new oauth2lib({log: {level: 2}});
+
+
 var mysqldbs = require("./mysqldb");
 
 var configs = require("./configs");
@@ -26,6 +30,7 @@ app.use(expressValidator());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(oauth2.inject());
 
 app.use(function (req, res, next) {
     //req.dbs = dbs;
@@ -39,6 +44,9 @@ app.use(function (req, res, next) {
 
 var validatorApp = require("./api/validator")
 app.all("/api/*.json", validatorApp.validator.validatorIntercept);
+
+app.get('/token', oauth2.controller.token);
+
 
 app.use('/api/v1', apiv1);
 //app.use('/api/auth', apiAuthRouter);

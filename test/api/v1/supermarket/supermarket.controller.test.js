@@ -290,11 +290,60 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
         });
 
 
-        it("付款操作", function (done) {
+        it.skip("付款操作", function (done) {
             request.post(testrooturl + '/api/v1/supermarket/paymentoperation.json')
                 .send({
                     pmId:2,
                     price:30
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
+
+        });
+
+        it.skip("新建文件夹", function (done) {
+            request.post(testrooturl + '/api/v1/filemanager/addfolder.json')
+                .send({
+                    folderName:"固定资产类",
+                    fileType:"文件夹"
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
+
+        });
+
+        it.skip("addcustomer", function (done) {
+            request.post(testrooturl + '/api/v1/auth/login.json')
+                .send({
+                    folderName:"固定资产类",
+                    fileType:"文件夹"
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
+        });
+
+
+        it("登录", function (done) {
+            request.post(testrooturl + '/api/v1/auth/login.json')
+                .send({
+                    accountNumber:"AN100001",
+                    password:"password",
+                    logintime:new Date().getTime()
                 })
                 .end(function (err, res) {
                     should.not.exists(err);

@@ -1,6 +1,9 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="www" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="D:/nodeenv/node6.2/node" path-to-js-file="www" working-dir="$PROJECT_DIR$/bin">
     <browser with-js-debugger="true" url="http://localhost:3000/" />
+    <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSStartBrowserRunConfigurationExtension">
+      <browser with-js-debugger="true" url="http://localhost:3000/" />
+    </EXTENSION>
     <RunnerSettings RunnerId="Basic" />
     <RunnerSettings RunnerId="debuggableProgram" />
     <ConfigurationWrapper RunnerId="Basic" />

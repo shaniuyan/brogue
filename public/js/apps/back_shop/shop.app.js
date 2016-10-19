@@ -21,6 +21,7 @@ define(["app"], function (BrogueApplication) {
                 "marketquotientlist": "marketquotientlist",
                 "wholesalepage": "wholesalepage",
                 "salesmanagementlist": "salesmanagementlist",
+                "filemanage":"filemanage",
                 "album": "album"
             }
         });
@@ -74,6 +75,13 @@ define(["app"], function (BrogueApplication) {
                     salesManagementController.showSalesManagement(region);
                 });
             },
+            filemanage:function(){
+                BrogueApplication.navigate("filemanage");
+                require(["apps/back_shop/mainpage/filemanager/filemanager.controller"], function (filemanagerController) {
+                    var region = BrogueApplication.rightRegion || BrogueApplication.bodyRegion;
+                    filemanagerController.showFileManager(region);
+                });
+            },
             album: function () {
                 BrogueApplication.navigate("album");
                 require(["apps/back_shop/mainpage/resources/resources.controller"], function (resourcesController) {
@@ -114,6 +122,10 @@ define(["app"], function (BrogueApplication) {
         });
         BrogueApplication.on("shopback:marketquotientlist", function () {
             API.marketquotientlist();
+        });
+
+        BrogueApplication.on("shopback:filemanage",function(){
+            API.filemanage();
         });
 
         BrogueApplication.on("shopback:album", function () {
