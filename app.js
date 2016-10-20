@@ -15,6 +15,7 @@ var mysqldbs = require("./mysqldb");
 
 var configs = require("./configs");
 var apiv1 = require('./routes/api.router.v1');
+var apicommon = require('./routes/apicommon.router.v1');
 //var apiAuthRouter = require('./api/auth/auth.router.v1');
 var app = express();
 
@@ -43,12 +44,14 @@ app.use(function (req, res, next) {
 //app.all("/api/*.json", apiAuth.auth.main);
 
 var validatorApp = require("./api/validator")
-app.all("/api/*.json", validatorApp.validator.validatorIntercept);
+app.all("/api/v1/*.json", validatorApp.validator.validatorIntercept);
 
 app.get('/token', oauth2.controller.token);
 
 
 app.use('/api/v1', apiv1);
+app.use('/api/common', apicommon);
+
 //app.use('/api/auth', apiAuthRouter);
 
 // catch 404 and forward to error handler

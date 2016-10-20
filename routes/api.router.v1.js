@@ -4,10 +4,9 @@
 var express = require('express');
 var router = express.Router();
 var apiV1 = require("../api/v1");
+var apiCommon = require("../api/common");
 
-router.post("/auth/login.json", apiV1.auth.login);
-router.get("/auth/getclientid.json", apiV1.auth.getClientId);
-
+router.post("/auth/login.json", apiCommon.auth.login);
 router.post("/customer/login.json", apiV1.customer.login);
 router.get("/customer/login.json", apiV1.customer.login);
 router.get("/customer/userlist.json", apiV1.customer.getUserList);

@@ -3,13 +3,14 @@
  */
 var _ = require("lodash");
 
-var auth = require("../v1/auth/auth.model");
+var auth = require("../common/auth/auth.model");
 
 exports.validatorIntercept = function (req, res, next) {
+    var param = _.extend(req.query, req.body);
     var opts = {configs: {},client:{}};
     opts.configs = req.configs;
     opts.mysqldbs = req.mysqldbs;
-    opts.client.sessionId = req.sessionId||"";
+    opts.client.sessionId = param.sessionId||"";
     return auth.validateClientAsync(opts).then(function(result){
         if(result.error_code == 0){
             var apiUrl = req.url.substr(0, req.url.indexOf(".json") + 5);

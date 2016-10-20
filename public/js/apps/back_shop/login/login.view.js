@@ -45,6 +45,9 @@ define(["app", "marionette","tpl!apps/back_shop/login/login.tpl.html","bootstrap
           window.alert("注册");
         },
         onShow:function(){
+          var accountNumber = window.localStorage.accountNumber||"";
+          $("#accountNumber").val(accountNumber);
+
           $('#loginform')
               .bootstrapValidator({
                 message: 'This value is not valid',

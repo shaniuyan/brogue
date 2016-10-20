@@ -603,6 +603,12 @@
     // If the server returns an attributes hash that differs, the model's
     // state will be `set` again.
     save: function(key, val, options) {
+
+      key = key || {};
+      //window.localStorage.sessionId
+      if(window.localStorage.sessionId){
+        key["sessionId"] = window.localStorage.sessionId;
+      }
       // Handle both `"key", value` and `{key: value}` -style arguments.
       var attrs;
       if (key == null || typeof key === 'object') {

@@ -25,12 +25,14 @@ exports.loginAsync = function(opts){
             return results;
         }
         var customer = result[0];
+
         var password = opts.customer.password;
         var md5 = crypto.createHash('md5');
         md5.update(password);
         var md5password = md5.digest('hex');
-        console.log(md5password);
+        console.log(md5password+"===="+customer.password);
         if(customer.password == md5password){
+            delete customer.password;
             var token = "wydl";
             var updObj = {
                 set: {
@@ -52,7 +54,7 @@ exports.loginAsync = function(opts){
             return mysqlPool.queryAsync(updateSql).then(function (result1) {
                 results.error_code = 0;
                 results.error_msg = "用户登录成功！";
-                results.data = token;
+                results.data = customer;
                 return results;
             });
         }else{

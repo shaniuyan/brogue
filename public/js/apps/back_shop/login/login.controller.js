@@ -17,7 +17,8 @@ define(["app", "loginView","apps/back_shop/entity/customer.entities"], function 
                     var opts = {
                         success: function (model, resp, options) {
                             if(resp.error_code == 0){
-
+                                window.localStorage.accountNumber = resp.response_params.accountNumber;
+                                BrogueApplication.triggerMethod("shopback:home");
                             }else{
                                 window.alert(JSON.stringify(resp.error_msg));
                             }
