@@ -3,6 +3,7 @@
  */
 var _ = require('lodash');
 var shopManagementModel = require("./shopManagement.model");
+
 /**
  * 商铺名称
  * 打开或者创建时间

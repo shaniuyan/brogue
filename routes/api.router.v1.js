@@ -6,6 +6,10 @@ var router = express.Router();
 var apiV1 = require("../api/v1");
 var apiCommon = require("../api/common");
 
+
+router.post("/module/addmodule.json", apiV1.module.addModule);
+
+
 router.post("/auth/login.json", apiCommon.auth.login);
 router.post("/customer/login.json", apiV1.customer.login);
 router.get("/customer/login.json", apiV1.customer.login);
