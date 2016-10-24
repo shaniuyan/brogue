@@ -338,7 +338,7 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
         });
 
 
-        it("登录", function (done) {
+        it.skip("登录", function (done) {
             request.post(testrooturl + '/api/v1/auth/login.json')
                 .send({
                     accountNumber:"AN100001",

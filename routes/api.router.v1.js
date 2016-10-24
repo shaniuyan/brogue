@@ -8,14 +8,18 @@ var apiCommon = require("../api/common");
 
 
 router.post("/module/addmodule.json", apiV1.module.addModule);
-
+router.get("/module/modulelist.json", apiV1.module.moduleList);
 
 router.post("/auth/login.json", apiCommon.auth.login);
+router.post("/auth/authorizemodule.json", apiCommon.auth.authorizeModule);
+router.post("/auth/delauthorizemodule.json", apiCommon.auth.delAuthorizeModule);
+
 router.post("/customer/login.json", apiV1.customer.login);
 router.get("/customer/login.json", apiV1.customer.login);
 router.get("/customer/userlist.json", apiV1.customer.getUserList);
-
 router.get("/customer/userlistcs.json", apiV1.customer.userTestList);
+
+
 
 router.get("/supermarket/businessmodules.json", apiV1.supermarket.businessModules);
 

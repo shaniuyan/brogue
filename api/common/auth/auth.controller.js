@@ -65,4 +65,40 @@ exports.getClientId = function(req,res,next){
         body.response_params = result.data;
         res.status(200).json(body);
     });
+};
+
+exports.authorizeModule = function (req,res,next) {
+    var param = _.extend(req.query, req.body);
+    var time = new Date();
+    var body = {};
+    body.response_params = {};
+    var opts = {authorize: {}, configs: {}};
+    opts.configs = req.configs;
+    opts.mysqldbs = req.mysqldbs;
+
+    opts.authorize.uid = parseInt(param.uid);
+    opts.authorize.moduleId = parseInt(param.moduleId);
+    return authModel.authorizeModuleAsync(opts).then(function(result){
+        body.error_code = result.error_code;
+        body.error_msg = result.error_msg;
+        body.response_params = result.data;
+        res.status(200).json(body);
+    });
+}
+
+exports.delAuthorizeModule = function (req,res,next) {
+    var param = _.extend(req.query, req.body);
+    var time = new Date();
+    var body = {};
+    body.response_params = {};
+    var opts = {authorize: {}, configs: {}};
+    opts.configs = req.configs;
+    opts.mysqldbs = req.mysqldbs;
+    opts.authorize.cmId = parseInt(param.cmId);
+    return authModel.delAuthorizeModuleAsync(opts).then(function(result){
+        body.error_code = result.error_code;
+        body.error_msg = result.error_msg;
+        body.response_params = result.data;
+        res.status(200).json(body);
+    });
 }
