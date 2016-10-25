@@ -131,6 +131,48 @@ exports.validateClientAsync = function (opts) {
     });
 };
 
+exports.authorizeModuleListAsync = function (opts) {
+    var results = {error_code: -1, error_msg: "error"};
+    var bbPromise = opts.mysqldbs.bbpromise;
+    var join = bbPromise.join;
+    var mysqlPool = opts.mysqldbs.mysqlPool;
+    var tableName = "customers_modules";
+    var pageIndex = 0, beginRowIndex = 0, endRowIndex = 0, pageSize = opts.configs.sysconfig.customer.pageSize;
+    if (!isNaN(opts.page.pageIndex)) {
+        pageIndex = opts.page.pageIndex;
+    }
+    if (!isNaN(opts.page.pageSize)) {
+        pageSize = parseInt(opts.page.pageSize);
+    }
+    beginRowIndex = (pageIndex - 1) * pageSize;
+
+    var findModule = {
+        where: {
+            modulePid: opts.authorize.moduleId,
+            uid: opts.authorize.uid,
+            delTag: 0
+        }
+    };
+
+    var findCountAsync = bbPromise.resolve();
+    if (!opts.page.searchCount) {
+        var findSqlStr = paramparse.parseFindSqlObjTotal(findModule, tableName);
+        findCountAsync = mysqlPool.queryAsync(findSqlStr);
+    }
+    var findDataStr = paramparse.parseFindSqlObjLimit(findModule, tableName, beginRowIndex, pageSize);
+    var findDataAsync = mysqlPool.queryAsync(findDataStr);
+
+    return join(findCountAsync, findDataAsync, function (total, data) {
+        return {total: total[0].total, data: data}
+    }).then(function (result) {
+        results.error_code = 0;
+        results.error_msg = "获取商品列表成功！";
+        results.data = result.data;
+        results.total = result.total;
+        return results;
+    });
+};
+
 exports.authorizeModuleAsync = function (opts) {
     var results = {error_code: -1, error_msg: "error"};
     var bbPromise = opts.mysqldbs.bbpromise;
@@ -271,7 +313,7 @@ exports.delAuthorizeModuleAsync = function (opts) {
         var whereCustomerHashModules = {
             where: {
                 moduleId: customerModule.modulePid,
-                delTag:0
+                delTag: 0
             }
         };
         var findCustomerHashModulesStr = paramparse.parseFindSqlObj(whereCustomerHashModules, tableName);
@@ -280,8 +322,8 @@ exports.delAuthorizeModuleAsync = function (opts) {
                 relationship: "or",
                 set: {
                     delTag: {
-                        relationship:"=",
-                        value:1
+                        relationship: "=",
+                        value: 1
                     }
                 },
                 where: {}

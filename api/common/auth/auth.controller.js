@@ -67,6 +67,27 @@ exports.getClientId = function(req,res,next){
     });
 };
 
+exports.authorizeModuleList = function (req, res, next) {
+    var param = _.extend(req.query, req.body);
+    var body = {};
+    body.response_params = {};
+    var opts = {authorize: {}, page: {}, configs: {}};
+    opts.configs = req.configs;
+    opts.mysqldbs = req.mysqldbs;
+    opts.authorize.uid = parseInt(param.uid);
+    opts.authorize.moduleId = parseInt(param.moduleId||0);
+    opts.page.pageIndex = param.pageIndex || 1;
+    opts.page.pageSize = param.pageSize;
+    return authModel.authorizeModuleListAsync(opts).then(function (result) {
+        body.error_code = result.error_code;
+        body.error_msg = result.error_msg;
+        body.response_params.data = result.data;
+        body.response_params.total = result.total;
+        res.status(200).json(body);
+    });
+};
+
+
 exports.authorizeModule = function (req,res,next) {
     var param = _.extend(req.query, req.body);
     var time = new Date();
