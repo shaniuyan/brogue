@@ -587,6 +587,9 @@
     // local attributes. Any changed attributes will trigger a "change" event.
     fetch: function(options) {
       options = _.extend({parse: true}, options);
+      if(window.localStorage.sessionId){
+        options["data"]["sessionId"] = window.localStorage.sessionId;
+      }
       var model = this;
       var success = options.success;
       options.success = function(resp) {
@@ -1049,6 +1052,9 @@
     // data will be passed through the `reset` method instead of `set`.
     fetch: function(options) {
       options = _.extend({parse: true}, options);
+      if(window.localStorage.sessionId){
+        options["data"]["sessionId"] = window.localStorage.sessionId;
+      }
       var success = options.success;
       var collection = this;
       options.success = function(resp) {
