@@ -16,7 +16,7 @@ exports.goodListAsync = function (opts) {
     var mysqlPool = opts.mysqldbs.mysqlPool;
     var pageIndex = 0, beginRowIndex = 0, endRowIndex = 0, pageSize = opts.configs.sysconfig.customer.pageSize;
     if (!isNaN(opts.page.pageIndex)) {
-        pageIndex = opts.page.pageIndex;i
+        pageIndex = opts.page.pageIndex;
     }
     if (!isNaN(opts.page.pageSize)) {
         pageSize = parseInt(opts.page.pageSize);
