@@ -11,7 +11,7 @@ router.post("/module/addmodule.json", apiV1.module.addModule);
 router.get("/module/modulelist.json", apiV1.module.moduleList);
 
 router.post("/auth/login.json", apiCommon.auth.login);
-router.post("/auth/authorizemodulelist.json", apiCommon.auth.authorizeModuleList);
+router.get("/auth/authorizemodulelist.json", apiCommon.auth.authorizeModuleList);
 router.post("/auth/authorizemodule.json", apiCommon.auth.authorizeModule);
 router.post("/auth/delauthorizemodule.json", apiCommon.auth.delAuthorizeModule);
 

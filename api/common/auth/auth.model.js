@@ -125,9 +125,24 @@ exports.validateClientAsync = function (opts) {
             results.error_code = 9001;
             results.error_msg = "非有效终端访问!";
             return results;
-        }
-        results.data = result[0];
-        return results;
+        };
+        selectObj = {
+            where: {
+                accountNumber: opts.client.accountNumber
+            }
+        };
+        tableName = "customers";
+        findDataStr = paramparse.parseFindSqlObj(selectObj, tableName);
+        return mysqlPool.queryAsync(findDataStr).then(function (customerresult) {
+            if (!result.length) {
+                results.error_code = 9001;
+                results.error_msg = "非有效账户访问!";
+                return results;
+            }else{
+                results.data = result[0];
+                return results;
+            }
+        });
     });
 };
 
@@ -154,6 +169,10 @@ exports.authorizeModuleListAsync = function (opts) {
         }
     };
 
+    if (opts.authorize.type == "group") {
+        delete findModule.where.modulePid;
+    }
+
     var findCountAsync = bbPromise.resolve();
     if (!opts.page.searchCount) {
         var findSqlStr = paramparse.parseFindSqlObjTotal(findModule, tableName);
@@ -163,7 +182,30 @@ exports.authorizeModuleListAsync = function (opts) {
     var findDataAsync = mysqlPool.queryAsync(findDataStr);
 
     return join(findCountAsync, findDataAsync, function (total, data) {
-        return {total: total[0].total, data: data}
+        if (opts.authorize.type == "group") {
+            var hashModule = {}, hashChildModule = {};
+            _.each(data, function (module) {
+                if (module.modulePid == 0) {
+                    hashModule[module.moduleId] = module;
+                } else {
+                    hashChildModule[module.moduleId] = module;
+                }
+            });
+            var pkeys = _.keys(hashModule);
+            var keys = _.keys(hashChildModule);
+            var datas = [];
+            _.each(pkeys, function (pkey) {
+                hashModule[pkey].childModuls = [];
+                _.each(keys, function (key) {
+                    if (hashChildModule[key].modulePid == hashModule[pkey].moduleId) {
+                        hashModule[pkey].childModuls.push(hashChildModule[key]);
+                    }
+                });
+                datas.push(hashModule[pkey]);
+            });
+            return {total: datas.length, data: datas}
+        }
+        return {total: total[0].total, data: data};
     }).then(function (result) {
         results.error_code = 0;
         results.error_msg = "获取商品列表成功！";

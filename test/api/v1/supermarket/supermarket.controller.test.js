@@ -12,36 +12,33 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
 
     });
     describe('test all goods controller api ', function () {
-        for (var i = 0; i <= 100; i++) {
-            it.skip("添加商品", function (done) {
+        it.skip("添加商品", function (done) {
 
-                request.post(testrooturl + '/api/v1/supermarket/addgood.json')
-                    .send({
-                        goodCode: "1001",
-                        goodName: "方便面",
-                        brand: "小康",
-                        model: "小康系列",
-                        goodBar: "9787550265332",
-                        purchasePrice: 75.00,
-                        price: 78.00,
-                        tradePrice: 76,
-                        wholenum: 20,
-                        scatterednum: 18,
-                        wholeUnit: "箱",
-                        unit: "袋",
-                        conversionunit:30
-                    })
-                    .end(function (err, res) {
-                        should.not.exists(err);
-                        console.log(res.status);
-                        console.log(res.body);
-                        res.body.should.have.property('error_code', 0);
-                        done();
-                    });
+            request.post(testrooturl + '/api/v1/supermarket/addgood.json')
+                .send({
+                    goodCode: "1001",
+                    goodName: "方便面",
+                    brand: "小康",
+                    model: "小康系列",
+                    goodBar: "9787550265332",
+                    purchasePrice: 75.00,
+                    price: 78.00,
+                    tradePrice: 76,
+                    wholenum: 20,
+                    scatterednum: 18,
+                    wholeUnit: "箱",
+                    unit: "袋",
+                    conversionunit:30
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
 
-            });
-        }
-
+        });
         it.skip("获取商品", function (done) {
             request.get(testrooturl + '/api/v1/supermarket/goodlist.json')
                 .send({
@@ -57,7 +54,6 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
-
         it.skip("添加服务商", function (done) {
 
             request.post(testrooturl + '/api/v1/supermarket/addmarketquotient.json')
@@ -80,8 +76,6 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
-
-
         it.skip("添加批发单", function (done) {
 
             request.post(testrooturl + '/api/v1/supermarket/addwholesale.json')
@@ -100,7 +94,6 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
-
         it.skip("添加批发单商品信息", function (done) {
             request.post(testrooturl + '/api/v1/supermarket/addwholesaledetails.json')
                 .send({
@@ -118,7 +111,6 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
-
         it.skip("删除批发单商品信息", function (done) {
             request.post(testrooturl + '/api/v1/supermarket/deletewholesaledetails.json')
                 .send({
@@ -134,7 +126,6 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
-
         it.skip("修改批发单应支付金额", function (done) {
 
             request.post(testrooturl + '/api/v1/supermarket/updpaymenttotalamount.json')
@@ -151,8 +142,6 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
-
-
         it.skip("获取最新批发单号", function (done) {
 
             request.get(testrooturl + '/api/v1/supermarket/lastwholesalenum.json')
@@ -166,9 +155,7 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
-
         it.skip("拆箱", function (done) {
-
             request.post(testrooturl + '/api/v1/supermarket/unboxing.json')
                 .send({
                     goodId: 1,
@@ -200,7 +187,6 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
-
         it.skip("更新商品整件数量、零件数量、进价、售价、批发价信息", function (done) {
             request.post(testrooturl + '/api/v1/supermarket/updgoodnum.json')
                 .send({
@@ -220,27 +206,23 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
+        it.skip("添加收货单", function (done) {
+            request.post(testrooturl + '/api/v1/supermarket/addpurchasingmanagement.json')
+                .send({
+                    totalprice: 0,
+                    alreadypaidmoney: 0,
+                    purchaseperson: '王凯',
+                    purchasephone: '13546710245'
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
 
-        for (var i = 0; i <= 120; i++) {
-            it.skip("添加收货单", function (done) {
-                request.post(testrooturl + '/api/v1/supermarket/addpurchasingmanagement.json')
-                    .send({
-                        totalprice: 0,
-                        alreadypaidmoney: 0,
-                        purchaseperson: '王凯',
-                        purchasephone: '13546710245'
-                    })
-                    .end(function (err, res) {
-                        should.not.exists(err);
-                        console.log(res.status);
-                        console.log(res.body);
-                        res.body.should.have.property('error_code', 0);
-                        done();
-                    });
-
-            });
-        }
-
+        });
         it.skip("获取售货单列表", function (done) {
             request.get(testrooturl + '/api/v1/supermarket/purchasingmanagementlist.json')
                 .send({
@@ -270,7 +252,6 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
-
         it.skip("添加售货单商品信息", function (done) {
             request.post(testrooturl + '/api/v1/supermarket/addpurchasinggoods.json')
                 .send({
@@ -288,8 +269,6 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
-
-
         it.skip("付款操作", function (done) {
             request.post(testrooturl + '/api/v1/supermarket/paymentoperation.json')
                 .send({
@@ -305,7 +284,6 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
-
         it.skip("新建文件夹", function (done) {
             request.post(testrooturl + '/api/v1/filemanager/addfolder.json')
                 .send({
@@ -321,7 +299,6 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                 });
 
         });
-
         it.skip("addcustomer", function (done) {
             request.post(testrooturl + '/api/v1/auth/login.json')
                 .send({
@@ -335,24 +312,6 @@ describe('test /api/v1/supermarket/goods.controller.js', function () {
                     res.body.should.have.property('error_code', 0);
                     done();
                 });
-        });
-
-
-        it.skip("登录", function (done) {
-            request.post(testrooturl + '/api/v1/auth/login.json')
-                .send({
-                    accountNumber:"AN100001",
-                    password:"password",
-                    logintime:new Date().getTime()
-                })
-                .end(function (err, res) {
-                    should.not.exists(err);
-                    console.log(res.status);
-                    console.log(res.body);
-                    res.body.should.have.property('error_code', 0);
-                    done();
-                });
-
         });
     });
 });

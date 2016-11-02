@@ -16,9 +16,9 @@ describe('test /api/v1/module/module.controller.js', function () {
             request.post(testrooturl + '/api/v1/module/addmodule.json')
                 .send({
                     sessionId:'0ef305b7-c365-4e3e-8b6c-8d5003d29cf5',
-                    //modulePid:1,
-                    moduleName:"系统管理",
-                    shorthand:"系统管理"
+                    modulePid:12,
+                    moduleName:"权限设置",
+                    shorthand:"权限"
                 })
                 .end(function (err, res) {
                     should.not.exists(err);

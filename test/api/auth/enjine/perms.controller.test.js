@@ -108,5 +108,24 @@ describe('test /api/auth/apps/auth/enjine/perms.controller.js', function () {
                     done();
                 });
         });
+
+
+        it.skip("登录", function (done) {
+            request.post(testrooturl + '/api/v1/auth/login.json')
+                .send({
+                    sessionId:"0ef305b7-c365-4e3e-8b6c-8d5003d29cf5",
+                    accountNumber:"AN100001",
+                    password:"000000",
+                    logintime:new Date().getTime()
+                })
+                .end(function (err, res) {
+                    should.not.exists(err);
+                    console.log(res.status);
+                    console.log(res.body);
+                    res.body.should.have.property('error_code', 0);
+                    done();
+                });
+
+        });
     });
 });

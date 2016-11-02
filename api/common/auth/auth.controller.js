@@ -76,6 +76,7 @@ exports.authorizeModuleList = function (req, res, next) {
     opts.mysqldbs = req.mysqldbs;
     opts.authorize.uid = parseInt(param.uid);
     opts.authorize.moduleId = parseInt(param.moduleId||0);
+    opts.authorize.type = param.type || "";
     opts.page.pageIndex = param.pageIndex || 1;
     opts.page.pageSize = param.pageSize;
     return authModel.authorizeModuleListAsync(opts).then(function (result) {
